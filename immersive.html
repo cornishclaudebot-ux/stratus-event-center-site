@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- ============================================================
+     STRATUS EVENT CENTER — "Arizona's Premier Event Center"
+     single-file site · dark-luxe repositioning · preview: http://localhost:4321
+       Name : Stratus Event Center (aka Club Stratus)
+       Addr : 4344 W Indian School Rd, Ste 32, Phoenix, AZ 85031
+       Tel  : (602) 908-7817  ·  booking: (623) 920-3361
+       Email: Stratuseventcenteraz@gmail.com
+       IG @stratuseventcenter (22K) · FB /StratusEventCenter · 4★ Yelp
+     Live tickets/listings: Bandsintown, Ticketón, Tickeri, StubHub,
+       Ticketmaster, Shazam (links in the Tickets section + footer).
+     Edit the EVENTS array near the bottom to keep the calendar current.
+     Real venue photos go in ./assets/ (gallery-1..6.jpg).
+     ============================================================ -->
+
+<title>Stratus Event Center | Arizona's Premier Event Center — Phoenix &amp; the West Valley</title>
+<meta name="description" content="Stratus Event Center, Arizona's Premier Event Center in Phoenix. A modern, fully-staffed venue for weddings, quinceañeras, galas, corporate events, and concerts. 4 stars on Yelp. Book a private tour or get tickets to upcoming shows." />
+<meta name="theme-color" content="#0B0B0C" />
+<link rel="canonical" href="https://cornishclaudebot-ux.github.io/stratus-event-center-site/" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Stratus Event Center | Arizona's Premier Event Center" />
+<meta property="og:description" content="A modern, fully-staffed venue for weddings, quinceañeras, galas, and concerts. Serving Phoenix and the West Valley. 4★ on Yelp." />
+<meta property="og:image" content="https://cornishclaudebot-ux.github.io/stratus-event-center-site/assets/logo-square.jpg" />
+<meta property="og:url" content="https://cornishclaudebot-ux.github.io/stratus-event-center-site/" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Cg fill='none' stroke='%23C9A24B' stroke-width='2.6' stroke-linecap='round'%3E%3Cline x1='8' y1='9' x2='19' y2='9'/%3E%3Cline x1='4' y1='14' x2='24' y2='14'/%3E%3Cline x1='9' y1='19' x2='20' y2='19'/%3E%3C/g%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EventVenue",
+  "name": "Stratus Event Center",
+  "alternateName": "Club Stratus",
+  "slogan": "Arizona's Premier Event Center",
+  "description": "Modern, fully-staffed event venue in Phoenix serving the West Valley. Weddings, quinceañeras, galas, corporate events, and concerts.",
+  "url": "https://cornishclaudebot-ux.github.io/stratus-event-center-site/",
+  "telephone": "+1-602-908-7817",
+  "email": "Stratuseventcenteraz@gmail.com",
+  "image": "https://cornishclaudebot-ux.github.io/stratus-event-center-site/assets/logo-square.jpg",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "4344 W Indian School Rd, Ste 32",
+    "addressLocality": "Phoenix",
+    "addressRegion": "AZ",
+    "postalCode": "85031",
+    "addressCountry": "US"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 33.4948, "longitude": -112.1575 },
+  "areaServed": ["Phoenix", "Glendale", "Peoria", "Avondale", "Surprise", "Litchfield Park", "West Valley"],
+  "sameAs": [
+    "https://www.instagram.com/stratuseventcenteraz/",
+    "https://www.facebook.com/StratusEventCenter/",
+    "https://www.bandsintown.com/v/10168441-club-stratus",
+    "https://www.yelp.com/biz/stratus-event-center-phoenix",
+    "https://www.stubhub.com/stratus-event-center-tickets/venue/102133143/"
+  ],
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "description": "Tours and events by appointment"
+  }
+}
+</script>
+
+<style>
+/* ============================ TOKENS ============================ */
+:root{
+  --ink:#0B0B0C;--ink-2:#101013;--ink-3:#16161B;--panel:#1A1A20;
+  --line:rgba(201,162,75,.20);--line-soft:rgba(244,241,234,.08);
+  --gold:#C9A24B;--gold-2:#E3C57E;--gold-deep:#9A7A33;
+  --bone:#F4F1EA;--muted:#A9A39A;--muted-2:#7C766C;
+  --maxw:1180px;--ease:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--bone);font-family:'Inter',system-ui,sans-serif;font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--gold);color:var(--ink)}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ===== DIAMOND TEXTURE + "A" CHEVRON BRAND LAYERS ===== */
+#diamondVeil{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='84'%3E%3Cpath d='M42 2L82 42L42 82L2 42Z' fill='none' stroke='%23C9A24B' stroke-width='1'/%3E%3C/svg%3E");background-size:84px 84px}
+.btn-gold,.ev-ticket{position:relative;overflow:hidden;isolation:isolate}
+.btn-gold::before,.ev-ticket::before{content:"";position:absolute;inset:0;z-index:-1;mix-blend-mode:overlay;opacity:.85;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.30) 0 1.5px,transparent 1.5px 9px),repeating-linear-gradient(-45deg,rgba(40,26,0,.34) 0 1.5px,transparent 1.5px 9px)}
+.btn-gold::after,.ev-ticket::after{content:"";position:absolute;top:-20%;bottom:-20%;width:36%;left:-55%;z-index:-1;background:linear-gradient(100deg,transparent,rgba(255,255,255,.6),transparent);transform:skewX(-18deg);pointer-events:none}
+.btn-gold::after{animation:btnSparkle 5.5s ease-in-out infinite}
+.ev-ticket::after{transition:left .6s var(--ease)}
+.ev-card:hover .ev-ticket::after{left:135%}
+@keyframes btnSparkle{0%{left:-55%}11%{left:135%}100%{left:135%}}
+.achevron{max-width:var(--maxw);margin:4px auto;padding:0 24px}
+.achevron svg{width:100%;height:82px;display:block;overflow:visible;animation:achGlow 4.5s ease-in-out infinite}
+@keyframes achGlow{0%,100%{filter:drop-shadow(0 0 5px rgba(201,162,75,.22))}50%{filter:drop-shadow(0 2px 14px rgba(201,162,75,.5))}}
+.intro-card{display:flex;align-items:center;justify-content:center}
+.intro-card .bigdiamond{width:66%;max-width:252px;filter:drop-shadow(0 0 26px rgba(227,197,126,.5)) drop-shadow(0 14px 28px rgba(201,162,75,.45));animation:diamondFloat 6.5s ease-in-out infinite}
+@keyframes diamondFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@media (prefers-reduced-motion:reduce){.btn-gold::after,.achevron svg,.intro-card .bigdiamond{animation:none}}
+
+h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:500;line-height:1.08;letter-spacing:-.01em}
+.eyebrow{display:inline-block;font-family:'Inter';font-weight:600;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem}
+.lead{font-size:1.08rem;color:var(--muted);max-width:54ch}
+.serif-i{font-style:italic;color:var(--gold-2)}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+section{padding:120px 0;position:relative}
+.center{text-align:center}
+.center .lead{margin-left:auto;margin-right:auto}
+.rule{height:1px;border:0;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:0}
+
+.btn{display:inline-flex;align-items:center;gap:.6em;cursor:pointer;border:0;font-family:'Inter';font-weight:500;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;padding:16px 30px;border-radius:4px;transition:.35s var(--ease)}
+.btn-gold{background:linear-gradient(135deg,var(--gold-2),var(--gold));color:#1a1408;box-shadow:0 10px 30px -12px rgba(201,162,75,.6)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 18px 40px -14px rgba(201,162,75,.75)}
+.btn-ghost{background:transparent;color:var(--bone);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold-2)}
+.btn .arr{transition:transform .35s var(--ease)}
+.btn:hover .arr{transform:translateX(4px)}
+
+/* ============================ NAV ============================ */
+header.nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:18px 32px;transition:.4s var(--ease)}
+header.nav.scrolled{padding:10px 32px;background:rgba(11,11,12,.8);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-soft)}
+.brand{display:flex;align-items:center}
+.brand .logo-img{height:48px;width:auto;display:block;transition:height .4s var(--ease)}
+header.nav.scrolled .brand .logo-img{height:38px}
+.nav-links{display:flex;align-items:center;gap:34px}
+.nav-links a{font-size:.82rem;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;font-weight:400;transition:.3s}
+.nav-links a:hover{color:var(--gold-2)}
+.nav-cta{font-size:.78rem!important;letter-spacing:.12em;color:var(--bone)!important;border:1px solid var(--line);padding:10px 20px;border-radius:4px}
+.nav-cta:hover{border-color:var(--gold);color:var(--gold-2)!important}
+.burger{display:none;flex-direction:column;gap:5px;background:0;border:0;cursor:pointer;padding:6px}
+.burger span{width:24px;height:1.5px;background:var(--bone);transition:.3s}
+.mobile-menu{position:fixed;inset:0;z-index:999;background:rgba(8,8,9,.97);backdrop-filter:blur(8px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;visibility:hidden;transition:.4s var(--ease)}
+.mobile-menu.open{opacity:1;visibility:visible}
+.mobile-menu a{font-family:'Playfair Display';font-size:1.7rem;color:var(--bone)}
+.mobile-menu a:hover{color:var(--gold-2)}
+
+/* ============================ HERO ============================ */
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:90px;background:radial-gradient(120% 75% at 50% -8%,rgba(201,162,75,.16),transparent 58%),linear-gradient(180deg,rgba(11,11,12,.45) 0%,rgba(11,11,12,.82) 56%,var(--ink) 100%),url('assets/hero.jpg') center/cover no-repeat,var(--ink)}
+.hero-inner{max-width:880px}
+.hero h1{font-size:clamp(2.7rem,7vw,5.4rem);margin:.3rem 0 1.6rem}
+.hero h1 .em{font-style:italic;color:var(--gold-2);text-transform:uppercase;letter-spacing:.012em}
+.hero p.lead{font-size:1.15rem;margin-bottom:2.2rem;max-width:46ch}
+.hero-cta{display:flex;gap:16px;flex-wrap:wrap}
+.proof{display:flex;gap:26px;flex-wrap:wrap;align-items:center;margin-top:34px}
+.proof a,.proof span{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;color:var(--muted);letter-spacing:.02em;transition:.3s}
+.proof a:hover{color:var(--gold-2)}
+.proof .star{color:var(--gold);letter-spacing:1px}
+.proof .dot{width:3px;height:3px;border-radius:50%;background:var(--muted-2)}
+.scroll-cue{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--muted-2);font-size:.66rem;letter-spacing:.25em;text-transform:uppercase}
+.scroll-cue i{width:1px;height:42px;background:linear-gradient(var(--gold),transparent);animation:cue 2.4s var(--ease) infinite}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ============================ TRUST BAR (marquee) ============================ */
+.trust{border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);background:var(--ink-2);overflow:hidden}
+.marquee{overflow:hidden;padding:32px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.marquee-track{display:flex;width:max-content}
+.marquee-track.go{animation:trust-marquee 28s linear infinite}
+.marquee:hover .marquee-track.go{animation-play-state:paused}
+.marquee-group{display:flex;align-items:center;gap:58px;padding-right:58px;flex:none}
+.trust .item{display:flex;align-items:center;gap:16px;color:var(--bone);font-size:1.5rem;font-weight:300;white-space:nowrap;flex:none}
+.trust .item svg{width:36px;height:36px;color:var(--gold);flex:none}
+@keyframes trust-marquee{from{transform:translateX(calc(-1 * var(--shift,0px)))}to{transform:translateX(0)}}
+
+/* ============================ INTRO ============================ */
+.intro .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:72px;align-items:center}
+.intro h2{font-size:clamp(2rem,4vw,3.1rem);margin-bottom:1.4rem}
+.intro .statline{display:flex;gap:48px;margin-top:40px;flex-wrap:wrap}
+.intro .stat .n{font-family:'Playfair Display';font-size:2.6rem;color:var(--gold-2);line-height:1}
+.intro .stat .l{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);margin-top:8px}
+.intro-card{aspect-ratio:4/5;border-radius:16px;border:1px solid var(--line);position:relative;overflow:hidden;background:linear-gradient(155deg,#211d15,#0d0d0f 62%),radial-gradient(circle at 50% 50%,rgba(201,162,75,.3),transparent 58%);background-blend-mode:screen}
+.intro-card .ph{position:absolute;inset:0;display:flex;align-items:flex-end;padding:28px}
+.intro-card .ph span{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-2)}
+
+/* ============================ SPACES ============================ */
+.spaces-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:54px;flex-wrap:wrap}
+.spaces-head h2{font-size:clamp(2rem,4vw,3.1rem)}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{background:var(--ink-2);border:1px solid var(--line-soft);border-radius:14px;padding:34px 26px;transition:.4s var(--ease);position:relative;overflow:hidden;min-height:280px;display:flex;flex-direction:column}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(201,162,75,.10),transparent 55%);opacity:0;transition:.4s}
+.card:hover{transform:translateY(-7px);border-color:var(--line)}
+.card:hover::before{opacity:1}
+.card .ic{width:40px;height:40px;color:var(--gold);margin-bottom:22px}
+.card h3{font-size:1.45rem;margin-bottom:10px}
+.card p{font-size:.92rem;color:var(--muted)}
+.card .more{margin-top:auto;padding-top:18px;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);opacity:0;transform:translateY(6px);transition:.4s}
+.card:hover .more{opacity:1;transform:none}
+
+/* ============================ VENUE / AMENITIES ============================ */
+.venue{background:var(--ink-2);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+.amen{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);border-radius:14px;overflow:hidden;margin-top:54px}
+.amen .a{background:var(--ink-2);padding:34px 30px;transition:.35s}
+.amen .a:hover{background:var(--ink-3)}
+.amen .a svg{width:26px;height:26px;color:var(--gold);margin-bottom:16px}
+.amen .a h4{font-family:'Inter';font-weight:600;font-size:1rem;margin-bottom:7px}
+.amen .a p{font-size:.86rem;color:var(--muted)}
+
+/* ============================ VIDEO TOUR ============================ */
+.tour .video-frame{position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;border:1px solid var(--line);margin-top:48px;background:#000;box-shadow:0 30px 80px -40px rgba(0,0,0,.9)}
+.tour .video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.tour .cap{margin-top:16px;font-size:.82rem;color:var(--muted-2);text-align:center}
+
+/* ============================ GALLERY ============================ */
+.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:200px;gap:14px;margin-top:54px}
+.tile{border-radius:12px;overflow:hidden;position:relative;border:1px solid var(--line-soft)}
+.tile img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.tile:hover img{transform:scale(1.06)}
+.tile .fallback{position:absolute;inset:0;display:flex;align-items:flex-end;padding:20px}
+.tile .fallback span{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2)}
+.tile.big{grid-column:span 2;grid-row:span 2}
+.tile.tall{grid-row:span 2}
+.g1{background:linear-gradient(145deg,#211d15,#0d0d10),radial-gradient(circle at 75% 25%,rgba(201,162,75,.28),transparent 55%);background-blend-mode:screen}
+.g2{background:linear-gradient(160deg,#191920,#0c0c0e)}
+.g3{background:linear-gradient(135deg,#241f16,#101015),radial-gradient(circle at 20% 80%,rgba(201,162,75,.20),transparent 50%);background-blend-mode:screen}
+.g4{background:linear-gradient(150deg,#15151b,#0b0b0d)}
+.g5{background:linear-gradient(165deg,#1f1b14,#0e0e11),radial-gradient(circle at 60% 40%,rgba(201,162,75,.16),transparent 55%);background-blend-mode:screen}
+.g6{background:linear-gradient(140deg,#1a1a21,#0c0c0f)}
+
+/* ============================ PROCESS ============================ */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:54px}
+.step{padding-top:26px;border-top:1px solid var(--line)}
+.step .no{font-family:'Playfair Display';font-size:1.1rem;color:var(--gold);letter-spacing:.1em}
+.step h4{font-family:'Inter';font-weight:600;font-size:1.12rem;margin:14px 0 8px}
+.step p{font-size:.88rem;color:var(--muted)}
+
+/* ============================ EVENTS ============================ */
+.events .wrap{position:relative}
+.ev-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:48px}
+.ev-card{display:block;background:var(--ink-2);border:1px solid var(--line-soft);border-radius:14px;overflow:hidden;transition:.4s var(--ease)}
+.ev-card:first-child{grid-column:1 / -1}
+.ev-card:hover{border-color:var(--line);transform:translateY(-5px);box-shadow:0 26px 60px -34px rgba(0,0,0,.85)}
+.ev-flyer{width:100%;height:auto;display:block;background:#0a0a0a}
+.ev-flyer-ph{aspect-ratio:900/257;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;padding:16px;background:linear-gradient(135deg,#1d1a14,#0c0c0f),radial-gradient(circle at 70% 30%,rgba(201,162,75,.22),transparent 60%);background-blend-mode:screen}
+.ev-flyer-ph .phname{font-family:'Playfair Display';font-size:1.9rem;color:var(--bone);line-height:1}
+.ev-flyer-ph .phsub{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.ev-foot{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 20px;border-top:1px solid var(--line-soft)}
+.ev-d{font-family:'Inter';font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.ev-n{font-size:1.05rem;color:var(--bone);font-family:'Playfair Display';margin-top:3px;line-height:1.15}
+.ev-ticket{flex:none;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#1a1408;background:linear-gradient(135deg,var(--gold-2),var(--gold));padding:11px 18px;border-radius:4px;white-space:nowrap;transition:.3s}
+.ev-card:hover .ev-ticket{box-shadow:0 10px 24px -12px rgba(201,162,75,.7)}
+.ev-empty{grid-column:1 / -1;padding:48px;text-align:center;border:1px dashed var(--line);border-radius:14px;color:var(--muted)}
+.ev-empty .serif-i{font-family:'Playfair Display';font-size:1.5rem;display:block;margin-bottom:10px}
+.bit-follow{margin-top:22px;font-size:.82rem;color:var(--muted-2)}
+.bit-follow a{color:var(--gold-2)}
+
+/* ============================ PLATFORMS / TICKETS ============================ */
+.platforms{background:var(--ink-2);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+.plat-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:44px;justify-content:center}
+.plat{display:inline-flex;flex-direction:column;align-items:center;gap:3px;border:1px solid var(--line);border-radius:10px;padding:16px 26px;color:var(--bone);font-size:.95rem;font-weight:500;letter-spacing:.02em;transition:.3s;background:var(--ink);min-width:130px}
+.plat:hover{border-color:var(--gold);color:var(--gold-2);transform:translateY(-3px)}
+.plat small{color:var(--muted-2);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;font-weight:400}
+.shazam-cta{margin-top:40px;text-align:center;font-size:1rem;color:var(--muted)}
+.shazam-cta a{color:var(--gold-2);border-bottom:1px solid var(--line);padding-bottom:2px}
+.shazam-cta a:hover{border-color:var(--gold)}
+
+/* ============================ PARTNER ============================ */
+.partner .partner-card{display:flex;gap:34px;align-items:center;margin-top:48px;background:var(--ink-2);border:1px solid var(--line-soft);border-radius:16px;padding:40px;flex-wrap:wrap;transition:.4s var(--ease)}
+.partner .partner-card:hover{border-color:var(--line)}
+.partner .pmark{width:74px;height:74px;border-radius:14px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--gold);flex:none;background:radial-gradient(circle at 50% 30%,rgba(201,162,75,.15),transparent 70%)}
+.partner .pmark svg{width:38px;height:38px}
+.partner .pbody{flex:1;min-width:260px}
+.partner .pbody .eyebrow{margin-bottom:.5rem}
+.partner .pbody h3{font-size:1.7rem;margin-bottom:10px}
+.partner .pbody p{color:var(--muted);font-size:.95rem;max-width:62ch}
+.partner .pmeta{margin-top:16px;display:flex;gap:24px;flex-wrap:wrap;font-size:.85rem;color:var(--muted-2);align-items:center}
+.partner .pmeta a{color:var(--gold-2)}
+.partner .pmeta a:hover{color:var(--gold)}
+
+/* ============================ FAQ ============================ */
+.faq-grid{margin-top:48px;border-top:1px solid var(--line-soft)}
+details.faq{border-bottom:1px solid var(--line-soft);padding:6px 0}
+details.faq summary{list-style:none;cursor:pointer;padding:24px 4px;display:flex;justify-content:space-between;align-items:center;gap:20px;font-family:'Playfair Display';font-size:1.25rem;color:var(--bone);transition:.3s}
+details.faq summary::-webkit-details-marker{display:none}
+details.faq summary:hover{color:var(--gold-2)}
+details.faq summary .pl{flex:none;width:22px;height:22px;position:relative}
+details.faq summary .pl::before,details.faq summary .pl::after{content:"";position:absolute;background:var(--gold);transition:.3s}
+details.faq summary .pl::before{top:10px;left:0;width:22px;height:1.5px}
+details.faq summary .pl::after{top:0;left:10px;width:1.5px;height:22px}
+details.faq[open] summary .pl::after{transform:rotate(90deg);opacity:0}
+details.faq .ans{padding:0 4px 28px;color:var(--muted);max-width:70ch;font-size:.96rem}
+
+/* ============================ CONTACT ============================ */
+.contact{background:var(--ink-2);border-top:1px solid var(--line-soft)}
+.contact .grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px}
+.contact h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:1.2rem}
+.contact .cinfo{margin-top:34px;display:flex;flex-direction:column;gap:20px}
+.contact .ci{display:flex;gap:14px;align-items:flex-start}
+.contact .ci svg{width:20px;height:20px;color:var(--gold);flex:none;margin-top:3px}
+.contact .ci b{font-weight:500;color:var(--bone);display:block;font-size:.95rem}
+.contact .ci span,.contact .ci a{color:var(--muted);font-size:.92rem}
+.contact .ci a:hover{color:var(--gold-2)}
+.socials{display:flex;gap:14px;margin-top:30px}
+.socials a{width:42px;height:42px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--muted);transition:.3s}
+.socials a:hover{border-color:var(--gold);color:var(--gold-2);transform:translateY(-2px)}
+.socials svg{width:18px;height:18px}
+form.inq{background:var(--ink-3);border:1px solid var(--line-soft);border-radius:16px;padding:38px}
+form.inq .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2);margin-bottom:8px}
+.field input,.field select,.field textarea{width:100%;background:var(--ink);border:1px solid var(--line-soft);border-radius:8px;padding:13px 15px;color:var(--bone);font-family:'Inter';font-size:.95rem;font-weight:300;transition:.3s}
+.field input:focus,.field select:focus,.field textarea:focus{outline:0;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,162,75,.12)}
+.field textarea{resize:vertical;min-height:110px}
+.field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C9A24B' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+form.inq .btn-gold{width:100%;justify-content:center;margin-top:6px}
+.form-note{font-size:.78rem;color:var(--muted-2);margin-top:14px;text-align:center}
+.form-ok{display:none;color:var(--gold-2);font-size:.9rem;margin-top:14px;text-align:center}
+.map-wrap{margin-top:40px;border-radius:14px;overflow:hidden;border:1px solid var(--line-soft);filter:grayscale(.35) contrast(1.05)}
+.map-wrap iframe{width:100%;height:300px;border:0;display:block}
+
+/* ============================ FOOTER ============================ */
+footer{padding:70px 0 40px;border-top:1px solid var(--line-soft)}
+footer .grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+footer .brand{margin-bottom:18px}
+footer .brand .logo-img{height:56px}
+footer p.tg{color:var(--muted);font-size:.9rem;max-width:32ch}
+footer h5{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2);margin-bottom:18px}
+footer a.fl{display:block;color:var(--muted);font-size:.9rem;margin-bottom:11px;transition:.3s}
+footer a.fl:hover{color:var(--gold-2)}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-top:28px;border-top:1px solid var(--line-soft);color:var(--muted-2);font-size:.8rem}
+.foot-bottom .serve{max-width:60ch}
+
+/* ============================ REVEAL ============================ */
+[data-reveal]{opacity:0;transform:translateY(26px);transition:.9s var(--ease)}
+[data-reveal].in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){[data-reveal]{opacity:1;transform:none;transition:none}.scroll-cue i{animation:none}.marquee-track.go{animation:none}}
+
+/* ============================ RESPONSIVE ============================ */
+@media(max-width:980px){
+  .nav-links{display:none}
+  .burger{display:flex}
+  .intro .grid,.contact .grid{grid-template-columns:1fr;gap:44px}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .amen{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .gal-grid{grid-template-columns:repeat(2,1fr)}
+  footer .grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  section{padding:84px 0}
+  header.nav{padding:14px 18px}
+  .brand .logo-img{height:42px}
+  .wrap{padding:0 20px}
+  .cards,.amen,.steps,.gal-grid{grid-template-columns:1fr}
+  .tile.big,.tile.tall{grid-column:auto;grid-row:auto}
+  .gal-grid{grid-auto-rows:220px}
+  form.inq .row{grid-template-columns:1fr}
+  .ev-grid{grid-template-columns:1fr}
+  footer .grid{grid-template-columns:1fr}
+  .intro .statline{gap:28px}
+  .partner .partner-card{padding:28px}
+  .trust .item{font-size:1.15rem;gap:12px}
+  .trust .item svg{width:26px;height:26px}
+  .marquee-group{gap:40px;padding-right:40px}
+}
+
+/* ============================ IMMERSIVE SCROLL LAYER ============================ */
+#immersive{position:fixed;inset:0;z-index:4;pointer-events:none;overflow:hidden}
+.actor{position:fixed;top:0;left:0;opacity:0;will-change:transform,opacity;color:var(--gold-2)}
+.actor svg{display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 16px rgba(201,162,75,.5))}
+.guide{width:clamp(56px,7vw,110px);height:clamp(56px,7vw,110px)}
+.station{width:clamp(150px,19vw,272px);height:clamp(150px,19vw,272px)}
+@keyframes a-spin{to{transform:rotate(360deg)}}
+@keyframes a-strum{0%,100%{transform:rotate(-15deg)}50%{transform:rotate(18deg)}}
+@keyframes a-sway{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+@keyframes a-twinkle{0%,100%{opacity:.12;transform:scale(.55)}50%{opacity:1;transform:scale(1.2)}}
+@keyframes a-pour{to{stroke-dashoffset:-32}}
+@keyframes a-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes a-shine{0%,100%{filter:drop-shadow(0 0 8px rgba(201,162,75,.35))}50%{filter:drop-shadow(0 0 26px rgba(227,197,126,.9))}}
+.guide svg{animation:a-shine 2.8s ease-in-out infinite}
+.bob{animation:a-bob 2.6s ease-in-out infinite}
+.sway-grp{transform-box:fill-box;transform-origin:50% 100%;animation:a-sway 3.2s ease-in-out infinite}
+.strum-arm{transform-box:fill-box;transform-origin:0% 0%;animation:a-strum .5s ease-in-out infinite}
+.spin-disc{transform-box:fill-box;transform-origin:50% 50%;animation:a-spin 1.5s linear infinite}
+.pour-stream{stroke-dasharray:5 6;animation:a-pour .8s linear infinite}
+.twinkle{transform-box:fill-box;transform-origin:50% 50%;animation:a-twinkle 1.9s ease-in-out infinite}
+.twinkle:nth-of-type(2){animation-delay:.5s}.twinkle:nth-of-type(3){animation-delay:1s}.twinkle:nth-of-type(4){animation-delay:1.4s}
+@media (max-width:760px){.station{display:none}.guide{width:46px;height:46px}}
+@media (prefers-reduced-motion:reduce){#immersive{display:none}}
+</style>
+</head>
+<body>
+
+<div id="diamondVeil" aria-hidden="true"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <linearGradient id="achG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E3C57E"/><stop offset="1" stop-color="#9A7A33"/></linearGradient>
+  <linearGradient id="achGh" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1180" y2="0"><stop offset="0" stop-color="#C9A24B" stop-opacity="0"/><stop offset=".5" stop-color="#E3C57E" stop-opacity=".75"/><stop offset="1" stop-color="#C9A24B" stop-opacity="0"/></linearGradient>
+  <linearGradient id="dgold" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#FBF5E6"/><stop offset=".5" stop-color="#E8CB80"/><stop offset="1" stop-color="#C2994A"/></linearGradient>
+</defs></svg>
+
+<!-- ============================ NAV ============================ -->
+<!-- ============================ IMMERSIVE SCROLL ACTORS (sandbox) ============================ -->
+<div id="immersive" aria-hidden="true">
+  <div class="actor guide" id="guide">
+    <svg viewBox="0 0 100 100" fill="none">
+      <g stroke="currentColor" stroke-width="3" stroke-linejoin="round">
+        <path d="M22 40 L50 16 L78 40 L50 90 Z"/>
+        <path d="M22 40 L78 40 M37 40 L50 90 L63 40 M50 16 L50 40"/>
+      </g>
+      <g class="twinkle" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M88 20 v9 M83.5 24.5 h9"/></g>
+      <g class="twinkle" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 58 v7 M8.5 61.5 h7"/></g>
+    </svg>
+  </div>
+
+  <!-- crowd -->
+  <div class="actor station" data-from=".09" data-to=".25" data-side="left">
+    <svg viewBox="0 0 240 200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <g class="sway-grp" stroke-width="3">
+        <path d="M40 152 L33 100 M40 152 L53 104"/><path d="M92 152 L87 95 M92 152 L104 101"/>
+        <path d="M152 152 L147 98 M152 152 L163 104"/><path d="M204 152 L199 100 M204 152 L214 106"/>
+      </g>
+      <path stroke-width="3" d="M16 178 q22 -30 44 0 q22 -30 44 0 q22 -30 44 0 q22 -30 44 0 q22 -30 44 0"/>
+      <g stroke-width="2.6"><circle class="twinkle" cx="33" cy="96" r="2.4"/><circle class="twinkle" cx="147" cy="92" r="2.4"/><circle class="twinkle" cx="214" cy="100" r="2.4"/></g>
+    </svg>
+  </div>
+
+  <!-- guitarist -->
+  <div class="actor station" data-from=".25" data-to=".41" data-side="left">
+    <svg viewBox="0 0 220 240" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+      <g class="bob">
+        <circle cx="78" cy="42" r="17"/><path d="M78 59 L74 122"/>
+        <ellipse cx="122" cy="152" rx="33" ry="39" transform="rotate(26 122 152)"/>
+        <path d="M150 128 L196 74"/><path d="M75 86 L150 128"/>
+        <path class="strum-arm" d="M75 100 L122 152"/>
+        <path d="M74 122 L60 204 M74 122 L92 204"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- microphone (slides across) -->
+  <div class="actor station" data-from=".41" data-to=".55" data-side="mic">
+    <svg viewBox="0 0 240 150" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <g stroke-width="3.4">
+        <circle cx="72" cy="62" r="27"/><path d="M60 50 h24 M58 62 h28 M60 74 h24"/>
+        <path d="M90 80 L152 122"/><rect x="146" y="116" width="24" height="13" rx="4" transform="rotate(34 146 116)"/>
+      </g>
+      <g stroke-width="2.6" opacity=".85"><path class="twinkle" d="M120 44 a32 32 0 0 1 0 36"/><path class="twinkle" d="M136 34 a48 48 0 0 1 0 56"/></g>
+    </svg>
+  </div>
+
+  <!-- DJ (spinning deck) -->
+  <div class="actor station" data-from=".55" data-to=".71" data-side="left">
+    <svg viewBox="0 0 240 220" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+      <g class="bob">
+        <circle cx="120" cy="46" r="17"/><path d="M100 42 a23 16 0 0 1 40 0"/>
+        <rect x="94" y="42" width="8" height="15" rx="3"/><rect x="138" y="42" width="8" height="15" rx="3"/>
+        <path d="M120 63 L120 96"/><path d="M120 74 L82 104 M120 74 L158 104"/>
+        <rect x="42" y="104" width="156" height="54" rx="6"/><circle cx="78" cy="131" r="15"/>
+        <path d="M112 116 v30 M124 116 v30"/>
+      </g>
+      <g transform="translate(164 131)"><circle r="17" stroke="currentColor" stroke-width="3.4"/><g class="spin-disc"><circle r="3.2" fill="currentColor" stroke="none"/><path d="M0 0 L0 -17"/></g></g>
+    </svg>
+  </div>
+
+  <!-- bartender (pouring) -->
+  <div class="actor station" data-from=".71" data-to=".90" data-side="left">
+    <svg viewBox="0 0 220 240" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+      <g class="bob">
+        <circle cx="62" cy="42" r="17"/><path d="M62 59 L58 122"/><path d="M60 80 L118 62"/>
+        <g transform="rotate(42 130 58)"><rect x="118" y="42" width="20" height="44" rx="4"/><path d="M125 42 v-9 h6 v9"/></g>
+        <path d="M58 122 L46 204 M58 122 L80 204"/>
+        <path d="M148 150 L184 150 L170 178 L162 178 Z"/><path d="M166 178 v20 M154 198 h24"/>
+        <path class="pour-stream" d="M150 92 Q158 122 166 150" stroke-width="2.6"/>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="Stratus Event Center home">
+    <img class="logo-img" src="assets/logo.png" alt="Stratus Event Center — Arizona's Premier Event Center" />
+  </a>
+  <nav class="nav-links">
+    <a href="#spaces">Spaces</a>
+    <a href="#venue">The Venue</a>
+    <a href="#tour">Tour</a>
+    <a href="#events">Events</a>
+    <a href="#tickets">Tickets</a>
+    <a href="#faq">FAQ</a>
+    <a class="nav-cta" href="#contact">Book a Tour</a>
+  </nav>
+  <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#spaces">Spaces</a>
+  <a href="#venue">The Venue</a>
+  <a href="#tour">Tour</a>
+  <a href="#events">Events</a>
+  <a href="#tickets">Tickets</a>
+  <a href="#faq">FAQ</a>
+  <a href="#contact">Book a Tour</a>
+</div>
+
+<!-- ============================ HERO ============================ -->
+<section class="hero" id="top">
+  <div class="wrap hero-inner" data-reveal>
+    <span class="eyebrow">Arizona's Premier Event Center · Phoenix &amp; the West Valley</span>
+    <h1>Arizona's <span class="em">elevated</span> event venue.</h1>
+    <p class="lead">A modern, fully-staffed space for the moments that matter. Weddings, quinceañeras, galas, corporate productions, and live concerts, delivered by a professional team from first walkthrough to last dance.</p>
+    <div class="hero-cta">
+      <a class="btn btn-gold" href="#contact">Book a private tour <span class="arr">→</span></a>
+      <a class="btn btn-ghost" href="#events">Upcoming events</a>
+    </div>
+    <div class="proof">
+      <a href="https://www.yelp.com/biz/stratus-event-center-phoenix" target="_blank" rel="noopener"><span class="star">★★★★</span> 4.0 on Yelp</a>
+      <span class="dot"></span>
+      <a href="https://www.bandsintown.com/v/10168441-club-stratus" target="_blank" rel="noopener">Live on Bandsintown</a>
+      <span class="dot"></span>
+      <a href="https://www.instagram.com/stratuseventcenteraz/" target="_blank" rel="noopener">@stratuseventcenteraz</a>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><i></i></div>
+</section>
+
+<!-- ============================ TRUST BAR (marquee) ============================ -->
+<div class="trust">
+  <div class="marquee">
+    <div class="marquee-track">
+      <div class="marquee-group">
+        <div class="item"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4z" stroke-linejoin="round"/></svg> Professional on-site security</div>
+        <div class="item"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="9" rx="1.5"/><path d="M6 11V8a6 6 0 0112 0v3"/></svg> Ample lit parking</div>
+        <div class="item"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 18V6l11-2v12"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg> In-house sound &amp; lighting</div>
+        <div class="item"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6l2.1 2.1m0-12.8l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.5"/></svg> Climate controlled</div>
+        <div class="item"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/><circle cx="10" cy="7" r="4"/><path d="M17 11l2 2 4-4"/></svg> Dedicated event coordination</div>
+        <div class="item"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 21V8l9-6 9 6v13"/><path d="M9 21v-6h6v6"/></svg> Weddings, quinceañeras &amp; galas</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================ INTRO ============================ -->
+<section class="intro" id="about">
+  <div class="wrap">
+    <div class="grid">
+      <div data-reveal>
+        <span class="eyebrow">Arizona's Premier Event Center</span>
+        <h2>Raising the standard for celebrating every occasion.</h2>
+        <p class="lead">Stratus is a versatile indoor venue built to flex around your vision, with the staging, sound, and service of a production house and the warmth of a room designed for people. We host intimate gatherings and full-scale productions alike, and we run every one with the same professional standard: clean, secure, on time, and beautifully finished.</p>
+        <div class="statline">
+          <div class="stat"><div class="n">100s</div><div class="l">Events hosted</div></div>
+          <div class="stat"><div class="n">4.0★</div><div class="l">Rated on Yelp</div></div>
+          <div class="stat"><div class="n">7 days</div><div class="l">Tours by appointment</div></div>
+        </div>
+      </div>
+      <div class="intro-card" data-reveal>
+        <svg class="bigdiamond" viewBox="0 0 220 200" aria-hidden="true">
+          <g transform="translate(110 92)" stroke="#15100a" stroke-width="1" stroke-linejoin="round">
+            <path d="M-62 0 L0 92 L62 0 Z" fill="url(#dgold)"/>
+            <path d="M-62 0 L-34 -34 L34 -34 L62 0 Z" fill="url(#dgold)"/>
+            <path d="M-34 -34 L34 -34 L20 -12 L-20 -12 Z" fill="#F6EEDA"/>
+            <path d="M-62 0 L-20 -12 M62 0 L20 -12 M-20 -12 L0 0 L20 -12 M-34 -34 L-20 -12 M34 -34 L20 -12 M0 0 L0 92 M-62 0 L62 0" fill="none" stroke="#15100a" stroke-width=".8" opacity=".4"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="achevron" data-reveal aria-hidden="true">
+  <svg viewBox="0 0 1180 96" preserveAspectRatio="xMidYMid meet">
+    <path d="M30 72 L520 72 M660 72 L1150 72" fill="none" stroke="url(#achGh)" stroke-width="1.4" stroke-linecap="round"/>
+    <path d="M520 72 L590 20 L660 72" fill="none" stroke="url(#achG)" stroke-width="2" stroke-linejoin="round"/>
+    <g transform="translate(590 14)">
+      <path d="M0 -12 L11 -1 L0 15 L-11 -1 Z" fill="url(#achG)"/>
+      <path d="M-11 -1 L11 -1 M0 -12 L0 15 M-5.5 -1 L0 15 L5.5 -1" fill="none" stroke="#15100a" stroke-width=".8" opacity=".5"/>
+    </g>
+  </svg>
+</div>
+
+<!-- ============================ SPACES ============================ -->
+<section class="spaces" id="spaces">
+  <div class="wrap">
+    <div class="spaces-head">
+      <div data-reveal>
+        <span class="eyebrow">What we host</span>
+        <h2>Built for the occasion.</h2>
+      </div>
+      <p class="lead" data-reveal>From black-tie galas to the celebration your family has been planning for years, the room transforms to fit the moment.</p>
+    </div>
+    <div class="cards">
+      <div class="card" data-reveal>
+        <svg class="ic" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path d="M12 21s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.5-7 10-7 10z"/></svg>
+        <h3>Weddings &amp; Receptions</h3>
+        <p>Ceremony, dinner, and dancing under one roof, with the space and staff to make the night run effortlessly.</p>
+        <span class="more">Plan a wedding →</span>
+      </div>
+      <div class="card" data-reveal>
+        <svg class="ic" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path d="M12 3l2.2 4.5 5 .7-3.6 3.5.9 5-4.5-2.4L7.5 16.7l.9-5L4.8 8.2l5-.7L12 3z"/></svg>
+        <h3>Quinceañeras &amp; Milestones</h3>
+        <p>The grand entrance, the dance floor, the photos. A signature Arizona celebration, produced with polish.</p>
+        <span class="more">Design a quince →</span>
+      </div>
+      <div class="card" data-reveal>
+        <svg class="ic" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6"/></svg>
+        <h3>Corporate &amp; Galas</h3>
+        <p>Conferences, banquets, award nights, and brand activations with full A/V and a polished, professional setting.</p>
+        <span class="more">Host a gala →</span>
+      </div>
+      <div class="card" data-reveal>
+        <svg class="ic" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        <h3>Concerts &amp; Live Events</h3>
+        <p>A proper stage, real sound, and the capacity for a crowd. Ticketed shows and private parties, fully managed.</p>
+        <span class="more">See upcoming →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ VENUE / AMENITIES ============================ -->
+<section class="venue" id="venue">
+  <div class="wrap">
+    <div class="center" data-reveal>
+      <span class="eyebrow">The venue</span>
+      <h2 style="font-size:clamp(2rem,4vw,3.1rem)">Everything you need, already on site.</h2>
+      <p class="lead">No scrambling for vendors or hidden surprises. Stratus comes equipped and staffed, so your only job is to enjoy the night.</p>
+    </div>
+    <div class="amen" data-reveal>
+      <div class="a"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 21V9l9-6 9 6v12"/><rect x="9" y="13" width="6" height="8"/></svg><h4>Flexible main hall</h4><p>An open, transformable floor that scales from intimate seatings to large-scale productions.</p></div>
+      <div class="a"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 18V6a2 2 0 012-2h12a2 2 0 012 2v12"/><path d="M2 18h20M8 4v14"/></svg><h4>Stage &amp; dance floor</h4><p>A built-in stage and generous dance area, ready for performers, a DJ, or a live band.</p></div>
+      <div class="a"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg><h4>Pro sound &amp; lighting</h4><p>In-house audio and programmable lighting to set the tone for any kind of event.</p></div>
+      <div class="a"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 13s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg><h4>Catering &amp; bar options</h4><p>Full-service catering and licensed bar service available, with flexible menus to fit your event.</p></div>
+      <div class="a"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4z" stroke-linejoin="round"/><path d="M9 12l2 2 4-4"/></svg><h4>Security &amp; safety</h4><p>Professional staff and on-site security at every event, with a clean, well-maintained space.</p></div>
+      <div class="a"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="9" rx="1.5"/><path d="M6 11V8a6 6 0 0112 0v3"/></svg><h4>Parking &amp; access</h4><p>On-site lit parking and easy access just off Indian School Rd, minutes from the I-10 and Loop 101.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ VIDEO TOUR ============================ -->
+<section class="tour" id="tour">
+  <div class="wrap">
+    <div class="center" data-reveal>
+      <span class="eyebrow">Take the tour</span>
+      <h2 style="font-size:clamp(2rem,4vw,3.1rem)">Step inside Stratus.</h2>
+      <p class="lead">A full walkthrough of the space, so you can picture your event before you ever set foot in the door.</p>
+    </div>
+    <div class="video-frame" data-reveal>
+      <iframe src="https://www.youtube-nocookie.com/embed/toOjw_juLdY" title="Stratus Event Center — Full Tour" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+    <p class="cap">Full venue tour, filmed by RAFI STUDIOS.</p>
+  </div>
+</section>
+
+<!-- ============================ GALLERY ============================ -->
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="center" data-reveal>
+      <span class="eyebrow">Gallery</span>
+      <h2 style="font-size:clamp(2rem,4vw,3.1rem)">See the space.</h2>
+    </div>
+    <!-- Drop real photos as assets/gallery-1.jpg ... gallery-6.jpg. Gradient panels are stand-ins. -->
+    <div class="gal-grid" data-reveal>
+      <div class="tile big g1"><img src="assets/gallery-1.jpg" alt="A packed crowd at a live concert at Stratus Event Center" onerror="this.style.display='none'"><div class="fallback" style="background:linear-gradient(to top,rgba(8,8,9,.82),transparent 55%)"><span style="color:var(--bone);letter-spacing:.1em">A packed house at Stratus</span></div></div>
+      <div class="tile g2"><img src="assets/gallery-2.jpg" alt="Elegant table setting at Stratus" onerror="this.style.display='none'"><div class="fallback"><span>Tablescape</span></div></div>
+      <div class="tile g3"><img src="assets/gallery-3.jpg" alt="Stage and lighting at Stratus" onerror="this.style.display='none'"><div class="fallback"><span>Stage &amp; lighting</span></div></div>
+      <div class="tile tall g4"><img src="assets/gallery-4.jpg" alt="Lounge and bar area" onerror="this.style.display='none'"><div class="fallback"><span>Lounge &amp; bar</span></div></div>
+      <div class="tile g5"><img src="assets/gallery-5.jpg" alt="Dance floor at Stratus" onerror="this.style.display='none'"><div class="fallback"><span>Dance floor</span></div></div>
+      <div class="tile g6"><img src="assets/gallery-6.jpg" alt="Entrance and exterior at dusk" onerror="this.style.display='none'"><div class="fallback"><span>Arrival · dusk</span></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="achevron" data-reveal aria-hidden="true">
+  <svg viewBox="0 0 1180 96" preserveAspectRatio="xMidYMid meet">
+    <path d="M30 72 L520 72 M660 72 L1150 72" fill="none" stroke="url(#achGh)" stroke-width="1.4" stroke-linecap="round"/>
+    <path d="M520 72 L590 20 L660 72" fill="none" stroke="url(#achG)" stroke-width="2" stroke-linejoin="round"/>
+    <g transform="translate(590 14)">
+      <path d="M0 -12 L11 -1 L0 15 L-11 -1 Z" fill="url(#achG)"/>
+      <path d="M-11 -1 L11 -1 M0 -12 L0 15 M-5.5 -1 L0 15 L5.5 -1" fill="none" stroke="#15100a" stroke-width=".8" opacity=".5"/>
+    </g>
+  </svg>
+</div>
+
+<!-- ============================ PROCESS ============================ -->
+<section class="process">
+  <div class="wrap">
+    <div class="center" data-reveal>
+      <span class="eyebrow">How it works</span>
+      <h2 style="font-size:clamp(2rem,4vw,3.1rem)">From inquiry to the last song.</h2>
+    </div>
+    <div class="steps">
+      <div class="step" data-reveal><div class="no">01</div><h4>Inquire</h4><p>Tell us your date, headcount, and the kind of event. We respond fast with availability.</p></div>
+      <div class="step" data-reveal><div class="no">02</div><h4>Tour</h4><p>Walk the space, meet the team, and see exactly how your night will come together.</p></div>
+      <div class="step" data-reveal><div class="no">03</div><h4>Customize</h4><p>Lock the layout, catering, bar, sound, and lighting into one clear package.</p></div>
+      <div class="step" data-reveal><div class="no">04</div><h4>Celebrate</h4><p>Show up and enjoy it. Our staff handles setup, service, security, and breakdown.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ EVENTS ============================ -->
+<section class="events" id="events">
+  <div class="wrap">
+    <div class="spaces-head">
+      <div data-reveal>
+        <span class="eyebrow">On the calendar</span>
+        <h2>Upcoming at Stratus.</h2>
+      </div>
+      <a class="btn btn-ghost" href="#contact" data-reveal>Host your event</a>
+    </div>
+    <div class="ev-grid" id="evList" data-reveal><!-- rendered from EVENTS array --></div>
+    <p class="bit-follow" data-reveal>Lineups update often. <a href="https://www.bandsintown.com/v/10168441-club-stratus" target="_blank" rel="noopener">Follow Club Stratus on Bandsintown</a> to never miss a show.</p>
+  </div>
+</section>
+
+<!-- ============================ PLATFORMS / TICKETS ============================ -->
+<section class="platforms" id="tickets">
+  <div class="wrap">
+    <div class="center" data-reveal>
+      <span class="eyebrow">Get tickets</span>
+      <h2 style="font-size:clamp(2rem,4vw,3.1rem)">Find Stratus everywhere you buy.</h2>
+      <p class="lead">Every show at Stratus is listed with official sellers. Grab tickets on your platform of choice.</p>
+    </div>
+    <div class="plat-row" data-reveal>
+      <a class="plat" href="https://www.bandsintown.com/v/10168441-club-stratus" target="_blank" rel="noopener">Bandsintown<small>Live calendar</small></a>
+      <a class="plat" href="https://ticketon.com/en/cities/phoenix" target="_blank" rel="noopener">Ticketón<small>Official seller</small></a>
+      <a class="plat" href="https://www.tickeri.com/venues/599fa07edbddfb5261ea6c7d" target="_blank" rel="noopener">Tickeri<small>Official seller</small></a>
+      <a class="plat" href="https://www.stubhub.com/stratus-event-center-tickets/venue/102133143/" target="_blank" rel="noopener">StubHub<small>Resale</small></a>
+      <a class="plat" href="https://www.ticketmaster.com/stratus-event-center-boletos-phoenix/venue/205291" target="_blank" rel="noopener">Ticketmaster<small>Seating &amp; tickets</small></a>
+      <a class="plat" href="https://www.shazam.com/en-us/event/venue/IB37537E7AB0E9D1E" target="_blank" rel="noopener">Shazam<small>Hear the lineup</small></a>
+    </div>
+    <p class="shazam-cta" data-reveal>🎵 Heard a track on our floor and need the name? <a href="https://www.shazam.com/en-us/event/venue/IB37537E7AB0E9D1E" target="_blank" rel="noopener">Discover the sound of Stratus on Shazam.</a></p>
+  </div>
+</section>
+
+<!-- ============================ PARTNER ============================ -->
+<section class="partner" id="partner">
+  <div class="wrap">
+    <div class="center" data-reveal>
+      <span class="eyebrow">Official partner</span>
+      <h2 style="font-size:clamp(2rem,4vw,3.1rem)">Dressed for the occasion.</h2>
+    </div>
+    <div class="partner-card" data-reveal>
+      <div class="pmark">
+        <svg fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path d="M3 8l3-1 2 2h8l2-2 3 1-1 4-2-.5V20H6V11.5L4 12 3 8z"/><path d="M9 11h6"/></svg>
+      </div>
+      <div class="pbody">
+        <span class="eyebrow">El Herradero · Western Wear</span>
+        <h3>El Herradero Western Wear</h3>
+        <p>Our official Western wear partner, right next door in Suite 33. From boots and hats to the full vaquero look, El Herradero has every Western need handled for your event at Stratus, no extra stop required.</p>
+        <div class="pmeta">
+          <span>📍 4344 W Indian School Rd, Ste 33</span>
+          <a href="tel:+16232479144">(623) 247-9144</a>
+          <a href="https://www.elherraderophoenix.com/" target="_blank" rel="noopener">elherraderophoenix.com →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="center" data-reveal>
+      <span class="eyebrow">Good to know</span>
+      <h2 style="font-size:clamp(2rem,4vw,3.1rem)">Questions, answered.</h2>
+    </div>
+    <div class="faq-grid" data-reveal>
+      <details class="faq"><summary>How many guests can Stratus hold?<span class="pl"></span></summary><div class="ans">The main hall flexes from intimate seated dinners to large-scale concerts with a full crowd. Share your headcount when you inquire and we'll confirm the right layout and capacity for your event.</div></details>
+      <details class="faq"><summary>How do I buy tickets to a show at Stratus?<span class="pl"></span></summary><div class="ans">Upcoming shows are listed with official sellers including Bandsintown, Ticketón, Tickeri, and Ticketmaster, with resale on StubHub. See the <a href="#tickets" style="color:var(--gold-2)">Tickets</a> section above, or follow Club Stratus on Bandsintown for the live calendar.</div></details>
+      <details class="faq"><summary>Is parking available?<span class="pl"></span></summary><div class="ans">Yes. There is on-site lit parking, with easy access just off Indian School Rd and only minutes from the I-10 and Loop 101.</div></details>
+      <details class="faq"><summary>Can we bring our own caterer, or do you provide food and bar?<span class="pl"></span></summary><div class="ans">We offer in-house catering and licensed bar service, and we also work with approved outside caterers for cultural and specialty menus. We'll walk you through the options on your tour.</div></details>
+      <details class="faq"><summary>Do you provide security?<span class="pl"></span></summary><div class="ans">Every event at Stratus is staffed with professional on-site security. A safe, well-run room is the standard, not an add-on.</div></details>
+      <details class="faq"><summary>How do we reserve a date?<span class="pl"></span></summary><div class="ans">Start with an inquiry below or a quick call. After your tour we'll hold your date with a signed agreement and deposit. Popular weekends book out early, so the sooner you reach out, the better.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CONTACT ============================ -->
+<div class="achevron" data-reveal aria-hidden="true">
+  <svg viewBox="0 0 1180 96" preserveAspectRatio="xMidYMid meet">
+    <path d="M30 72 L520 72 M660 72 L1150 72" fill="none" stroke="url(#achGh)" stroke-width="1.4" stroke-linecap="round"/>
+    <path d="M520 72 L590 20 L660 72" fill="none" stroke="url(#achG)" stroke-width="2" stroke-linejoin="round"/>
+    <g transform="translate(590 14)">
+      <path d="M0 -12 L11 -1 L0 15 L-11 -1 Z" fill="url(#achG)"/>
+      <path d="M-11 -1 L11 -1 M0 -12 L0 15 M-5.5 -1 L0 15 L5.5 -1" fill="none" stroke="#15100a" stroke-width=".8" opacity=".5"/>
+    </g>
+  </svg>
+</div>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="grid">
+      <div data-reveal>
+        <span class="eyebrow">Book a tour</span>
+        <h2>Let's plan your event.</h2>
+        <p class="lead">Tell us a little about your celebration and we'll get right back to you with availability and next steps. Tours are by appointment, seven days a week.</p>
+        <div class="cinfo">
+          <div class="ci"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><div><b>Stratus Event Center</b><span>4344 W Indian School Rd, Ste 32, Phoenix, AZ 85031</span></div></div>
+          <div class="ci"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.4-1.2a2 2 0 012.1-.5c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg><div><b>Call or text</b><a href="tel:+16029087817">(602) 908-7817</a></div></div>
+          <div class="ci"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><div><b>Email</b><a href="mailto:Stratuseventcenteraz@gmail.com">Stratuseventcenteraz@gmail.com</a></div></div>
+          <div class="ci"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><b>Tours</b><span>By appointment · 7 days a week</span></div></div>
+        </div>
+        <div class="socials">
+          <a href="https://www.instagram.com/stratuseventcenteraz/" target="_blank" rel="noopener" aria-label="Instagram"><svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.facebook.com/StratusEventCenter/videos/" target="_blank" rel="noopener" aria-label="Facebook"><svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M15 3h-3a4 4 0 00-4 4v3H5v4h3v7h4v-7h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+          <a href="https://www.bandsintown.com/v/10168441-club-stratus" target="_blank" rel="noopener" aria-label="Bandsintown"><svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M4 20V8m5 12V4m5 16v-7m5 7V9"/></svg></a>
+          <a href="https://www.yelp.com/biz/stratus-event-center-phoenix" target="_blank" rel="noopener" aria-label="Yelp"><svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path d="M12 3v8m0 0l5 2m-5-2l-4 3m4-3v8"/></svg></a>
+        </div>
+      </div>
+
+      <form class="inq" id="inqForm" data-reveal>
+        <div class="row">
+          <div class="field"><label>Full name</label><input type="text" name="name" required placeholder="Your name" /></div>
+          <div class="field"><label>Phone</label><input type="tel" name="phone" placeholder="(602) 000-0000" /></div>
+        </div>
+        <div class="field"><label>Email</label><input type="email" name="email" required placeholder="you@email.com" /></div>
+        <div class="row">
+          <div class="field"><label>Event type</label>
+            <select name="type">
+              <option>Wedding</option><option>Quinceañera</option><option>Corporate / Gala</option>
+              <option>Concert / Show</option><option>Birthday / Private party</option><option>Other</option>
+            </select>
+          </div>
+          <div class="field"><label>Preferred date</label><input type="date" name="date" /></div>
+        </div>
+        <div class="field"><label>Estimated guests</label><input type="number" name="guests" min="1" placeholder="e.g. 200" /></div>
+        <div class="field"><label>Tell us about your event</label><textarea name="message" placeholder="Vision, must-haves, questions…"></textarea></div>
+        <button type="submit" class="btn btn-gold">Request availability <span class="arr">→</span></button>
+        <p class="form-note">Opens your email with the details ready to send. We reply within one business day.</p>
+        <p class="form-ok" id="formOk">Thanks. Your email is ready to send. We'll be in touch shortly.</p>
+      </form>
+    </div>
+
+    <div class="map-wrap" data-reveal>
+      <iframe loading="lazy" title="Stratus Event Center map" src="https://www.google.com/maps?q=4344+W+Indian+School+Rd,+Phoenix,+AZ+85031&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FOOTER ============================ -->
+<footer>
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <a class="brand" href="#top"><img class="logo-img" src="assets/logo.png" alt="Stratus Event Center" /></a>
+        <p class="tg">Arizona's Premier Event Center. A modern, fully-staffed venue for the moments that matter.</p>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <a class="fl" href="#spaces">Spaces</a>
+        <a class="fl" href="#venue">The Venue</a>
+        <a class="fl" href="#tour">Tour</a>
+        <a class="fl" href="#events">Events</a>
+        <a class="fl" href="#faq">FAQ</a>
+      </div>
+      <div>
+        <h5>Tickets</h5>
+        <a class="fl" href="https://www.bandsintown.com/v/10168441-club-stratus" target="_blank" rel="noopener">Bandsintown</a>
+        <a class="fl" href="https://ticketon.com/en/cities/phoenix" target="_blank" rel="noopener">Ticketón</a>
+        <a class="fl" href="https://www.tickeri.com/venues/599fa07edbddfb5261ea6c7d" target="_blank" rel="noopener">Tickeri</a>
+        <a class="fl" href="https://www.stubhub.com/stratus-event-center-tickets/venue/102133143/" target="_blank" rel="noopener">StubHub</a>
+        <a class="fl" href="https://www.shazam.com/en-us/event/venue/IB37537E7AB0E9D1E" target="_blank" rel="noopener">Shazam</a>
+      </div>
+      <div>
+        <h5>Visit</h5>
+        <a class="fl" href="https://www.google.com/maps?q=4344+W+Indian+School+Rd,+Phoenix,+AZ+85031" target="_blank" rel="noopener">4344 W Indian School Rd, Ste 32<br>Phoenix, AZ 85031</a>
+        <a class="fl" href="tel:+16029087817">(602) 908-7817</a>
+        <a class="fl" href="mailto:Stratuseventcenteraz@gmail.com">Email us</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> Stratus Event Center · Arizona's Premier Event Center. All rights reserved.</span>
+      <span class="serve">Proudly serving Phoenix and the West Valley — Glendale, Peoria, Avondale, Surprise &amp; Litchfield Park.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* nav scroll state */
+const nav = document.getElementById('nav');
+addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40));
+
+/* mobile menu */
+const burger = document.getElementById('burger');
+const mm = document.getElementById('mobileMenu');
+burger.addEventListener('click', () => { mm.classList.toggle('open'); burger.classList.toggle('x'); });
+mm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mm.classList.remove('open')));
+
+/* scroll reveal */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+
+/* trust marquee — clone the group to fill the screen, then scroll left to right */
+(() => {
+  const track = document.querySelector('.marquee-track');
+  if (!track || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const start = () => {
+    const base = track.firstElementChild;
+    const w = base.getBoundingClientRect().width;
+    if (!w) return;
+    let total = w, n = 0;
+    do {
+      const c = base.cloneNode(true); c.setAttribute('aria-hidden', 'true');
+      track.appendChild(c); total += w; n++;
+    } while (total < innerWidth * 2 && n < 12);
+    track.style.setProperty('--shift', w + 'px');
+    track.classList.add('go');
+  };
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(start); else start();
+})();
+
+/* ============================================================
+   EVENTS — live calendar (source: Bandsintown / Club Stratus).
+   Update these as lineups change, or wire the Bandsintown widget.
+   TICKETS = the venue's live Bandsintown page (routes to official sellers).
+   ============================================================ */
+const TICKETS = 'https://www.bandsintown.com/v/10168441-club-stratus';
+const EVENTS = [
+  { mon:'JUN', day:'27', year:'2026', name:'La Energía Norteña', tag:'Norteño', flyer:'assets/event-laenergia.jpg', link:'https://ticketon.com/events/la-energia-nortea-la-cultura-nortea-phoenix-az-2026-06-27-sbg3spfs2irr' },
+  { mon:'JUL', day:'18', year:'2026', name:'TPM 2026 Tour', tag:'Tour', flyer:'assets/event-tpm.jpg', link:'https://ticketon.com/events/tpm-2026-tour-phoenix-az-2026-07-18-yqril72ukral' },
+  { mon:'AUG', day:'07', year:'2026', name:'Ken-Y', tag:'Reggaetón', flyer:null, link:'https://www.bandsintown.com/e/1039269331-keny-at-club-stratus' },
+  { mon:'AUG', day:'29', year:'2026', name:'Flex, La Factoría & Makano', tag:'Reggaetón', flyer:'assets/event-flex.jpg', link:'https://ticketon.com/en/events/flex-la-factoria-demphra--mas-en-phoenix-phoenix-az-2026-08-29-bgc4gzbze0do' },
+  { mon:'SEP', day:'26', year:'2026', name:'Durango Fest', tag:'Duranguense', flyer:'assets/event-durango.jpg', link:'https://ticketon.com/en/events/durango-fest-en-phoenix-phoenix-az-2026-09-26-wbgo38az3d1z' },
+];
+
+const evList = document.getElementById('evList');
+if (EVENTS.length === 0) {
+  evList.innerHTML = `<div class="ev-empty"><span class="serif-i">Dates announced soon.</span>
+      Planning an event, or want to know what's coming to Stratus?<br>Reach out and we'll put you on the list.</div>`;
+} else {
+  evList.innerHTML = EVENTS.map(e => `
+    <a class="ev-card" href="${e.link || TICKETS}" target="_blank" rel="noopener" aria-label="Get tickets — ${e.name}, ${e.mon} ${e.day} ${e.year}">
+      ${e.flyer
+        ? `<img class="ev-flyer" src="${e.flyer}" alt="${e.name} live at Stratus Event Center, ${e.mon} ${e.day} ${e.year} — official event flyer" loading="lazy">`
+        : `<div class="ev-flyer-ph"><span class="phname">${e.name}</span><span class="phsub">${e.tag || 'Live'}</span></div>`}
+      <div class="ev-foot">
+        <div>
+          <div class="ev-d">${e.mon} ${e.day} · ${e.year}</div>
+          <div class="ev-n">${e.name}</div>
+        </div>
+        <span class="ev-ticket">Get Tickets</span>
+      </div>
+    </a>`).join('');
+}
+
+/* inquiry form → composes an email */
+document.getElementById('inqForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const f = e.target;
+  const g = (n) => (f.elements[n] && f.elements[n].value || '').trim();
+  const subject = `Event inquiry — ${g('type')}${g('date') ? ' · ' + g('date') : ''}`;
+  const body =
+`Name: ${g('name')}
+Phone: ${g('phone')}
+Email: ${g('email')}
+Event type: ${g('type')}
+Preferred date: ${g('date') || 'flexible'}
+Estimated guests: ${g('guests') || 'TBD'}
+
+${g('message')}`;
+  window.location.href =
+    `mailto:Stratuseventcenteraz@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  document.getElementById('formOk').style.display = 'block';
+});
+</script>
+
+<script>
+/* ===== Immersive scroll choreography: rolling diamond guide + themed station scenes ===== */
+(function(){
+  const layer=document.getElementById('immersive');
+  if(!layer || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const guide=document.getElementById('guide');
+  const stations=[...layer.querySelectorAll('.station')];
+  let vw=innerWidth, vh=innerHeight, ticking=false;
+  const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+  function update(){
+    ticking=false;
+    const max=document.documentElement.scrollHeight - vh;
+    const p = max>0 ? clamp(scrollY/max,0,1) : 0;
+    // rolling, shining diamond guide travels down the right edge
+    const gw=guide.offsetWidth||90;
+    guide.style.opacity='.9';
+    guide.style.transform=`translate(${vw-gw-vw*0.03}px, ${vh*0.12 + p*vh*0.64}px) rotate(${p*1440}deg)`;
+    // themed stations rise through their scroll window
+    for(const s of stations){
+      const from=+s.dataset.from, to=+s.dataset.to, side=s.dataset.side;
+      if(p<from-0.01 || p>to+0.01){ s.style.opacity='0'; continue; }
+      const t=clamp((p-from)/(to-from),0,1);
+      s.style.opacity = clamp(Math.min(t/0.16,(1-t)/0.16),0,1)*0.55;
+      const w=s.offsetWidth||220;
+      let x,y;
+      if(side==='mic'){ x=-w*0.5 + t*(vw + w); y=vh*0.40; }
+      else if(side==='left'){ x=vw*0.015; y=vh*0.64 - t*vh*0.46; }
+      else { x=vw - w - vw*0.015; y=vh*0.64 - t*vh*0.46; }
+      s.style.transform=`translate(${x}px, ${y}px)`;
+    }
+  }
+  const onScroll=()=>{ if(!ticking){ ticking=true; requestAnimationFrame(update); } };
+  addEventListener('scroll', onScroll, {passive:true});
+  addEventListener('resize', ()=>{ vw=innerWidth; vh=innerHeight; onScroll(); }, {passive:true});
+  update();
+})();
+</script>
+</body>
+</html>
