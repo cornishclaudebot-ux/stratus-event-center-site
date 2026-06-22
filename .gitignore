@@ -1,0 +1,7 @@
+# Internal consulting docs — not part of the public site
+GOOGLE-FOOTPRINT-PLAYBOOK.md
+
+# Redundant full-res source (optimized gallery-1.jpg is what the site uses)
+assets/packed-original.jpg
+
+.DS_Store
