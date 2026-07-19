@@ -17,8 +17,6 @@ const CONFIG = {
   phoneRaw: "+16029087817",
   address: "4344 W Indian School Rd, Ste 32, Phoenix, AZ 85031",
   emails: {
-    wedding:   "Stratuseventcenteraz@gmail.com",
-    quince:    "Stratuseventcenteraz@gmail.com",
     corporate: "Stratuseventcenteraz@gmail.com",
     concert:   "Stratuseventcenteraz@gmail.com",
     default:   "Stratuseventcenteraz@gmail.com"
@@ -48,14 +46,10 @@ const EVENTS = [
 ];
 
 const EVENT_TYPES = [
-  {key:"wedding", title:"Weddings & Receptions",
-   desc:"Ceremony, dinner, and dancing under one roof, with the space and staff to make the night run effortlessly."},
-  {key:"quince", title:"Quinceañeras & Milestones",
-   desc:"The grand entrance, the dance floor, the photos. A signature Arizona celebration, produced with polish."},
-  {key:"corporate", title:"Corporate & Galas",
-   desc:"Conferences, banquets, award nights, and brand activations with full A/V and a polished, professional setting."},
-  {key:"concert", title:"Concerts & Live Events",
-   desc:"A proper stage, real sound, and capacity for a crowd. Ticketed shows and private parties, fully managed."}
+  {key:"corporate", title:"Corporate Events & Galas",
+   desc:"Conferences, banquets, award nights, holiday parties, and brand activations with full A/V and a polished, professional setting."},
+  {key:"concert", title:"Live Music & Concerts",
+   desc:"A proper stage, real sound, and capacity for a crowd. Ticketed shows and private performances, fully managed."}
 ];
 
 /* ---- icons ---- */
@@ -123,7 +117,7 @@ function buildFooter(){
         <a href="${CONFIG.fb}" target="_blank" rel="noopener" aria-label="Facebook">${IC.fb}</a>
       </div>
       <div class="foot-legal">
-        Arizona's premier event venue for weddings, quinceañeras, corporate events and live concerts.<br>
+        Arizona's premier event venue, specializing in corporate events, live music and concerts.<br>
         <a href="${CONFIG.mapGoogle}" target="_blank" rel="noopener">4344 W Indian School Rd, Ste 32, Phoenix, AZ 85031</a>
         · <a href="tel:${CONFIG.phoneRaw}">${CONFIG.phone}</a><br>
         © 2026 Stratus Event Center. All rights reserved.<br>

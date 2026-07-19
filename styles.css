@@ -209,6 +209,9 @@ section{position:relative}
 .mcardlink:hover .go{color:#fff}
 @media(max-width:1020px){.mgrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.mgrid{grid-template-columns:1fr}}
+.mgrid-2{grid-template-columns:repeat(2,1fr)}
+.mgrid-2 .mcard{padding:36px 32px}
+@media(max-width:700px){.mgrid-2{grid-template-columns:1fr}}
 
 .mgrid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 @media(max-width:900px){.mgrid-3{grid-template-columns:repeat(2,1fr)}}
