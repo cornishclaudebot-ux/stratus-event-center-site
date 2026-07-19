@@ -75,21 +75,11 @@ header.site.scrolled{background:rgba(0,0,0,.72);backdrop-filter:blur(16px)}
 /* ---------- layout ---------- */
 section{position:relative}
 
-/* logo-derived section textures: glass diamond, brushed steel, brassy gold.
-   Cycle them across sections, never the same one back to back. */
-.bg-glass{background:
-  radial-gradient(55% 45% at 18% 0%,rgba(255,255,255,.05),transparent 60%),
-  radial-gradient(45% 40% at 84% 100%,rgba(205,224,255,.045),transparent 65%),
-  linear-gradient(115deg,transparent 40%,rgba(255,255,255,.02) 46%,rgba(255,255,255,.035) 50%,rgba(255,255,255,.02) 54%,transparent 60%),
-  #0a0a0c}
-.bg-steel{background:
-  repeating-linear-gradient(90deg,rgba(255,255,255,.014) 0 1px,transparent 1px 4px),
-  linear-gradient(180deg,#131315,#0a0a0b 72%),
-  #0a0a0b}
-.bg-brass{background:
-  radial-gradient(70% 55% at 50% 0%,rgba(201,162,75,.12),transparent 62%),
-  linear-gradient(180deg,#0d0b07,#0a0908),
-  #0a0908}
+/* section backdrops: black and dark gray gradients, alternating so no two
+   adjacent sections match (class names kept from the texture era) */
+.bg-glass{background:linear-gradient(180deg,#0a0a0b,#1a1a1d)}
+.bg-steel{background:linear-gradient(180deg,#1a1a1d,#0a0a0b)}
+.bg-brass{background:radial-gradient(120% 90% at 50% 0%,#1d1d20,#0a0a0b 72%)}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
 .band{padding:15vh 0}
 .band-tight{padding:9vh 0}
@@ -163,8 +153,8 @@ section{position:relative}
 .ecard .cap .pill{margin-top:2px}
 
 /* ---------- full-bleed image panel with sticky center label ---------- */
-.panel-band{padding:8px 0}
-.panel{position:relative;margin:0 8px;border-radius:calc(var(--r) + 6px);overflow:hidden;min-height:78svh;
+.panel-band{padding:0}
+.panel{position:relative;margin:0;border-radius:0;overflow:hidden;min-height:78svh;
   display:flex;align-items:center;justify-content:center}
 .panel .bgimg{position:absolute;inset:0}
 .panel .bgimg img{width:100%;height:100%;object-fit:cover}
