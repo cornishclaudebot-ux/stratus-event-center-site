@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<link rel="stylesheet" href="styles.css?v=5">
+<link rel="stylesheet" href="styles.css?v=6">
 <style>
 /* critical hero rules, inlined so a stale cached stylesheet can never
    un-hide the screen-reader text or shift the layout mid-typing */
@@ -66,6 +66,10 @@
 <!-- HERO: giant type, fades on scroll -->
 <section class="hero-stage bg-glass" id="top">
   <div class="hero-pin">
+    <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/hero-poster.jpg" aria-hidden="true">
+      <source src="assets/hero-reel.mp4" type="video/mp4">
+    </video>
+    <div class="hero-shade" aria-hidden="true"></div>
     <img src="assets/logo.png" alt="Stratus Event Center" class="hero-logo">
     <h1 class="hero-line" data-type-group>
       <span class="sr-only">Arizona's Premier Event Center</span>

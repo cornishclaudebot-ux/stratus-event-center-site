@@ -122,6 +122,12 @@ section{position:relative}
 .hero-stage{height:170svh;position:relative}
 .hero-pin{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;
   gap:34px;text-align:center;overflow:hidden;padding:0 20px}
+/* looping highlight reel behind the hero */
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero-shade{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.48) 50%,rgba(0,0,0,.72))}
+.hero-pin > :not(.hero-video):not(.hero-shade){position:relative;z-index:2}
+@media(prefers-reduced-motion:reduce){.hero-video{display:none}}
 .hero-logo{width:min(360px,64vw);will-change:transform,opacity}
 .hero-line{font-size:clamp(1.9rem,6.6vw,5.8rem);max-width:1200px;will-change:transform,opacity}
 .hero-line .row{display:block}
