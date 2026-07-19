@@ -76,6 +76,10 @@ def parse(html):
             img = it.get("image") or ""
             if "placeholder" in img:
                 img = None
+            elif "/thumb/" in img:
+                # Bandsintown serves a small thumbnail by default; the /large/
+                # variant of the same photo is much sharper on retina cards
+                img = img.replace("/thumb/", "/large/")
             offers = it.get("offers") or {}
             ev = {
                 "date": date, "time": time_str, "title": name, "tag": None,

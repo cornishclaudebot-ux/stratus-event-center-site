@@ -41,7 +41,7 @@ CONFIG.mapApple  = "https://maps.apple.com/?q=" + encodeURIComponent(CONFIG.addr
    missing; keep it roughly current but don't hand-edit dates weekly. ---- */
 const EVENTS = [
   {date:"2026-07-18", time:"9:00 PM", title:"Morro y Su Reunion", tag:null, flyer:null, url:"https://www.bandsintown.com/e/1039653287-morro-y-su-reunion-at-club-stratus"},
-  {date:"2026-07-21", time:"7:00 PM", title:"Lefty Gunplay", tag:null, flyer:"https://photos.bandsintown.com/thumb/18603192.jpeg", url:"https://www.bandsintown.com/e/1039424072-lefty-gunplay-at-club-stratus"},
+  {date:"2026-07-21", time:"7:00 PM", title:"Lefty Gunplay", tag:null, flyer:"https://photos.bandsintown.com/large/18603192.jpeg", url:"https://www.bandsintown.com/e/1039424072-lefty-gunplay-at-club-stratus"},
   {date:"2026-08-29", time:"9:00 PM", title:"Flex, La Factoría & Makano", tag:"Reggaetón", flyer:"assets/event-flex.jpg", url:"https://ticketon.com/en/events/flex-la-factoria-demphra--mas-en-phoenix-phoenix-az-2026-08-29-bgc4gzbze0do"},
   {date:"2026-09-26", time:"8:00 PM", title:"Durango Fest", tag:"Duranguense", flyer:"assets/event-durango.jpg", url:"https://ticketon.com/en/events/durango-fest-en-phoenix-phoenix-az-2026-09-26-wbgo38az3d1z"}
 ];

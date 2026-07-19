@@ -330,7 +330,7 @@ footer a.fl:hover{color:var(--gold-2)}
 .foot-bottom .serve{max-width:60ch}
 
 /* ============================ REVEAL ============================ */
-[data-reveal]{opacity:0;transform:translateY(26px);transition:.9s var(--ease)}
+.js [data-reveal]{opacity:0;transform:translateY(26px);transition:.9s var(--ease)}
 [data-reveal].in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){[data-reveal]{opacity:1;transform:none;transition:none}.scroll-cue i{animation:none}.marquee-track.go{animation:none}}
 
@@ -820,24 +820,24 @@ footer a.fl:hover{color:var(--gold-2)}
 
       <form class="inq" id="inqForm" data-reveal>
         <div class="row">
-          <div class="field"><label>Full name</label><input type="text" name="name" required placeholder="Your name" /></div>
-          <div class="field"><label>Phone</label><input type="tel" name="phone" placeholder="(602) 000-0000" /></div>
+          <div class="field"><label for="inq-name">Full name</label><input id="inq-name" type="text" name="name" required placeholder="Your name" /></div>
+          <div class="field"><label for="inq-phone">Phone</label><input id="inq-phone" type="tel" name="phone" placeholder="(602) 000-0000" /></div>
         </div>
-        <div class="field"><label>Email</label><input type="email" name="email" required placeholder="you@email.com" /></div>
+        <div class="field"><label for="inq-email">Email</label><input id="inq-email" type="email" name="email" required placeholder="you@email.com" /></div>
         <div class="row">
-          <div class="field"><label>Event type</label>
-            <select name="type">
+          <div class="field"><label for="inq-type">Event type</label>
+            <select id="inq-type" name="type">
               <option>Wedding</option><option>Quinceañera</option><option>Corporate / Gala</option>
               <option>Concert / Show</option><option>Birthday / Private party</option><option>Other</option>
             </select>
           </div>
-          <div class="field"><label>Preferred date</label><input type="date" name="date" /></div>
+          <div class="field"><label for="inq-date">Preferred date</label><input id="inq-date" type="date" name="date" /></div>
         </div>
-        <div class="field"><label>Estimated guests</label><input type="number" name="guests" min="1" placeholder="e.g. 200" /></div>
-        <div class="field"><label>Tell us about your event</label><textarea name="message" placeholder="Vision, must-haves, questions…"></textarea></div>
+        <div class="field"><label for="inq-guests">Estimated guests</label><input id="inq-guests" type="number" name="guests" min="1" placeholder="e.g. 200" /></div>
+        <div class="field"><label for="inq-message">Tell us about your event</label><textarea id="inq-message" name="message" placeholder="Vision, must-haves, questions…"></textarea></div>
         <button type="submit" class="btn btn-gold">Request availability <span class="arr">→</span></button>
-        <p class="form-note">Opens your email with the details ready to send. We reply within one business day.</p>
-        <p class="form-ok" id="formOk">Thanks. Your email is ready to send. We'll be in touch shortly.</p>
+        <p class="form-note">Sends your details straight to our team. We reply within one business day.</p>
+        <p class="form-ok" id="formOk" role="status" aria-live="polite">Thanks. Your request is in. We'll be in touch within one business day.</p>
       </form>
     </div>
 
@@ -886,6 +886,8 @@ footer a.fl:hover{color:var(--gold-2)}
 </footer>
 
 <script>
+/* Gate reveal-hiding on this class so a script/parse failure never blanks the page. */
+document.documentElement.classList.add('js');
 document.getElementById('yr').textContent = new Date().getFullYear();
 
 /* nav scroll state */
@@ -898,11 +900,15 @@ const mm = document.getElementById('mobileMenu');
 burger.addEventListener('click', () => { mm.classList.toggle('open'); burger.classList.toggle('x'); });
 mm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mm.classList.remove('open')));
 
-/* scroll reveal */
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-}, { threshold: 0.12 });
-document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+/* scroll reveal — guarded so browsers without IntersectionObserver still show content */
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+} else {
+  document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('in'));
+}
 
 /* trust marquee — clone the group to fill the screen, then scroll left to right */
 (() => {
@@ -957,13 +963,21 @@ if (EVENTS.length === 0) {
     </a>`).join('');
 }
 
-/* inquiry form → composes an email */
-document.getElementById('inqForm').addEventListener('submit', (e) => {
+/* inquiry form → real submission via FormSubmit (works on GitHub Pages).
+   First submission triggers a one-time activation email to Stratuseventcenteraz@gmail.com.
+   On failure, falls back to a prefilled email so a lead is never lost, and we never
+   claim success unless it actually sent. */
+const STRATUS_EMAIL = 'Stratuseventcenteraz@gmail.com';
+const FORM_ENDPOINT = 'https://formsubmit.co/ajax/' + STRATUS_EMAIL;
+document.getElementById('inqForm').addEventListener('submit', async (e) => {
   e.preventDefault();
   const f = e.target;
   const g = (n) => (f.elements[n] && f.elements[n].value || '').trim();
-  const subject = `Event inquiry — ${g('type')}${g('date') ? ' · ' + g('date') : ''}`;
-  const body =
+  const ok = document.getElementById('formOk');
+  const btn = f.querySelector('button[type=submit]');
+  const mailtoFallback = () => {
+    const subject = `Event inquiry — ${g('type')}${g('date') ? ' · ' + g('date') : ''}`;
+    const body =
 `Name: ${g('name')}
 Phone: ${g('phone')}
 Email: ${g('email')}
@@ -972,9 +986,29 @@ Preferred date: ${g('date') || 'flexible'}
 Estimated guests: ${g('guests') || 'TBD'}
 
 ${g('message')}`;
-  window.location.href =
-    `mailto:Stratuseventcenteraz@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  document.getElementById('formOk').style.display = 'block';
+    window.location.href = `mailto:${STRATUS_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+  if (btn){ btn.disabled = true; }
+  try {
+    const res = await fetch(FORM_ENDPOINT, {
+      method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify({
+        _subject: `Event inquiry — ${g('type')}`,
+        name:g('name'), phone:g('phone'), email:g('email'), type:g('type'),
+        date:g('date')||'flexible', guests:g('guests')||'TBD', message:g('message')
+      })
+    });
+    const j = await res.json();
+    if (!(j.success === 'true' || j.success === true)) throw new Error('formsubmit');
+    f.style.display = 'none';
+    ok.textContent = "Thanks. Your request is in. We'll be in touch within one business day.";
+    ok.style.display = 'block';
+  } catch (err) {
+    if (btn){ btn.disabled = false; }
+    ok.style.display = 'block';
+    ok.textContent = "Couldn't send just now — opening your email app as a backup, or email " + STRATUS_EMAIL + " directly.";
+    mailtoFallback();
+  }
 });
 </script>
 
