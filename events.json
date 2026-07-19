@@ -1,19 +1,7 @@
 {
-  "updated": "2026-07-19T00:52:33",
+  "updated": "2026-07-19T09:31:44",
   "source": "https://www.bandsintown.com/v/10168441-club-stratus",
   "events": [
-    {
-      "date": "2026-07-18",
-      "time": "9:00 PM",
-      "title": "Morro y Su Reunion",
-      "tag": null,
-      "flyer": null,
-      "url": "https://www.bandsintown.com/e/1039653287-morro-y-su-reunion-at-club-stratus?came_from=209",
-      "desc": "Morro y Su Reunion live at Stratus Event Center in Phoenix.",
-      "lineup": [
-        "Morro y Su Reunion"
-      ]
-    },
     {
       "date": "2026-07-21",
       "time": "7:00 PM",
@@ -56,6 +44,18 @@
         "Los Príncipes"
       ],
       "ages": "All ages"
+    },
+    {
+      "date": "2026-12-04",
+      "time": "9:00 PM",
+      "title": "Ken-Y",
+      "tag": null,
+      "flyer": "assets/flyers/2026-12-04-634d42ac33f5.jpg",
+      "url": "https://www.bandsintown.com/e/1039570781-ken-y-at-club-stratus?came_from=209",
+      "desc": "Ken-Y live at Stratus Event Center in Phoenix.",
+      "lineup": [
+        "Ken-Y"
+      ]
     }
   ]
 }
