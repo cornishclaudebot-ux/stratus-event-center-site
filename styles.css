@@ -74,6 +74,22 @@ header.site.scrolled{background:rgba(0,0,0,.72);backdrop-filter:blur(16px)}
 
 /* ---------- layout ---------- */
 section{position:relative}
+
+/* logo-derived section textures: glass diamond, brushed steel, brassy gold.
+   Cycle them across sections, never the same one back to back. */
+.bg-glass{background:
+  radial-gradient(55% 45% at 18% 0%,rgba(255,255,255,.05),transparent 60%),
+  radial-gradient(45% 40% at 84% 100%,rgba(205,224,255,.045),transparent 65%),
+  linear-gradient(115deg,transparent 40%,rgba(255,255,255,.02) 46%,rgba(255,255,255,.035) 50%,rgba(255,255,255,.02) 54%,transparent 60%),
+  #0a0a0c}
+.bg-steel{background:
+  repeating-linear-gradient(90deg,rgba(255,255,255,.014) 0 1px,transparent 1px 4px),
+  linear-gradient(180deg,#131315,#0a0a0b 72%),
+  #0a0a0b}
+.bg-brass{background:
+  radial-gradient(70% 55% at 50% 0%,rgba(201,162,75,.12),transparent 62%),
+  linear-gradient(180deg,#0d0b07,#0a0908),
+  #0a0908}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
 .band{padding:15vh 0}
 .band-tight{padding:9vh 0}
@@ -181,9 +197,9 @@ section{position:relative}
 .trow .trole{color:var(--mut-2);font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;margin-top:3px}
 
 /* ---------- minimal feature grid (what we host / amenities) ---------- */
-.mgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.mcardlink{display:block}
-.mcard{background:var(--panel);border-radius:var(--r);padding:28px 24px;min-height:230px;display:flex;
+.mgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:stretch}
+.mcardlink{display:block;height:100%}
+.mcard{background:var(--panel);border-radius:var(--r);padding:28px 24px;min-height:230px;height:100%;display:flex;
   flex-direction:column;transition:background .3s,transform .4s var(--ease)}
 .mcardlink:hover .mcard,.mcard:hover{background:#161617;transform:translateY(-4px)}
 .mcard .num{font-size:.8rem;letter-spacing:.12em;color:var(--mut-2);margin-bottom:auto}

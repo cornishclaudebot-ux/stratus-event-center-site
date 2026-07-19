@@ -35,15 +35,16 @@ const CONFIG = {
 CONFIG.mapGoogle = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(CONFIG.address);
 CONFIG.mapApple  = "https://maps.apple.com/?q=" + encodeURIComponent(CONFIG.address);
 
-/* ---- REAL upcoming events (source: Bandsintown / Club Stratus + Ticketón).
-   Each event deep-links to its own ticket page via `url`; buttons fall back
-   to CONFIG.tickets (Bandsintown) if a `url` is missing. ---- */
+/* ---- Upcoming events.
+   LIVE source: events.json, refreshed daily from the Bandsintown venue
+   calendar by scripts/fetch_events.py (launchd job com.stratus.events).
+   This baked-in array is only the offline fallback if events.json is
+   missing; keep it roughly current but don't hand-edit dates weekly. ---- */
 const EVENTS = [
-  {date:"2026-06-27", time:"8:00 PM", title:"La Energía Norteña", tag:"Norteño", flyer:"assets/event-laenergia.jpg", url:"https://ticketon.com/events/la-energia-nortea-la-cultura-nortea-phoenix-az-2026-06-27-sbg3spfs2irr"},
-  {date:"2026-07-18", time:"8:00 PM", title:"TPM 2026 Tour", tag:"Tour", flyer:"assets/event-tpm.jpg", url:"https://ticketon.com/events/tpm-2026-tour-phoenix-az-2026-07-18-yqril72ukral"},
-  {date:"2026-08-07", time:"8:00 PM", title:"Ken-Y", tag:"Reggaetón", flyer:null, url:"https://www.bandsintown.com/e/1039269331-keny-at-club-stratus"},
-  {date:"2026-08-29", time:"8:00 PM", title:"Flex, La Factoría & Makano", tag:"Reggaetón", flyer:"assets/event-flex.jpg", url:"https://ticketon.com/en/events/flex-la-factoria-demphra--mas-en-phoenix-phoenix-az-2026-08-29-bgc4gzbze0do"},
-  {date:"2026-09-26", time:"7:00 PM", title:"Durango Fest", tag:"Duranguense", flyer:"assets/event-durango.jpg", url:"https://ticketon.com/en/events/durango-fest-en-phoenix-phoenix-az-2026-09-26-wbgo38az3d1z"}
+  {date:"2026-07-18", time:"9:00 PM", title:"Morro y Su Reunion", tag:null, flyer:null, url:"https://www.bandsintown.com/e/1039653287-morro-y-su-reunion-at-club-stratus"},
+  {date:"2026-07-21", time:"7:00 PM", title:"Lefty Gunplay", tag:null, flyer:"https://photos.bandsintown.com/thumb/18603192.jpeg", url:"https://www.bandsintown.com/e/1039424072-lefty-gunplay-at-club-stratus"},
+  {date:"2026-08-29", time:"9:00 PM", title:"Flex, La Factoría & Makano", tag:"Reggaetón", flyer:"assets/event-flex.jpg", url:"https://ticketon.com/en/events/flex-la-factoria-demphra--mas-en-phoenix-phoenix-az-2026-08-29-bgc4gzbze0do"},
+  {date:"2026-09-26", time:"8:00 PM", title:"Durango Fest", tag:"Duranguense", flyer:"assets/event-durango.jpg", url:"https://ticketon.com/en/events/durango-fest-en-phoenix-phoenix-az-2026-09-26-wbgo38az3d1z"}
 ];
 
 const EVENT_TYPES = [
@@ -357,11 +358,12 @@ function fmtDate(iso){
   };
 }
 function upcoming(){
+  const src=(window.__LIVE_EVENTS&&window.__LIVE_EVENTS.length)?window.__LIVE_EVENTS:EVENTS;
   const today=new Date(); today.setHours(0,0,0,0);
-  return EVENTS.filter(e=>new Date(e.date+'T23:59:59')>=today);
+  return src.filter(e=>new Date(e.date+'T23:59:59')>=today);
 }
 // home: horizontal card row
-(function(){
+function renderHomeCards(){
   const host=document.getElementById('events-cards'); if(!host) return;
   const evs=upcoming();
   if(!evs.length){ host.innerHTML=`<div class="ev-empty">Dates announced soon. Follow Club Stratus on Bandsintown.</div>`; return; }
@@ -379,9 +381,9 @@ function upcoming(){
       </div>
     </a>`;
   }).join('');
-})();
+}
 // events page: minimal list grouped by month
-(function(){
+function renderEventsList(){
   const host=document.getElementById('events-list'); if(!host) return;
   const evs=upcoming();
   if(!evs.length){
@@ -399,15 +401,14 @@ function upcoming(){
     </div>`;
   });
   host.innerHTML=html;
-})();
+}
 
 /* ---------- viewport ticker: scroll reveals + typewriter triggers ---------- */
-const revealEls=[...document.querySelectorAll('.reveal')];
 let fxLast=0;
 function fxTick(){
   const vh=innerHeight||document.documentElement.clientHeight||800;
-  for(const el of revealEls){
-    if(el.classList.contains('in')) continue;
+  // re-query each tick so late-rendered rows (live events fetch) still reveal
+  for(const el of document.querySelectorAll('.reveal:not(.in)')){
     const r=el.getBoundingClientRect();
     if((r.width||r.height) && r.top<vh*.92 && r.bottom>0) el.classList.add('in');
   }
@@ -420,7 +421,8 @@ fxTick();
 setInterval(fxTick,500); // safety net for in-app browsers that swallow scroll events
 
 /* ---------- SEO: structured data for upcoming events (Google event rich results) ---------- */
-(function(){
+function injectEventSchema(){
+  document.getElementById('event-schema')?.remove();
   const evs=upcoming(); if(!evs.length) return;
   const SITE='https://cornishclaudebot-ux.github.io/stratus-event-center-site/';
   function toISO(ev){
@@ -441,9 +443,20 @@ setInterval(fxTick,500); // safety net for in-app browsers that swallow scroll e
     "performer":{"@type":"MusicGroup","name":ev.title.split(/,| w\//)[0].trim()},
     "offers":{"@type":"Offer","url":ev.url||CONFIG.tickets,"availability":"https://schema.org/InStock"}
   }, ev.flyer?{"image":SITE+ev.flyer}:{}));
-  const s=document.createElement('script'); s.type='application/ld+json';
+  const s=document.createElement('script'); s.type='application/ld+json'; s.id='event-schema';
   s.textContent=JSON.stringify(data); document.head.appendChild(s);
-})();
+}
+
+/* ---------- load live events (events.json, synced daily from Bandsintown),
+   then render; baked EVENTS array is the offline fallback ---------- */
+function renderEvents(){ renderHomeCards(); renderEventsList(); injectEventSchema(); }
+fetch('events.json?t='+Date.now())
+  .then(r=>r.ok?r.json():null)
+  .catch(()=>null)
+  .then(j=>{
+    if(j&&Array.isArray(j.events)&&j.events.length) window.__LIVE_EVENTS=j.events;
+    renderEvents();
+  });
 
 /* ---------- console signature ---------- */
 console.log('%cSTRATUS','font:800 22px Archivo,sans-serif;color:#fff');
