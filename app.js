@@ -19,6 +19,7 @@ const CONFIG = {
   emails: {
     corporate: "Stratuseventcenteraz@gmail.com",
     concert:   "Stratuseventcenteraz@gmail.com",
+    shows:     "Stratuseventcenteraz@gmail.com",
     default:   "Stratuseventcenteraz@gmail.com"
   },
   // --- SOCIALS / REVIEWS (REAL) ---
@@ -49,7 +50,9 @@ const EVENT_TYPES = [
   {key:"corporate", title:"Corporate Events & Galas",
    desc:"Conferences, banquets, award nights, holiday parties, and brand activations with full A/V and a polished, professional setting."},
   {key:"concert", title:"Live Music & Concerts",
-   desc:"A proper stage, real sound, and capacity for a crowd. Ticketed shows and private performances, fully managed."}
+   desc:"A proper stage, real sound, and capacity for a crowd. Ticketed shows and private performances, fully managed."},
+  {key:"shows", title:"Shows & Entertainment",
+   desc:"Comedians, magicians, boxing matches, wrestling nights, and touring acts. If it draws a crowd, we can stage it."}
 ];
 
 /* ---- icons ---- */
@@ -117,7 +120,7 @@ function buildFooter(){
         <a href="${CONFIG.fb}" target="_blank" rel="noopener" aria-label="Facebook">${IC.fb}</a>
       </div>
       <div class="foot-legal">
-        Arizona's premier event venue, specializing in corporate events, live music and concerts.<br>
+        Arizona's premier event venue for up to 3,000 guests, specializing in corporate events, live music, concerts and live entertainment.<br>
         <a href="${CONFIG.mapGoogle}" target="_blank" rel="noopener">4344 W Indian School Rd, Ste 32, Phoenix, AZ 85031</a>
         · <a href="tel:${CONFIG.phoneRaw}">${CONFIG.phone}</a><br>
         © 2026 Stratus Event Center. All rights reserved.<br>

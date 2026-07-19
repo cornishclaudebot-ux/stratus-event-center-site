@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Stratus Event Center | Phoenix Venue for Corporate Events &amp; Concerts</title>
-<meta name="description" content="Stratus Event Center is a premier event venue in Phoenix, AZ specializing in corporate events, live music and concerts. In-house sound, lighting, catering and bar. Tours 7 days a week.">
+<meta name="description" content="Stratus Event Center is a large event venue in Phoenix, AZ with capacity for up to 3,000 guests, specializing in corporate events, live music, concerts and live entertainment. In-house sound, lighting, catering and bar. Tours 7 days a week.">
 <link rel="canonical" href="https://cornishclaudebot-ux.github.io/stratus-event-center-site/">
 <link rel="icon" href="assets/logo.png">
 <meta property="og:title" content="Stratus Event Center | Phoenix Event Venue">
@@ -17,7 +17,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=3">
+<style>
+/* critical hero rules, inlined so a stale cached stylesheet can never
+   un-hide the screen-reader text or shift the layout mid-typing */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.hero-line .row{display:block;min-height:.96em;white-space:nowrap}
+[data-type]{display:inline-block;min-height:.96em;min-width:1px}
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -38,6 +45,7 @@
     "addressCountry": "US"
   },
   "geo": { "@type": "GeoCoordinates", "latitude": 33.4949, "longitude": -112.1531 },
+  "maximumAttendeeCapacity": 3000,
   "areaServed": ["Phoenix", "Glendale", "Peoria", "Avondale", "Surprise", "Litchfield Park"],
   "sameAs": [
     "https://www.instagram.com/stratuseventcenteraz/",
@@ -70,8 +78,8 @@
     </div>
     <div class="hero-meta">
       <span>Phoenix, AZ</span><span class="dot">·</span>
-      <span>Tours 7 Days</span><span class="dot">·</span>
-      <span>By Appointment</span>
+      <span>Up to 3,000 Guests</span><span class="dot">·</span>
+      <span>Tours 7 Days</span>
     </div>
   </div>
 </section>
@@ -104,10 +112,10 @@
 <section id="spaces" class="bg-glass">
   <div class="mega-wrap">
     <h2 class="mega" data-type-group><span class="sr-only">What We Host</span><span aria-hidden="true" data-type="WHAT WE HOST"></span></h2>
-    <p class="mega-sub reveal">Two things, done at the highest level: corporate productions and sold-out shows. The room transforms to fit the moment.</p>
+    <p class="mega-sub reveal">Corporate productions, sold-out concerts, and live entertainment of every kind. The room transforms to fit the moment.</p>
   </div>
   <div class="wrap">
-    <div class="mgrid mgrid-2">
+    <div class="mgrid mgrid-3">
       <a href="book.html" data-book="corporate" class="mcardlink reveal"><div class="mcard">
         <div class="num">01</div>
         <h3>Corporate Events &amp; Galas</h3>
@@ -120,6 +128,12 @@
         <p>A proper stage, real sound, and the capacity for a crowd. Ticketed shows and private performances, fully managed.</p>
         <div class="go">See upcoming →</div>
       </div></a>
+      <a href="book.html" data-book="shows" class="mcardlink reveal d2"><div class="mcard">
+        <div class="num">03</div>
+        <h3>Shows &amp; Entertainment</h3>
+        <p>Comedians, magicians, boxing matches, wrestling nights, and touring acts. If it draws a crowd, we can stage it.</p>
+        <div class="go">Book this →</div>
+      </div></a>
     </div>
   </div>
 </section>
@@ -131,10 +145,10 @@
   </div>
   <div class="wrap">
     <div class="statement reveal" style="margin-bottom:11vh">
-      <p>A versatile indoor <b>Phoenix event venue</b> with the staging, sound, and service of a <b>production house</b>, and the warmth of a room designed for <b>people</b>. Clean, secure, on time, and <b>beautifully finished</b>.</p>
+      <p>A versatile indoor <b>Phoenix event venue</b> with room for up to <b>3,000 guests</b>, the staging, sound, and service of a <b>production house</b>, and the warmth of a room designed for <b>people</b>. Clean, secure, on time, and <b>beautifully finished</b>.</p>
     </div>
     <div class="mgrid-3">
-      <div class="amen reveal"><h4>Flexible Main Hall</h4><p>An open, transformable floor that scales from intimate seatings to large-scale productions.</p></div>
+      <div class="amen reveal"><h4>Flexible Main Hall</h4><p>An open, transformable floor that scales from intimate seatings to large-scale productions of 2,500 to 3,000 guests.</p></div>
       <div class="amen reveal d1"><h4>Stage &amp; Dance Floor</h4><p>A built-in stage and generous dance area, ready for performers, a DJ, or a live band.</p></div>
       <div class="amen reveal d2"><h4>Pro Sound &amp; Lighting</h4><p>In-house audio and programmable lighting to set the tone for any kind of event.</p></div>
       <div class="amen reveal"><h4>Catering &amp; Bar</h4><p>Full-service catering and licensed bar service available, with flexible menus to fit your event.</p></div>
@@ -249,7 +263,7 @@
 </main>
 
 <div id="footer-mount"></div>
-<script src="app.js"></script>
+<script src="app.js?v=3"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 /* Zero-lag map: the map never animates internally. It initializes lazily,
