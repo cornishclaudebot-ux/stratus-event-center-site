@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-19T00:02:18",
+  "updated": "2026-07-19T00:10:48",
   "source": "https://www.bandsintown.com/v/10168441-club-stratus",
   "events": [
     {
@@ -15,7 +15,7 @@
       "time": "7:00 PM",
       "title": "Lefty Gunplay",
       "tag": null,
-      "flyer": "https://photos.bandsintown.com/large/18603192.jpeg",
+      "flyer": "assets/flyers/2026-07-21-4465daec9695.jpg",
       "url": "https://www.bandsintown.com/e/1039424072-lefty-gunplay-at-club-stratus?came_from=209"
     },
     {
@@ -23,7 +23,7 @@
       "time": "9:00 PM",
       "title": "Flex, La Factoría & Makano",
       "tag": "Reggaetón",
-      "flyer": "assets/event-flex.jpg",
+      "flyer": "assets/flyers/2026-08-29-835c55aa06d3.jpg",
       "url": "https://ticketon.com/en/events/flex-la-factoria-demphra--mas-en-phoenix-phoenix-az-2026-08-29-bgc4gzbze0do"
     },
     {
@@ -31,7 +31,7 @@
       "time": "8:00 PM",
       "title": "Durango Fest",
       "tag": "Duranguense",
-      "flyer": "assets/event-durango.jpg",
+      "flyer": "assets/flyers/2026-09-26-f903b1ab7e7c.jpg",
       "url": "https://ticketon.com/en/events/durango-fest-en-phoenix-phoenix-az-2026-09-26-wbgo38az3d1z"
     }
   ]

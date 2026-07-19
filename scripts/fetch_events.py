@@ -13,15 +13,23 @@ Usage:
   fetch_events.py --no-push  fetch and write only (for testing)
 """
 import datetime
+import hashlib
 import json
 import pathlib
 import re
 import subprocess
 import sys
+import tempfile
+import urllib.request
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
 OUT = REPO / "events.json"
 VENUE_URL = "https://www.bandsintown.com/v/10168441-club-stratus"
+
+# --- 4K flyer enhancement (Real-ESRGAN, local GPU) ---
+UPSCALER = pathlib.Path.home() / "realesrgan" / "realesrgan-ncnn-vulkan"
+FLYERS = REPO / "assets" / "flyers"
+TARGET_LONG = 3840  # 4K long edge
 
 # Hand-curated enrichments keyed by ISO date: fuller titles, official ticket
 # deep links and local flyers (Ticketon). Bandsintown stays the source of
@@ -98,6 +106,60 @@ def parse(html):
     return out
 
 
+def _dims(p):
+    r = subprocess.run(["sips", "-g", "pixelWidth", "-g", "pixelHeight", str(p)],
+                       capture_output=True, text=True)
+    vals = re.findall(r": (\d+)", r.stdout)
+    return (int(vals[0]), int(vals[1])) if len(vals) >= 2 else (0, 0)
+
+
+def enhance_flyer(ev):
+    """Upscale the event's flyer toward 4K with Real-ESRGAN and serve it
+    locally from assets/flyers/. Idempotent (stable filename per event, so
+    already-enhanced flyers are reused) and never fatal: on any failure the
+    original flyer reference is kept."""
+    src = ev.get("flyer")
+    if not src:
+        return
+    key = hashlib.md5((ev["date"] + ev["title"].lower()).encode()).hexdigest()[:12]
+    out = FLYERS / f"{ev['date']}-{key}.jpg"
+    rel = f"assets/flyers/{out.name}"
+    if out.exists():
+        ev["flyer"] = rel
+        return
+    try:
+        FLYERS.mkdir(parents=True, exist_ok=True)
+        with tempfile.TemporaryDirectory() as td:
+            raw = pathlib.Path(td) / "in.jpg"
+            if src.startswith("http"):
+                req = urllib.request.Request(src, headers={"User-Agent": "Mozilla/5.0"})
+                raw.write_bytes(urllib.request.urlopen(req, timeout=60).read())
+            else:
+                raw.write_bytes((REPO / src).read_bytes())
+            w, h = _dims(raw)
+            if not w:
+                print(f"enhance: unreadable image for {ev['title']}")
+                return
+            up = pathlib.Path(td) / "up.png"
+            if max(w, h) < TARGET_LONG and UPSCALER.exists():
+                # cwd matters: the binary resolves its models/ folder relative
+                # to the working directory and segfaults if it can't find it
+                subprocess.run([str(UPSCALER), "-i", str(raw), "-o", str(up),
+                                "-s", "4", "-n", "realesrgan-x4plus"],
+                               check=True, capture_output=True, timeout=900,
+                               cwd=str(UPSCALER.parent))
+            else:
+                up = raw
+            subprocess.run(["sips", "-Z", str(TARGET_LONG), "-s", "format", "jpeg",
+                            "-s", "formatOptions", "85", str(up), "--out", str(out)],
+                           check=True, capture_output=True)
+            nw, nh = _dims(out)
+            print(f"enhanced {ev['title']}: {w}x{h} -> {nw}x{nh}")
+            ev["flyer"] = rel
+    except Exception as e:
+        print(f"enhance failed for {ev['title']}: {e}")
+
+
 def main():
     push = "--no-push" not in sys.argv
     html = fetch_html()
@@ -105,6 +167,8 @@ def main():
     if not evs:
         print("No events parsed; keeping existing events.json")
         return 1
+    for ev in evs:
+        enhance_flyer(ev)
     payload = {
         "updated": datetime.datetime.now().isoformat(timespec="seconds"),
         "source": VENUE_URL,
@@ -119,7 +183,7 @@ def main():
     OUT.write_text(new)
     print(f"Wrote {len(evs)} events to {OUT}")
     if push:
-        subprocess.run(["git", "-C", str(REPO), "add", "events.json"], check=True)
+        subprocess.run(["git", "-C", str(REPO), "add", "events.json", "assets/flyers"], check=True)
         subprocess.run(["git", "-C", str(REPO), "commit", "-m",
                         "Auto-update events from Bandsintown"], check=True)
         subprocess.run(["git", "-C", str(REPO), "push", "origin", "main"], check=True)

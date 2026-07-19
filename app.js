@@ -364,10 +364,10 @@ function renderHomeCards(){
   const host=document.getElementById('events-cards'); if(!host) return;
   const evs=upcoming();
   if(!evs.length){ host.innerHTML=`<div class="ev-empty">Dates announced soon. Follow Club Stratus on Bandsintown.</div>`; return; }
-  host.innerHTML=evs.map(ev=>{
+  host.innerHTML=evs.map((ev,i)=>{
     const f=fmtDate(ev.date);
     const art=ev.flyer
-      ? `<img src="${ev.flyer}" alt="${ev.title} flyer" loading="lazy">`
+      ? `<img src="${ev.flyer}" alt="${ev.title} flyer" loading="${i<2?'eager':'lazy'}" decoding="async">`
       : `<div class="noart"><span>${ev.title}</span></div>`;
     return `<a class="ecard reveal" href="${ev.url||CONFIG.tickets}" target="_blank" rel="noopener" aria-label="${ev.title} tickets">
       <div class="art">${art}</div>
