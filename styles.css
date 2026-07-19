@@ -191,6 +191,30 @@ section{position:relative}
 .lrow .what .sub em{font-style:normal;color:var(--mut)}
 .month-label{font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mut-2);
   padding:34px 4px 12px;font-weight:500}
+
+/* events page: rows with flyer art + Show More drawer */
+.lrow-x{grid-template-columns:120px 280px 1fr auto}
+.lart{display:block;width:280px;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:var(--panel);position:relative}
+.lart img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.lart:hover img{transform:scale(1.04)}
+.lart .noart{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:12px;text-align:center}
+.lart .noart span{font-family:'Archivo';font-weight:800;text-transform:uppercase;font-size:1.1rem;line-height:1;color:rgba(255,255,255,.9)}
+.ldesc{color:var(--mut);font-weight:300;font-size:.92rem;margin-top:8px;max-width:560px}
+.lrow .act{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.lrow.expanded{border-bottom-color:transparent;background:rgba(255,255,255,.02)}
+.ldetail{overflow:hidden;max-height:0;transition:max-height .5s var(--ease);border-bottom:1px solid transparent}
+.ldetail.open{max-height:480px;border-bottom-color:var(--line);background:rgba(255,255,255,.02)}
+.ldetail-inner{display:flex;gap:56px;flex-wrap:wrap;padding:4px 4px 28px 124px}
+.lk{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mut-2);margin-bottom:10px;font-weight:600}
+.lchips{display:flex;gap:8px;flex-wrap:wrap;max-width:520px}
+.lchip{padding:8px 15px;border-radius:999px;background:var(--glass);font-size:.86rem;white-space:nowrap}
+.lfact{color:var(--mut);font-size:.9rem;line-height:2;font-weight:300}
+@media(max-width:900px){
+  .lrow-x{grid-template-columns:86px 1fr}
+  .lart{grid-column:1/-1;width:100%;order:-1}
+  .lrow .act{grid-column:1/-1;justify-self:start}
+  .ldetail-inner{padding-left:4px}
+}
 .ev-empty{padding:60px 4px;color:var(--mut);font-weight:300}
 @media(max-width:640px){
   .lrow{grid-template-columns:86px 1fr;row-gap:12px}

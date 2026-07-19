@@ -35,15 +35,26 @@ TARGET_LONG = 3840  # 4K long edge
 # deep links and local flyers (Ticketon). Bandsintown stays the source of
 # which dates exist; these only dress up what it finds.
 OVERRIDES = {
+    "2026-07-21": {
+        "tag": "Hip-Hop",
+        "desc": "Los Angeles rapper Lefty Gunplay brings his live show to the Stratus stage.",
+        "lineup": ["Lefty Gunplay"],
+    },
     "2026-08-29": {
         "title": "Flex, La Factoría & Makano", "tag": "Reggaetón",
         "url": "https://ticketon.com/en/events/flex-la-factoria-demphra--mas-en-phoenix-phoenix-az-2026-08-29-bgc4gzbze0do",
         "flyer": "assets/event-flex.jpg",
+        "desc": "A triple bill of reggaetón romántico: Flex, La Factoría with Demphra, and Makano on one stage.",
+        "lineup": ["Flex", "La Factoría (Demphra)", "Makano"],
     },
     "2026-09-26": {
         "title": "Durango Fest", "tag": "Duranguense",
         "url": "https://ticketon.com/en/events/durango-fest-en-phoenix-phoenix-az-2026-09-26-wbgo38az3d1z",
         "flyer": "assets/event-durango.jpg",
+        "desc": "Durango Fest marks 5 years with a stacked duranguense lineup, all ages, doors 8 PM.",
+        "lineup": ["Alacranes Musical", "Montez de Durango", "Patrulla 81",
+                   "Banda Lamento Show de Durango", "Los Príncipes"],
+        "ages": "All ages",
     },
 }
 
@@ -93,6 +104,8 @@ def parse(html):
                 "date": date, "time": time_str, "title": name, "tag": None,
                 "flyer": img or None,
                 "url": offers.get("url") or it.get("url"),
+                "desc": f"{name} live at Stratus Event Center in Phoenix.",
+                "lineup": [name],
             }
             ev.update(OVERRIDES.get(date, {}))
             events.append(ev)

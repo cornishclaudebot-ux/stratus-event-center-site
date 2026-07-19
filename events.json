@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-19T00:10:48",
+  "updated": "2026-07-19T00:52:33",
   "source": "https://www.bandsintown.com/v/10168441-club-stratus",
   "events": [
     {
@@ -8,15 +8,23 @@
       "title": "Morro y Su Reunion",
       "tag": null,
       "flyer": null,
-      "url": "https://www.bandsintown.com/e/1039653287-morro-y-su-reunion-at-club-stratus?came_from=209"
+      "url": "https://www.bandsintown.com/e/1039653287-morro-y-su-reunion-at-club-stratus?came_from=209",
+      "desc": "Morro y Su Reunion live at Stratus Event Center in Phoenix.",
+      "lineup": [
+        "Morro y Su Reunion"
+      ]
     },
     {
       "date": "2026-07-21",
       "time": "7:00 PM",
       "title": "Lefty Gunplay",
-      "tag": null,
+      "tag": "Hip-Hop",
       "flyer": "assets/flyers/2026-07-21-4465daec9695.jpg",
-      "url": "https://www.bandsintown.com/e/1039424072-lefty-gunplay-at-club-stratus?came_from=209"
+      "url": "https://www.bandsintown.com/e/1039424072-lefty-gunplay-at-club-stratus?came_from=209",
+      "desc": "Los Angeles rapper Lefty Gunplay brings his live show to the Stratus stage.",
+      "lineup": [
+        "Lefty Gunplay"
+      ]
     },
     {
       "date": "2026-08-29",
@@ -24,7 +32,13 @@
       "title": "Flex, La Factoría & Makano",
       "tag": "Reggaetón",
       "flyer": "assets/flyers/2026-08-29-835c55aa06d3.jpg",
-      "url": "https://ticketon.com/en/events/flex-la-factoria-demphra--mas-en-phoenix-phoenix-az-2026-08-29-bgc4gzbze0do"
+      "url": "https://ticketon.com/en/events/flex-la-factoria-demphra--mas-en-phoenix-phoenix-az-2026-08-29-bgc4gzbze0do",
+      "desc": "A triple bill of reggaetón romántico: Flex, La Factoría with Demphra, and Makano on one stage.",
+      "lineup": [
+        "Flex",
+        "La Factoría (Demphra)",
+        "Makano"
+      ]
     },
     {
       "date": "2026-09-26",
@@ -32,7 +46,16 @@
       "title": "Durango Fest",
       "tag": "Duranguense",
       "flyer": "assets/flyers/2026-09-26-f903b1ab7e7c.jpg",
-      "url": "https://ticketon.com/en/events/durango-fest-en-phoenix-phoenix-az-2026-09-26-wbgo38az3d1z"
+      "url": "https://ticketon.com/en/events/durango-fest-en-phoenix-phoenix-az-2026-09-26-wbgo38az3d1z",
+      "desc": "Durango Fest marks 5 years with a stacked duranguense lineup, all ages, doors 8 PM.",
+      "lineup": [
+        "Alacranes Musical",
+        "Montez de Durango",
+        "Patrulla 81",
+        "Banda Lamento Show de Durango",
+        "Los Príncipes"
+      ],
+      "ages": "All ages"
     }
   ]
 }

@@ -40,10 +40,12 @@ CONFIG.mapApple  = "https://maps.apple.com/?q=" + encodeURIComponent(CONFIG.addr
    This baked-in array is only the offline fallback if events.json is
    missing; keep it roughly current but don't hand-edit dates weekly. ---- */
 const EVENTS = [
-  {date:"2026-07-18", time:"9:00 PM", title:"Morro y Su Reunion", tag:null, flyer:null, url:"https://www.bandsintown.com/e/1039653287-morro-y-su-reunion-at-club-stratus"},
-  {date:"2026-07-21", time:"7:00 PM", title:"Lefty Gunplay", tag:null, flyer:"https://photos.bandsintown.com/large/18603192.jpeg", url:"https://www.bandsintown.com/e/1039424072-lefty-gunplay-at-club-stratus"},
-  {date:"2026-08-29", time:"9:00 PM", title:"Flex, La Factoría & Makano", tag:"Reggaetón", flyer:"assets/event-flex.jpg", url:"https://ticketon.com/en/events/flex-la-factoria-demphra--mas-en-phoenix-phoenix-az-2026-08-29-bgc4gzbze0do"},
-  {date:"2026-09-26", time:"8:00 PM", title:"Durango Fest", tag:"Duranguense", flyer:"assets/event-durango.jpg", url:"https://ticketon.com/en/events/durango-fest-en-phoenix-phoenix-az-2026-09-26-wbgo38az3d1z"}
+  {date:"2026-07-21", time:"7:00 PM", title:"Lefty Gunplay", tag:"Hip-Hop", flyer:"assets/flyers/2026-07-21-4465daec9695.jpg", url:"https://www.bandsintown.com/e/1039424072-lefty-gunplay-at-club-stratus",
+   desc:"Los Angeles rapper Lefty Gunplay brings his live show to the Stratus stage.", lineup:["Lefty Gunplay"]},
+  {date:"2026-08-29", time:"9:00 PM", title:"Flex, La Factoría & Makano", tag:"Reggaetón", flyer:"assets/flyers/2026-08-29-835c55aa06d3.jpg", url:"https://ticketon.com/en/events/flex-la-factoria-demphra--mas-en-phoenix-phoenix-az-2026-08-29-bgc4gzbze0do",
+   desc:"A triple bill of reggaetón romántico: Flex, La Factoría with Demphra, and Makano on one stage.", lineup:["Flex","La Factoría (Demphra)","Makano"]},
+  {date:"2026-09-26", time:"8:00 PM", title:"Durango Fest", tag:"Duranguense", flyer:"assets/flyers/2026-09-26-f903b1ab7e7c.jpg", url:"https://ticketon.com/en/events/durango-fest-en-phoenix-phoenix-az-2026-09-26-wbgo38az3d1z",
+   desc:"Durango Fest marks 5 years with a stacked duranguense lineup, all ages, doors 8 PM.", lineup:["Alacranes Musical","Montez de Durango","Patrulla 81","Banda Lamento Show de Durango","Los Príncipes"], ages:"All ages"}
 ];
 
 const EVENT_TYPES = [
@@ -379,7 +381,16 @@ function renderHomeCards(){
     </a>`;
   }).join('');
 }
-// events page: minimal list grouped by month
+// events page: horizontal rows with flyer, blurb and a Show More drawer
+function sellerName(url){
+  if(!url) return "our box office";
+  if(url.includes("ticketon")) return "Ticketón";
+  if(url.includes("bandsintown")) return "Bandsintown";
+  if(url.includes("tickeri")) return "Tickeri";
+  if(url.includes("ticketmaster")) return "Ticketmaster";
+  if(url.includes("stubhub")) return "StubHub";
+  return "official sellers";
+}
 function renderEventsList(){
   const host=document.getElementById('events-list'); if(!host) return;
   const evs=upcoming();
@@ -391,13 +402,49 @@ function renderEventsList(){
   evs.forEach(ev=>{
     const f=fmtDate(ev.date);
     if(f.monthKey!==curMonth){curMonth=f.monthKey; html+=`<div class="month-label">${f.monthKey}</div>`;}
-    html+=`<div class="lrow reveal">
+    const art=ev.flyer
+      ? `<img src="${ev.flyer}" alt="${ev.title} flyer" loading="lazy" decoding="async">`
+      : `<div class="noart"><span>${ev.title}</span></div>`;
+    const lineup=(ev.lineup&&ev.lineup.length)
+      ? `<div><div class="lk">Lineup</div><div class="lchips">${ev.lineup.map(a=>`<span class="lchip">${a}</span>`).join('')}</div></div>`:'';
+    const facts=[
+      `Doors ${ev.time}`,
+      ev.ages||null,
+      `Stratus Event Center · 4344 W Indian School Rd, Ste 32, Phoenix`,
+      `Official tickets on ${sellerName(ev.url)}`
+    ].filter(Boolean).map(x=>`<div>${x}</div>`).join('');
+    html+=`<div class="lrow lrow-x reveal">
       <div class="when">${f.dow}<b>${f.mon} ${f.dnum}</b></div>
-      <div class="what"><h3>${ev.title}</h3><div class="sub"><em>${ev.tag||'Live'}</em> · Doors ${ev.time}</div></div>
-      <div class="act"><a href="${ev.url||CONFIG.tickets}" target="_blank" rel="noopener" class="pill pill-solid pill-sm">Buy Tickets</a></div>
+      <a class="lart" href="${ev.url||CONFIG.tickets}" target="_blank" rel="noopener" aria-label="${ev.title} tickets">${art}</a>
+      <div class="what">
+        <h3>${ev.title}</h3>
+        <div class="sub"><em>${ev.tag||'Live'}</em> · Doors ${ev.time}</div>
+        ${ev.desc?`<p class="ldesc">${ev.desc}</p>`:''}
+      </div>
+      <div class="act">
+        <a href="${ev.url||CONFIG.tickets}" target="_blank" rel="noopener" class="pill pill-solid pill-sm">Buy Tickets</a>
+        <button class="pill pill-glass pill-sm lmore" aria-expanded="false">Show More</button>
+      </div>
+    </div>
+    <div class="ldetail">
+      <div class="ldetail-inner">
+        ${lineup}
+        <div><div class="lk">Details</div><div class="lfact">${facts}</div></div>
+      </div>
     </div>`;
   });
   host.innerHTML=html;
+  host.querySelectorAll('.lmore').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const row=btn.closest('.lrow');
+      const detail=row.nextElementSibling;
+      const open=!detail.classList.contains('open');
+      detail.classList.toggle('open',open);
+      row.classList.toggle('expanded',open);
+      btn.setAttribute('aria-expanded',String(open));
+      btn.textContent=open?'Show Less':'Show More';
+    });
+  });
 }
 
 /* ---------- viewport ticker: scroll reveals + typewriter triggers ---------- */
