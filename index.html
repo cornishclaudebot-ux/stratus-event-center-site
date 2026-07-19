@@ -264,22 +264,40 @@
 <script src="app.js"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
+/* Zero-lag map: the map never animates internally. It initializes lazily,
+   directly at the final street-level view (tiles decode once, off-screen),
+   and the cinematic entrance is a GPU-only CSS scale/fade of the finished
+   layer. No flyTo, no tile churn, no jank. */
 (function(){
   if(typeof L==='undefined') return;
   var el=document.getElementById('themap'); if(!el) return;
+  var wrap=document.getElementById('visit-map');
   var VENUE=[33.4949,-112.1531];
-  var map=L.map(el,{zoomControl:false,attributionControl:false,scrollWheelZoom:false,dragging:false,doubleClickZoom:false,boxZoom:false,keyboard:false,touchZoom:false}).setView([33.46,-112.07],10);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:19,subdomains:'abcd'}).addTo(map);
-  var icon=L.divIcon({className:'bar-marker',html:'<span class="bm-ping"></span><svg class="bm-pin" viewBox="0 0 24 34" width="30" height="42"><path d="M12 0C5.9 0 1 4.9 1 11c0 7.7 9.6 21.3 10 21.9.2.3.6.3.8 0C12.4 32.3 23 18.7 23 11 23 4.9 18.1 0 12 0z" fill="#ffffff" stroke="#000000" stroke-width="1.2"/><circle cx="12" cy="11" r="4" fill="#000000"/></svg>',iconSize:[30,42],iconAnchor:[15,40]});
-  L.marker(VENUE,{icon:icon}).addTo(map);
-  var flown=false;
-  function fly(){ if(flown)return; flown=true; setTimeout(function(){ map.invalidateSize(); map.flyTo(VENUE,16,{duration:3.6,easeLinearity:.18}); },140); }
-  if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){fly();io.disconnect();}});},{threshold:.3});
-    io.observe(document.getElementById('visit-map'));
-  } else { setTimeout(fly,800); }
-  setTimeout(function(){map.invalidateSize();},400);
-  window.addEventListener('resize',function(){map.invalidateSize();});
+  var map=null, shown=false;
+
+  function initMap(){
+    if(map) return;
+    map=L.map(el,{zoomControl:false,attributionControl:false,scrollWheelZoom:false,dragging:false,
+      doubleClickZoom:false,boxZoom:false,keyboard:false,touchZoom:false,
+      zoomAnimation:false,markerZoomAnimation:false,inertia:false});
+    map.setView(VENUE,16);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+      {maxZoom:19,subdomains:'abcd',updateWhenIdle:true,keepBuffer:4}).addTo(map);
+    var icon=L.divIcon({className:'bar-marker',html:'<span class="bm-ping"></span><svg class="bm-pin" viewBox="0 0 24 34" width="30" height="42"><path d="M12 0C5.9 0 1 4.9 1 11c0 7.7 9.6 21.3 10 21.9.2.3.6.3.8 0C12.4 32.3 23 18.7 23 11 23 4.9 18.1 0 12 0z" fill="#ffffff" stroke="#000000" stroke-width="1.2"/><circle cx="12" cy="11" r="4" fill="#000000"/></svg>',iconSize:[30,42],iconAnchor:[15,40]});
+    L.marker(VENUE,{icon:icon}).addTo(map);
+    setTimeout(function(){map.invalidateSize();},200);
+  }
+
+  function check(){
+    var vh=innerHeight||document.documentElement.clientHeight||800;
+    var r=wrap.getBoundingClientRect();
+    if(!map && r.top<vh*1.8) initMap();            // warm up well before it's on screen
+    if(map && !shown && r.top<vh*.8 && r.bottom>0){ shown=true; el.classList.add('map-settle'); }
+  }
+  addEventListener('scroll',check,{passive:true});
+  var iv=setInterval(function(){check(); if(shown) clearInterval(iv);},400);
+  check();
+  addEventListener('resize',function(){ if(map) map.invalidateSize(); },{passive:true});
 })();
 </script>
 </body>
