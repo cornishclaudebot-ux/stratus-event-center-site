@@ -122,7 +122,7 @@ function buildFooter(){
         <a href="${CONFIG.fb}" target="_blank" rel="noopener" aria-label="Facebook">${IC.fb}</a>
       </div>
       <div class="foot-legal">
-        Arizona's premier event venue for up to 3,000 guests, specializing in corporate events, live music, concerts and live entertainment.<br>
+        Arizona's premier event venue for up to 2,250 guests, specializing in corporate events, live music, concerts and live entertainment.<br>
         <a href="${CONFIG.mapGoogle}" target="_blank" rel="noopener">4344 W Indian School Rd, Ste 32, Phoenix, AZ 85031</a>
         · <a href="tel:${CONFIG.phoneRaw}">${CONFIG.phone}</a><br>
         © 2026 Stratus Event Center. All rights reserved.<br>
