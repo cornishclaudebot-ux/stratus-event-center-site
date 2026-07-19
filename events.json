@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-19T09:31:44",
+  "updated": "2026-07-19T11:57:20",
   "source": "https://www.bandsintown.com/v/10168441-club-stratus",
   "events": [
     {
@@ -13,6 +13,23 @@
       "lineup": [
         "Lefty Gunplay"
       ]
+    },
+    {
+      "date": "2026-07-25",
+      "time": "8:00 PM",
+      "title": "Golden Teacher",
+      "tag": "DJ Night",
+      "flyer": "assets/flyers/2026-07-25-e187e4dc0efb.jpg",
+      "url": "https://posh.vip/e/golden-teacher",
+      "desc": "DARTYFORLIFE takes over Stratus: lasers, gold haze, and five DJs until 2 AM. Ages 18 & over.",
+      "lineup": [
+        "Trent",
+        "Soto",
+        "ZMG",
+        "Aaron",
+        "Luiso"
+      ],
+      "ages": "Ages 18 & over"
     },
     {
       "date": "2026-08-29",

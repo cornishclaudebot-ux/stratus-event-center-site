@@ -34,6 +34,21 @@ TARGET_LONG = 3840  # 4K long edge
 # Hand-curated enrichments keyed by ISO date: fuller titles, official ticket
 # deep links and local flyers (Ticketon). Bandsintown stays the source of
 # which dates exist; these only dress up what it finds.
+# Events hosted on Posh or elsewhere that never appear on the Bandsintown
+# venue calendar. Merged into the feed every run; past dates age off the
+# site automatically, so entries here can be left in place after the event.
+EXTRA_EVENTS = [
+    {
+        "date": "2026-07-25", "time": "8:00 PM",
+        "title": "Golden Teacher", "tag": "DJ Night",
+        "flyer": "https://images.posh.vip/originals/6a3c81d0955f42fa57977681",
+        "url": "https://posh.vip/e/golden-teacher",
+        "desc": "DARTYFORLIFE takes over Stratus: lasers, gold haze, and five DJs until 2 AM. Ages 18 & over.",
+        "lineup": ["Trent", "Soto", "ZMG", "Aaron", "Luiso"],
+        "ages": "Ages 18 & over",
+    },
+]
+
 OVERRIDES = {
     "2026-07-21": {
         "tag": "Hip-Hop",
@@ -180,6 +195,7 @@ def main():
     if not evs:
         print("No events parsed; keeping existing events.json")
         return 1
+    evs = sorted(evs + [dict(e) for e in EXTRA_EVENTS], key=lambda x: x["date"])
     for ev in evs:
         enhance_flyer(ev)
     payload = {

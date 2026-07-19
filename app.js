@@ -42,6 +42,8 @@ CONFIG.mapApple  = "https://maps.apple.com/?q=" + encodeURIComponent(CONFIG.addr
 const EVENTS = [
   {date:"2026-07-21", time:"7:00 PM", title:"Lefty Gunplay", tag:"Hip-Hop", flyer:"assets/flyers/2026-07-21-4465daec9695.jpg", url:"https://www.bandsintown.com/e/1039424072-lefty-gunplay-at-club-stratus",
    desc:"Los Angeles rapper Lefty Gunplay brings his live show to the Stratus stage.", lineup:["Lefty Gunplay"]},
+  {date:"2026-07-25", time:"8:00 PM", title:"Golden Teacher", tag:"DJ Night", flyer:"assets/flyers/2026-07-25-e187e4dc0efb.jpg", url:"https://posh.vip/e/golden-teacher",
+   desc:"DARTYFORLIFE takes over Stratus: lasers, gold haze, and five DJs until 2 AM. Ages 18 & over.", lineup:["Trent","Soto","ZMG","Aaron","Luiso"], ages:"Ages 18 & over"},
   {date:"2026-08-29", time:"9:00 PM", title:"Flex, La Factoría & Makano", tag:"Reggaetón", flyer:"assets/flyers/2026-08-29-835c55aa06d3.jpg", url:"https://ticketon.com/en/events/flex-la-factoria-demphra--mas-en-phoenix-phoenix-az-2026-08-29-bgc4gzbze0do",
    desc:"A triple bill of reggaetón romántico: Flex, La Factoría with Demphra, and Makano on one stage.", lineup:["Flex","La Factoría (Demphra)","Makano"]},
   {date:"2026-09-26", time:"8:00 PM", title:"Durango Fest", tag:"Duranguense", flyer:"assets/flyers/2026-09-26-f903b1ab7e7c.jpg", url:"https://ticketon.com/en/events/durango-fest-en-phoenix-phoenix-az-2026-09-26-wbgo38az3d1z",
@@ -384,6 +386,7 @@ function renderHomeCards(){
 // events page: horizontal rows with flyer, blurb and a Show More drawer
 function sellerName(url){
   if(!url) return "our box office";
+  if(url.includes("posh.vip")) return "Posh";
   if(url.includes("ticketon")) return "Ticketón";
   if(url.includes("bandsintown")) return "Bandsintown";
   if(url.includes("tickeri")) return "Tickeri";
