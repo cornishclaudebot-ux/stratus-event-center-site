@@ -85,6 +85,18 @@ section{position:relative}
 .mega-sub{max-width:620px;margin:26px auto 0;color:var(--mut);font-size:1.05rem;font-weight:300;text-align:center;
   text-transform:none;letter-spacing:0}
 
+/* screen-reader / crawler text (Hï pattern: real text hidden, animated span aria-hidden) */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* typewriter: [data-type] spans type out with a blinking caret */
+[data-type]{display:inline-block;min-height:.96em;min-width:1px;white-space:pre-wrap}
+.typing::after,.typed::after{content:"";display:inline-block;width:.06em;height:.74em;background:#fff;
+  margin-left:.05em;vertical-align:baseline}
+.typing::after{animation:caret .8s steps(1) infinite}
+.typed::after{animation:caret .8s steps(1) 3;opacity:0}
+@keyframes caret{0%,49%{opacity:1}50%,100%{opacity:0}}
+.hero-line .row{min-height:.96em}
+
 /* scroll reveal */
 .reveal{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .reveal.in{opacity:1;transform:none}

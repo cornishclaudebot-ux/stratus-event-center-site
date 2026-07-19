@@ -122,6 +122,7 @@ function buildFooter(){
         <a href="${CONFIG.fb}" target="_blank" rel="noopener" aria-label="Facebook">${IC.fb}</a>
       </div>
       <div class="foot-legal">
+        Arizona's premier event venue for weddings, quinceañeras, corporate events and live concerts.<br>
         <a href="${CONFIG.mapGoogle}" target="_blank" rel="noopener">4344 W Indian School Rd, Ste 32, Phoenix, AZ 85031</a>
         · <a href="tel:${CONFIG.phoneRaw}">${CONFIG.phone}</a><br>
         © 2026 Stratus Event Center. All rights reserved.<br>
@@ -216,6 +217,51 @@ if(header) addEventListener('scroll',()=>header.classList.toggle('scrolled',scro
   btn.addEventListener('click',()=>set(!ov.classList.contains('open')));
   ov.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>set(false)));
   addEventListener('keydown',e=>{if(e.key==='Escape'&&ov.classList.contains('open'))set(false);});
+})();
+
+/* ---------- Hï-style typewriter: [data-type] text types out on first view ---------- */
+(function(){
+  const els=[...document.querySelectorAll('[data-type]')];
+  if(!els.length) return;
+  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(reduce){ els.forEach(el=>el.textContent=el.dataset.type); return; }
+  // lines that share a [data-type-group] container type one after another
+  const groups=new Map();
+  els.forEach(el=>{
+    const g=el.closest('[data-type-group]')||el;
+    if(!groups.has(g)) groups.set(g,[]);
+    groups.get(g).push(el);
+  });
+  const SPEED=55;
+  function typeGroup(list){
+    let li=0;
+    (function typeLine(){
+      const el=list[li]; const text=el.dataset.type; let i=0;
+      el.classList.add('typing');
+      const t=setInterval(()=>{
+        i++; el.textContent=text.slice(0,i);
+        if(i>=text.length){
+          clearInterval(t); el.classList.remove('typing');
+          li++;
+          if(li<list.length) setTimeout(typeLine,140);
+          else el.classList.add('typed');
+        }
+      },SPEED);
+    })();
+  }
+  // registered with the shared viewport ticker below (scroll-checked; more
+  // reliable than IntersectionObserver across embedded/in-app browsers)
+  const pending=new Set(groups.keys());
+  window.__fxTypeCheck=function(vh){
+    vh=vh||innerHeight||document.documentElement.clientHeight||800;
+    pending.forEach(g=>{
+      const r=g.getBoundingClientRect();
+      if((r.width||r.height) && r.top<vh*.85 && r.bottom>0){
+        pending.delete(g);
+        setTimeout(()=>typeGroup(groups.get(g)),120);
+      }
+    });
+  };
 })();
 
 // hero: giant type fades and drifts as you scroll past
@@ -355,11 +401,49 @@ function upcoming(){
   host.innerHTML=html;
 })();
 
-/* ---------- scroll reveal ---------- */
-const io=new IntersectionObserver((entries)=>{
-  entries.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
-},{threshold:.1,rootMargin:"0px 0px -6% 0px"});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+/* ---------- viewport ticker: scroll reveals + typewriter triggers ---------- */
+const revealEls=[...document.querySelectorAll('.reveal')];
+let fxLast=0;
+function fxTick(){
+  const vh=innerHeight||document.documentElement.clientHeight||800;
+  for(const el of revealEls){
+    if(el.classList.contains('in')) continue;
+    const r=el.getBoundingClientRect();
+    if((r.width||r.height) && r.top<vh*.92 && r.bottom>0) el.classList.add('in');
+  }
+  if(window.__fxTypeCheck) window.__fxTypeCheck(vh);
+}
+function fxSchedule(){ const n=Date.now(); if(n-fxLast>90){ fxLast=n; fxTick(); } }
+addEventListener('scroll',fxSchedule,{passive:true});
+addEventListener('resize',fxSchedule,{passive:true});
+fxTick();
+setInterval(fxTick,500); // safety net for in-app browsers that swallow scroll events
+
+/* ---------- SEO: structured data for upcoming events (Google event rich results) ---------- */
+(function(){
+  const evs=upcoming(); if(!evs.length) return;
+  const SITE='https://cornishclaudebot-ux.github.io/stratus-event-center-site/';
+  function toISO(ev){
+    const m=ev.time.match(/(\d+):(\d+)\s*(AM|PM)/i); if(!m) return ev.date;
+    let h=(+m[1])%12; if(/pm/i.test(m[3])) h+=12;
+    return ev.date+'T'+String(h).padStart(2,'0')+':'+m[2]+':00-07:00'; // Phoenix, no DST
+  }
+  const venue={"@type":"EventVenue","name":"Stratus Event Center",
+    "address":{"@type":"PostalAddress","streetAddress":"4344 W Indian School Rd, Ste 32",
+      "addressLocality":"Phoenix","addressRegion":"AZ","postalCode":"85031","addressCountry":"US"}};
+  const data=evs.map(ev=>Object.assign({
+    "@context":"https://schema.org","@type":"MusicEvent","name":ev.title,
+    "startDate":toISO(ev),
+    "eventStatus":"https://schema.org/EventScheduled",
+    "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
+    "location":venue,
+    "organizer":{"@type":"Organization","name":"Stratus Event Center","url":SITE},
+    "performer":{"@type":"MusicGroup","name":ev.title.split(/,| w\//)[0].trim()},
+    "offers":{"@type":"Offer","url":ev.url||CONFIG.tickets,"availability":"https://schema.org/InStock"}
+  }, ev.flyer?{"image":SITE+ev.flyer}:{}));
+  const s=document.createElement('script'); s.type='application/ld+json';
+  s.textContent=JSON.stringify(data); document.head.appendChild(s);
+})();
 
 /* ---------- console signature ---------- */
 console.log('%cSTRATUS','font:800 22px Archivo,sans-serif;color:#fff');

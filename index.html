@@ -3,11 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stratus Event Center · Arizona's Premier Event Venue · Phoenix, AZ</title>
-<meta name="description" content="Stratus Event Center is Arizona's premier event venue in Phoenix. Weddings, quinceañeras, corporate galas, and live concerts, fully staffed with in-house sound, lighting, catering and bar. Tours 7 days a week.">
+<title>Stratus Event Center | Phoenix Event Venue for Weddings, Quinceañeras &amp; Concerts</title>
+<meta name="description" content="Stratus Event Center is a premier event venue in Phoenix, AZ for weddings, quinceañeras, corporate events and live concerts. In-house sound, lighting, catering and bar. Tours 7 days a week.">
+<link rel="canonical" href="https://cornishclaudebot-ux.github.io/stratus-event-center-site/">
 <link rel="icon" href="assets/logo.png">
-<meta property="og:title" content="Stratus Event Center · Arizona's Premier Event Venue">
-<meta property="og:description" content="A modern, fully-staffed venue for the moments that matter. Weddings, quinceañeras, galas &amp; live concerts in Phoenix, AZ.">
+<meta property="og:title" content="Stratus Event Center | Phoenix Event Venue">
+<meta property="og:description" content="A modern, fully-staffed venue for the moments that matter. Weddings, quinceañeras, corporate events &amp; live concerts in Phoenix, AZ.">
+<meta property="og:url" content="https://cornishclaudebot-ux.github.io/stratus-event-center-site/">
+<meta property="og:type" content="website">
 <meta property="og:image" content="https://cornishclaudebot-ux.github.io/stratus-event-center-site/assets/logo-square.jpg">
 <meta name="theme-color" content="#000000">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,6 +18,38 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EventVenue",
+  "name": "Stratus Event Center",
+  "alternateName": "Club Stratus",
+  "description": "Premier event venue in Phoenix, AZ for weddings, quinceañeras, corporate events and live concerts. Flexible main hall, built-in stage and dance floor, in-house sound and lighting, catering and licensed bar, on-site security and lit parking.",
+  "url": "https://cornishclaudebot-ux.github.io/stratus-event-center-site/",
+  "image": "https://cornishclaudebot-ux.github.io/stratus-event-center-site/assets/logo-square.jpg",
+  "telephone": "+16029087817",
+  "email": "Stratuseventcenteraz@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "4344 W Indian School Rd, Ste 32",
+    "addressLocality": "Phoenix",
+    "addressRegion": "AZ",
+    "postalCode": "85031",
+    "addressCountry": "US"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 33.4949, "longitude": -112.1531 },
+  "areaServed": ["Phoenix", "Glendale", "Peoria", "Avondale", "Surprise", "Litchfield Park"],
+  "sameAs": [
+    "https://www.instagram.com/stratuseventcenteraz/",
+    "https://www.facebook.com/StratusEventCenter/",
+    "https://www.yelp.com/biz/stratus-event-center-phoenix",
+    "https://www.bandsintown.com/v/10168441-club-stratus",
+    "https://www.ticketmaster.com/stratus-event-center-boletos-phoenix/venue/205291",
+    "https://www.stubhub.com/stratus-event-center-tickets/venue/102133143/",
+    "https://www.tickeri.com/venues/599fa07edbddfb5261ea6c7d"
+  ]
+}
+</script>
 </head>
 <body>
 <div id="nav-mount"></div>
@@ -24,7 +59,11 @@
 <section class="hero-stage" id="top">
   <div class="hero-pin">
     <img src="assets/logo.png" alt="Stratus Event Center" class="hero-logo">
-    <h1 class="hero-line"><span class="row">The Moments</span><span class="row">That Matter</span></h1>
+    <h1 class="hero-line" data-type-group>
+      <span class="sr-only">The Moments That Matter</span>
+      <span class="row" aria-hidden="true" data-type="THE MOMENTS"></span>
+      <span class="row" aria-hidden="true" data-type="THAT MATTER"></span>
+    </h1>
     <div class="hero-cta">
       <a href="events.html" class="pill pill-solid">Upcoming Events</a>
       <a href="book.html" class="pill pill-glass">Book a Tour</a>
@@ -41,7 +80,7 @@
 <section class="band-tight" id="whatson">
   <div class="wrap">
     <div class="row-head reveal">
-      <h2>Upcoming</h2>
+      <h2>Upcoming Events</h2>
       <a href="events.html" class="more">Events Calendar →</a>
     </div>
     <div class="hscroll" id="events-cards"></div>
@@ -54,7 +93,7 @@
     <div class="bgimg"><img src="assets/packed-original.jpg" alt="A packed night at Stratus Event Center" loading="lazy"></div>
     <div class="shade"></div>
     <div class="pcontent">
-      <h2>Events Calendar</h2>
+      <h2 data-type-group><span class="sr-only">Events Calendar</span><span aria-hidden="true" data-type="EVENTS CALENDAR"></span></h2>
       <p>Every show, straight from our box office, with tickets from official sellers.</p>
       <a href="events.html" class="pill pill-solid">See All Dates</a>
     </div>
@@ -64,7 +103,7 @@
 <!-- WHAT WE HOST -->
 <section id="spaces">
   <div class="mega-wrap">
-    <h2 class="mega reveal">What We Host</h2>
+    <h2 class="mega" data-type-group><span class="sr-only">What We Host</span><span aria-hidden="true" data-type="WHAT WE HOST"></span></h2>
     <p class="mega-sub reveal">From black-tie galas to the celebration your family has been planning for years, the room transforms to fit the moment.</p>
   </div>
   <div class="wrap">
@@ -100,11 +139,11 @@
 <!-- THE VENUE -->
 <section id="venue">
   <div class="mega-wrap">
-    <h2 class="mega reveal">The Venue</h2>
+    <h2 class="mega" data-type-group><span class="sr-only">The Venue</span><span aria-hidden="true" data-type="THE VENUE"></span></h2>
   </div>
   <div class="wrap">
     <div class="statement reveal" style="margin-bottom:11vh">
-      <p>A versatile indoor venue with the staging, sound, and service of a <b>production house</b>, and the warmth of a room designed for <b>people</b>. Clean, secure, on time, and <b>beautifully finished</b>.</p>
+      <p>A versatile indoor <b>Phoenix event venue</b> with the staging, sound, and service of a <b>production house</b>, and the warmth of a room designed for <b>people</b>. Clean, secure, on time, and <b>beautifully finished</b>.</p>
     </div>
     <div class="mgrid-3">
       <div class="amen reveal"><h4>Flexible Main Hall</h4><p>An open, transformable floor that scales from intimate seatings to large-scale productions.</p></div>
@@ -120,7 +159,7 @@
 <!-- VIDEO TOUR -->
 <section class="band" id="tour">
   <div class="mega-wrap" style="padding-top:0">
-    <h2 class="mega reveal">Step Inside</h2>
+    <h2 class="mega" data-type-group><span class="sr-only">Step Inside</span><span aria-hidden="true" data-type="STEP INSIDE"></span></h2>
     <p class="mega-sub reveal">A full walkthrough of the space, so you can picture your event before you ever set foot in the door.</p>
   </div>
   <div class="video-frame reveal">
@@ -135,7 +174,7 @@
 <!-- TICKETS -->
 <section id="tickets">
   <div class="mega-wrap">
-    <h2 class="mega reveal">Tickets</h2>
+    <h2 class="mega" data-type-group><span class="sr-only">Tickets</span><span aria-hidden="true" data-type="TICKETS"></span></h2>
     <p class="mega-sub reveal">Every show at Stratus is listed with official sellers. Buy on your platform of choice.</p>
   </div>
   <div class="wrap">

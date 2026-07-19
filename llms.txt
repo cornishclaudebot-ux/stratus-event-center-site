@@ -1,0 +1,30 @@
+# Stratus Event Center
+
+> Premier event venue in Phoenix, Arizona (also known as Club Stratus). A modern, fully-staffed indoor venue for weddings, quinceañeras, corporate events and live concerts, serving Phoenix and the West Valley: Glendale, Peoria, Avondale, Surprise and Litchfield Park.
+
+## Key facts
+- Address: 4344 W Indian School Rd, Ste 32, Phoenix, AZ 85031 (just off Indian School Rd, minutes from the I-10 and Loop 101)
+- Phone (call or text): (602) 908-7817
+- Email: Stratuseventcenteraz@gmail.com
+- Tours: by appointment, 7 days a week
+- Instagram: https://www.instagram.com/stratuseventcenteraz/
+- Facebook: https://www.facebook.com/StratusEventCenter/
+
+## What the venue offers
+- Flexible main hall that scales from intimate seated dinners to large-scale concerts
+- Built-in stage and dance floor
+- In-house professional sound and programmable lighting
+- Full-service catering and licensed bar; approved outside caterers welcome for cultural and specialty menus
+- Professional on-site security at every event
+- On-site lit parking
+
+## Events and tickets
+- Live event calendar (Club Stratus): https://www.bandsintown.com/v/10168441-club-stratus
+- Official ticket sellers: Bandsintown, Ticketón, Tickeri, Ticketmaster (https://www.ticketmaster.com/stratus-event-center-boletos-phoenix/venue/205291)
+- Verified resale: https://www.stubhub.com/stratus-event-center-tickets/venue/102133143/
+- Typical programming: norteño, reggaetón, duranguense and other Latin concerts, plus private events
+
+## Pages
+- Home: https://cornishclaudebot-ux.github.io/stratus-event-center-site/
+- Upcoming events: https://cornishclaudebot-ux.github.io/stratus-event-center-site/events.html
+- Book a tour: https://cornishclaudebot-ux.github.io/stratus-event-center-site/book.html
