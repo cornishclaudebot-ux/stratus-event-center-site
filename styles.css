@@ -163,6 +163,7 @@ section{position:relative}
 .ecard .cap .pill{margin-top:2px}
 
 /* ---------- full-bleed image panel with sticky center label ---------- */
+.panel-band{padding:8px 0}
 .panel{position:relative;margin:0 8px;border-radius:calc(var(--r) + 6px);overflow:hidden;min-height:78svh;
   display:flex;align-items:center;justify-content:center}
 .panel .bgimg{position:absolute;inset:0}
@@ -233,6 +234,7 @@ section{position:relative}
 .mgrid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 @media(max-width:900px){.mgrid-3{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.mgrid-3{grid-template-columns:1fr}}
+#venue{padding-bottom:13vh}
 .amen{border-top:1px solid var(--line);padding:22px 4px 30px}
 .amen h4{font-family:'Inter';font-weight:600;text-transform:none;letter-spacing:0;font-size:1.02rem;margin-bottom:7px}
 .amen p{color:var(--mut-2);font-size:.9rem;font-weight:300}
