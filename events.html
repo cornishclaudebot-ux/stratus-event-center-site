@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events · Stratus Event Center · Phoenix, AZ</title>
+<meta name="description" content="Every upcoming show and event at Stratus Event Center in Phoenix, AZ. Tickets on Bandsintown, Ticketón, Tickeri, Ticketmaster and StubHub.">
+<link rel="icon" href="assets/logo.png">
+<meta property="og:title" content="Events · Stratus Event Center">
+<meta property="og:description" content="Every upcoming show and event at Stratus Event Center in Phoenix, AZ.">
+<meta property="og:image" content="https://cornishclaudebot-ux.github.io/stratus-event-center-site/assets/logo-square.jpg">
+<meta name="theme-color" content="#000000">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="nav-mount"></div>
+
+<main>
+<section class="page-top">
+  <div class="wrap">
+    <h1 class="mega reveal">Events</h1>
+    <p class="mega-sub reveal">Every date, straight from our box office. Each show links to its official ticket page. Lineups update often, so follow Club Stratus on Bandsintown to never miss a drop.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:30px" class="reveal">
+      <a href="#" data-cfg="bit" target="_blank" rel="noopener" class="pill pill-solid">Follow on Bandsintown</a>
+      <a href="book.html" class="pill pill-glass">Host Your Own Event</a>
+    </div>
+  </div>
+</section>
+
+<section class="band-tight">
+  <div class="wrap">
+    <div class="list" id="events-list"></div>
+  </div>
+</section>
+
+<section class="band-tight" id="tickets">
+  <div class="wrap">
+    <div class="row-head reveal">
+      <h2>Buy on Your Platform</h2>
+    </div>
+    <div class="list">
+      <a class="trow reveal" data-cfg="bit" target="_blank" rel="noopener">
+        <div><div class="tname">Bandsintown</div><div class="trole">Live Calendar · Follow Club Stratus</div></div>
+        <span class="pill pill-glass pill-sm">Follow</span>
+      </a>
+      <a class="trow reveal" data-cfg="ticketon" target="_blank" rel="noopener">
+        <div><div class="tname">Ticketón</div><div class="trole">Official Seller</div></div>
+        <span class="pill pill-glass pill-sm">Shop</span>
+      </a>
+      <a class="trow reveal" data-cfg="tickeri" target="_blank" rel="noopener">
+        <div><div class="tname">Tickeri</div><div class="trole">Official Seller</div></div>
+        <span class="pill pill-glass pill-sm">Shop</span>
+      </a>
+      <a class="trow reveal" data-cfg="tm" target="_blank" rel="noopener">
+        <div><div class="tname">Ticketmaster</div><div class="trole">Seating &amp; Tickets</div></div>
+        <span class="pill pill-glass pill-sm">Open</span>
+      </a>
+      <a class="trow reveal" data-cfg="stubhub" target="_blank" rel="noopener">
+        <div><div class="tname">StubHub</div><div class="trole">Verified Resale</div></div>
+        <span class="pill pill-glass pill-sm">Browse</span>
+      </a>
+      <a class="trow reveal" data-cfg="shazam" target="_blank" rel="noopener">
+        <div><div class="tname">Shazam</div><div class="trole">Hear the Lineup</div></div>
+        <span class="pill pill-glass pill-sm">Listen</span>
+      </a>
+    </div>
+  </div>
+</section>
+</main>
+
+<div id="footer-mount"></div>
+<script src="app.js"></script>
+</body>
+</html>
