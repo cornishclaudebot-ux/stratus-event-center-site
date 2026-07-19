@@ -213,6 +213,14 @@ section{position:relative}
 .mgrid-2 .mcard{padding:36px 32px}
 @media(max-width:700px){.mgrid-2{grid-template-columns:1fr}}
 
+/* real event photo strip */
+.gallery3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.gcard .ph{aspect-ratio:3/4;border-radius:var(--r);overflow:hidden;background:var(--panel)}
+.gcard .ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.gcard:hover .ph img{transform:scale(1.04)}
+.gcard figcaption{padding:12px 4px 0;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mut-2)}
+@media(max-width:700px){.gallery3{grid-template-columns:1fr}.gcard .ph{aspect-ratio:4/3}}
+
 .mgrid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 @media(max-width:900px){.mgrid-3{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.mgrid-3{grid-template-columns:1fr}}
