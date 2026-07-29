@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<link rel="stylesheet" href="styles.css?v=10">
+<link rel="stylesheet" href="styles.css?v=11">
 <style>
 /* critical hero rules, inlined so a stale cached stylesheet can never
    un-hide the screen-reader text or shift the layout mid-typing */
@@ -181,6 +181,30 @@
         <figcaption>Touring productions</figcaption>
       </figure>
     </div>
+    <div class="row-head reveal" style="margin-top:9vh">
+      <h2>Signature Corporate Themes</h2>
+      <a href="book.html" class="more" data-quiz="corporate">Get a themed quote →</a>
+    </div>
+    <div class="statement reveal" style="margin-bottom:5vh">
+      <p>Pick a world and we build it inside Stratus: decor, staging, entertainment, and <b>full catering</b> for up to <b>2,000 guests</b>. Tap a theme to start your quote.</p>
+    </div>
+    <div class="mgrid-3">
+      <button class="amen-btn reveal" data-quiz-theme="Island Escape (Hawaiian luau)">
+        <h4>Island Escape</h4>
+        <p>A full Hawaiian luau: tropical decor, island food, tiki bars. We bring your team to Hawaii without the flight.</p>
+        <div class="go">Start a quote →</div>
+      </button>
+      <button class="amen-btn reveal d1" data-quiz-theme="Mini Mexico">
+        <h4>Mini Mexico</h4>
+        <p>A taste of the South: mariachi, street-food stations, and festive color from wall to wall.</p>
+        <div class="go">Start a quote →</div>
+      </button>
+      <button class="amen-btn reveal d2" data-quiz-theme="Wild West">
+        <h4>Wild West</h4>
+        <p>Hay bales, a mechanical bull, country artists, and western-style food. Boots welcome.</p>
+        <div class="go">Start a quote →</div>
+      </button>
+    </div>
   </div>
 </section>
 
@@ -255,6 +279,51 @@
   </div>
 </section>
 
+<!-- VIP TABLES -->
+<section id="vip" class="bg-brass">
+  <div class="mega-wrap">
+    <h2 class="mega" data-type-group><span class="sr-only">VIP Tables</span><span aria-hidden="true" data-type="VIP TABLES"></span></h2>
+    <p class="mega-sub reveal">Reserved couch sections front and center of the stage. Pick your table and we hold it for your night.</p>
+  </div>
+  <div class="wrap">
+    <div class="gallery3">
+      <figure class="gcard reveal">
+        <div class="ph"><img src="assets/vip-1.jpg" alt="VIP couch sections directly in front of the Stratus stage under the lighting ring" loading="lazy"></div>
+        <figcaption>Front and center of the stage</figcaption>
+      </figure>
+      <figure class="gcard reveal d1">
+        <div class="ph"><img src="assets/vip-2.jpg" alt="Plush VIP couches at the stage rail with the full room lit" loading="lazy"></div>
+        <figcaption>Couch seating at the stage rail</figcaption>
+      </figure>
+      <figure class="gcard reveal d2">
+        <div class="ph"><img src="assets/vip-3.jpg" alt="VIP seating beneath the circular lighting truss" loading="lazy"></div>
+        <figcaption>Under the lighting ring</figcaption>
+      </figure>
+    </div>
+    <div class="mgrid-3" style="margin-top:7vh">
+      <div class="amen reveal">
+        <div class="vip-price">$200</div>
+        <h4>Table for Four</h4>
+        <p>Your own reserved couch section for 4 guests.</p>
+      </div>
+      <div class="amen reveal d1">
+        <div class="vip-price">$300</div>
+        <h4>Table for Six</h4>
+        <p>Your own reserved couch section for 6 guests.</p>
+      </div>
+      <div class="amen reveal d2">
+        <div class="vip-price">$400</div>
+        <h4>VIP Table for 8 to 10</h4>
+        <p>Our biggest sections, front and center of the stage.</p>
+      </div>
+    </div>
+    <div class="reveal" style="margin-top:5vh;display:flex;gap:12px;flex-wrap:wrap">
+      <a href="book.html" data-book="vip" class="pill pill-solid">Reserve a Table</a>
+      <a data-cfg="tel" class="pill pill-glass"></a>
+    </div>
+  </div>
+</section>
+
 <!-- PARTNER + FOLLOW -->
 <section class="band bg-steel" id="partner">
   <div class="wrap">
@@ -309,7 +378,7 @@
 </main>
 
 <div id="footer-mount"></div>
-<script src="app.js?v=7"></script>
+<script src="app.js?v=8"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 /* Zero-lag map: the map never animates internally. It initializes lazily,

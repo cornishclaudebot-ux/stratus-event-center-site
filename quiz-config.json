@@ -1,0 +1,205 @@
+{
+  "version": 1,
+  "id": "stratus-intake-v1",
+  "updated": "2026-07-29",
+  "trigger": { "delayMs": 8000, "scrollPct": 35, "cooldownDays": 7 },
+  "intro": {
+    "kicker": "Plan Your Event",
+    "title": "Tell us what you're planning.",
+    "sub": "Six quick questions. Your answers go straight to our events team.",
+    "cta": "Start",
+    "dismiss": "Not right now"
+  },
+  "start": "q_who",
+  "steps": {
+    "q_who": {
+      "label": "About you",
+      "q": "Who is this event for?",
+      "type": "options",
+      "options": [
+        { "t": "My company. This is a corporate event.", "v": "Corporate", "next": "q_c_theme" },
+        { "t": "A client. I am an event planner.", "v": "Event planner", "next": "q_p_client" },
+        { "t": "A show I am promoting. I am a promoter or artist.", "v": "Promoter / artist", "next": "q_m_type" },
+        { "t": "A private celebration.", "v": "Private celebration", "next": "q_s_occasion" }
+      ]
+    },
+
+    "q_c_theme": {
+      "label": "Corporate", "branch": "corporate",
+      "q": "Pick the style of corporate event you want.",
+      "help": "We rebuild the venue around your theme. Full catering available for every option.",
+      "type": "options",
+      "options": [
+        { "t": "Island Escape. A Hawaiian luau: tropical decor, island food, tiki bars.", "v": "Island Escape (Hawaiian luau)", "next": "q_c_size" },
+        { "t": "Mini Mexico. A taste of the South: mariachi, street-food stations, festive decor.", "v": "Mini Mexico", "next": "q_c_size" },
+        { "t": "Wild West. Hay bales, a mechanical bull, country artists, western-style food.", "v": "Wild West", "next": "q_c_size" },
+        { "t": "Classic corporate. Clean stage, full A/V, awards-night polish.", "v": "Classic corporate", "next": "q_c_size" },
+        { "t": "Something custom. I will describe it in Special Requests.", "v": "Custom theme", "next": "q_c_size" }
+      ]
+    },
+    "q_c_size": {
+      "label": "Corporate", "branch": "corporate",
+      "q": "How many guests are you expecting?",
+      "help": "Our corporate capacity is 2,000 guests.",
+      "type": "options",
+      "options": [
+        { "t": "Under 250", "v": "Under 250", "next": "q_c_catering" },
+        { "t": "250 to 750", "v": "250-750", "next": "q_c_catering" },
+        { "t": "750 to 1,250", "v": "750-1,250", "next": "q_c_catering" },
+        { "t": "1,250 to 2,000", "v": "1,250-2,000", "next": "q_c_catering" }
+      ]
+    },
+    "q_c_catering": {
+      "label": "Corporate", "branch": "corporate",
+      "q": "Do you want us to handle the food?",
+      "type": "options",
+      "options": [
+        { "t": "Yes. Full catering, matched to the theme.", "v": "Full catering", "next": "q_c_budget" },
+        { "t": "Bar and appetizers only.", "v": "Bar + appetizers", "next": "q_c_budget" },
+        { "t": "No. We will bring a licensed caterer.", "v": "Outside caterer", "next": "q_c_budget" },
+        { "t": "Not sure yet.", "v": "Catering TBD", "next": "q_c_budget" }
+      ]
+    },
+    "q_c_budget": {
+      "label": "Corporate", "branch": "corporate",
+      "q": "What is your budget per guest?",
+      "type": "options",
+      "options": [
+        { "t": "$25 to $50 per guest", "v": "$25-50/head", "next": "q_date" },
+        { "t": "$50 to $100 per guest", "v": "$50-100/head", "next": "q_date" },
+        { "t": "$100 to $200 per guest", "v": "$100-200/head", "next": "q_date" },
+        { "t": "Over $200 per guest", "v": "$200+/head", "next": "q_date" },
+        { "t": "Not sure yet", "v": "Budget TBD", "next": "q_date" }
+      ]
+    },
+
+    "q_p_client": {
+      "label": "Planner", "branch": "planner",
+      "q": "Who is your client?",
+      "type": "options",
+      "options": [
+        { "t": "A company", "v": "Company client", "next": "q_p_size" },
+        { "t": "A private client", "v": "Private client", "next": "q_p_size" },
+        { "t": "A touring act or ticketed show", "v": "Touring/ticketed", "next": "q_p_size" }
+      ]
+    },
+    "q_p_size": {
+      "label": "Planner", "branch": "planner",
+      "q": "How many guests are you planning for?",
+      "help": "The room holds up to 2,250 guests.",
+      "type": "options",
+      "options": [
+        { "t": "Under 300", "v": "Under 300", "next": "q_p_needs" },
+        { "t": "300 to 1,000", "v": "300-1,000", "next": "q_p_needs" },
+        { "t": "1,000 to 2,250", "v": "1,000-2,250", "next": "q_p_needs" }
+      ]
+    },
+    "q_p_needs": {
+      "label": "Planner", "branch": "planner",
+      "q": "What do you need from us?",
+      "type": "options",
+      "options": [
+        { "t": "The space only. I handle everything else.", "v": "Raw space", "next": "q_p_budget" },
+        { "t": "Space plus sound and lighting.", "v": "Space + production", "next": "q_p_budget" },
+        { "t": "Turnkey. Space, production, catering, and staff.", "v": "Turnkey", "next": "q_p_budget" }
+      ]
+    },
+    "q_p_budget": {
+      "label": "Planner", "branch": "planner",
+      "q": "What is the budget per guest?",
+      "type": "options",
+      "options": [
+        { "t": "$25 to $50 per guest", "v": "$25-50/head", "next": "q_date" },
+        { "t": "$50 to $100 per guest", "v": "$50-100/head", "next": "q_date" },
+        { "t": "$100 to $200 per guest", "v": "$100-200/head", "next": "q_date" },
+        { "t": "Over $200 per guest", "v": "$200+/head", "next": "q_date" },
+        { "t": "Not sure yet", "v": "Budget TBD", "next": "q_date" }
+      ]
+    },
+
+    "q_m_type": {
+      "label": "Show", "branch": "promoter",
+      "q": "What kind of show is it?",
+      "type": "options",
+      "options": [
+        { "t": "Concert or DJ night", "v": "Concert/DJ", "next": "q_m_draw" },
+        { "t": "Comedy, boxing, wrestling, or another live show", "v": "Live show", "next": "q_m_draw" },
+        { "t": "Multi-day or festival style", "v": "Multi-day", "next": "q_m_draw" }
+      ]
+    },
+    "q_m_draw": {
+      "label": "Show", "branch": "promoter",
+      "q": "How many tickets do you expect to sell?",
+      "help": "The room holds up to 2,250.",
+      "type": "options",
+      "options": [
+        { "t": "Under 500", "v": "Under 500", "next": "q_date" },
+        { "t": "500 to 1,200", "v": "500-1,200", "next": "q_date" },
+        { "t": "1,200 to 2,250", "v": "1,200-2,250", "next": "q_date" }
+      ]
+    },
+
+    "q_s_occasion": {
+      "label": "Celebration", "branch": "social",
+      "q": "What are you celebrating?",
+      "type": "options",
+      "options": [
+        { "t": "A birthday or a milestone", "v": "Birthday/milestone", "next": "q_s_size" },
+        { "t": "A graduation or family celebration", "v": "Graduation/family", "next": "q_s_size" },
+        { "t": "A holiday or seasonal party", "v": "Holiday party", "next": "q_s_size" },
+        { "t": "Something else", "v": "Other celebration", "next": "q_s_size" }
+      ]
+    },
+    "q_s_size": {
+      "label": "Celebration", "branch": "social",
+      "q": "How many guests?",
+      "type": "options",
+      "options": [
+        { "t": "Under 150", "v": "Under 150", "next": "q_s_budget" },
+        { "t": "150 to 400", "v": "150-400", "next": "q_s_budget" },
+        { "t": "400 to 1,000", "v": "400-1,000", "next": "q_s_budget" },
+        { "t": "Over 1,000", "v": "1,000+", "next": "q_s_budget" }
+      ]
+    },
+    "q_s_budget": {
+      "label": "Celebration", "branch": "social",
+      "q": "What is your budget per guest?",
+      "type": "options",
+      "options": [
+        { "t": "$25 to $50 per guest", "v": "$25-50/head", "next": "q_date" },
+        { "t": "$50 to $100 per guest", "v": "$50-100/head", "next": "q_date" },
+        { "t": "Over $100 per guest", "v": "$100+/head", "next": "q_date" },
+        { "t": "Not sure yet", "v": "Budget TBD", "next": "q_date" }
+      ]
+    },
+
+    "q_date": {
+      "label": "Date",
+      "q": "What date do you want?",
+      "help": "Pick a date, or tap Flexible if you are still deciding.",
+      "type": "date",
+      "flexText": "My dates are flexible",
+      "next": "q_special"
+    },
+    "q_special": {
+      "label": "Special requests",
+      "q": "Any special requests?",
+      "help": "Be specific. Theme details, production, catering, layout, anything. We build the venue around what you tell us here.",
+      "type": "text",
+      "placeholder": "Type your special requests, or skip.",
+      "optional": true,
+      "onlyBranches": null,
+      "next": "q_contact"
+    },
+    "q_contact": {
+      "label": "Contact",
+      "q": "Where do we send your quote?",
+      "type": "contact",
+      "next": null
+    }
+  },
+  "outro": {
+    "title": "Almost there, hit send.",
+    "sub": "We opened a pre-filled email to our events team. Press send in your mail app and we'll come back with availability and a quote."
+  }
+}

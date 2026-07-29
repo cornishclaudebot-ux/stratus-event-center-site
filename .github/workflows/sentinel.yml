@@ -1,0 +1,67 @@
+name: Site sentinel (cloud-side)
+
+# The Mac (residential IP + Camoufox stealth browser) is the only thing
+# that can pull the Bandsintown venue calendar — Cloudflare 403s datacenter
+# IPs, so there is NO opportunistic cloud pull here (unlike the DFL repo).
+# What the cloud CAN do reliably: watch the live site's pipeline heartbeat
+# and EMAIL the owner if the Mac-side updater has been dead for >30h.
+# Alerting must not live on the machine whose death it reports.
+on:
+  schedule:
+    - cron: "23 * * * *" # hourly
+  workflow_dispatch:
+    inputs:
+      test_alert:
+        description: "Force the stale-alert email path (subject marked TEST)"
+        required: false
+        default: "no"
+
+jobs:
+  sentinel:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Heartbeat check + stale alert
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+        run: |
+          HB_URL="https://cornishclaudebot-ux.github.io/stratus-event-center-site/heartbeat.txt"
+          read_hb() { curl -s -m 20 "$HB_URL" || true; }
+          check() { python3 -c "
+          import sys, datetime
+          hb = sys.argv[1].strip()
+          try:
+              t = datetime.datetime.fromisoformat(hb.replace('Z', '+00:00'))
+              age_h = (datetime.datetime.now(datetime.timezone.utc) - t).total_seconds() / 3600
+              print(f'heartbeat age: {age_h:.1f}h', file=sys.stderr)
+              sys.exit(0 if age_h <= 30 else 1)
+          except Exception as e:
+              print('heartbeat unreadable:', e, file=sys.stderr)
+              sys.exit(1)" "$1"; }
+          if [ "${{ github.event.inputs.test_alert }}" = "yes" ]; then
+            echo "TEST MODE: proving the alert path from this runner"
+            resp=$(curl -s -w "\n%{http_code}" -X POST "https://api.resend.com/emails" \
+              -H "Authorization: Bearer $RESEND_API_KEY" -H "Content-Type: application/json" \
+              -d '{"from":"Stratus Cloud Sentinel <rentals@apexaz.ai>","to":["dartyforlife@gmail.com"],"subject":"TEST: Stratus cloud sentinel alert path works (ignore)","text":"This is a one-time test proving the cloud sentinel can email you from GitHub if the Mac-side Stratus event sync ever dies. No action needed."}')
+            code=$(echo "$resp" | tail -1)
+            echo "resend status: $code"; echo "resend body: $(echo "$resp" | sed '$d' | head -c 300)"
+            [ "$code" = "200" ] || exit 1
+            exit 0
+          fi
+          hb=$(read_hb)
+          if ! check "$hb"; then
+            # a mid-deploy read can race a fresh push - re-check after 90s
+            echo "first read looked stale/unreadable, retrying in 90s"
+            sleep 90
+            hb=$(read_hb)
+            if check "$hb"; then echo "recovered on retry - all good"; exit 0; fi
+            echo "STALE confirmed - alerting owner"
+            resp=$(curl -s -w "\n%{http_code}" -X POST "https://api.resend.com/emails" \
+              -H "Authorization: Bearer $RESEND_API_KEY" -H "Content-Type: application/json" \
+              -d '{"from":"Stratus Cloud Sentinel <rentals@apexaz.ai>","to":["dartyforlife@gmail.com"],"subject":"Stratus site updates are STALE (Mac updater down)","text":"The Stratus site data heartbeat is over 30 hours old.\n\nThe Mac that pulls the Bandsintown calendar has probably been asleep or offline. Open it, plug it in, and the updater self-heals within 5 minutes.\n\nThe site itself is still up, serving the last good events."}')
+            code=$(echo "$resp" | tail -1)
+            echo "resend status: $code"
+            echo "resend body: $(echo "$resp" | sed '$d' | head -c 300)"
+            [ "$code" = "200" ] || exit 1
+          else
+            echo "heartbeat healthy"
+          fi

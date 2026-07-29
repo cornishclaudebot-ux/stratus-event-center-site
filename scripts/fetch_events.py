@@ -77,7 +77,7 @@ OVERRIDES = {
 def fetch_html():
     from scrapling.fetchers import StealthyFetcher
     page = StealthyFetcher.fetch(
-        VENUE_URL, headless=True, solve_cloudflare=True, timeout=90000)
+        VENUE_URL, headless=True, solve_cloudflare=True, timeout=120000)
     for attr in ("html_content", "body"):
         html = getattr(page, attr, None)
         if html:
@@ -190,8 +190,18 @@ def enhance_flyer(ev):
 
 def main():
     push = "--no-push" not in sys.argv
-    html = fetch_html()
-    evs = parse(html)
+    evs = []
+    for attempt in range(2):
+        html = fetch_html()
+        evs = parse(html)
+        if evs:
+            break
+        # a bare 403 (no CF challenge to solve) or a shuffled page usually
+        # clears on a fresh browser session; one in-run retry, then let the
+        # 5-minute scheduler and its backoff take over
+        if attempt == 0:
+            print("No events parsed on first attempt; retrying in 25s")
+            import time; time.sleep(25)
     if not evs:
         print("No events parsed; keeping existing events.json")
         return 1

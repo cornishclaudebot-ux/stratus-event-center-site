@@ -20,6 +20,7 @@ const CONFIG = {
     corporate: "Stratuseventcenteraz@gmail.com",
     concert:   "Stratuseventcenteraz@gmail.com",
     shows:     "Stratuseventcenteraz@gmail.com",
+    vip:       "Stratuseventcenteraz@gmail.com",
     default:   "Stratuseventcenteraz@gmail.com"
   },
   // --- SOCIALS / REVIEWS (REAL) ---
@@ -56,7 +57,9 @@ const EVENT_TYPES = [
   {key:"concert", title:"Live Music & Concerts",
    desc:"A proper stage, real sound, and capacity for a crowd. Ticketed shows and private performances, fully managed."},
   {key:"shows", title:"Shows & Entertainment",
-   desc:"Comedians, magicians, boxing matches, wrestling nights, and touring acts. If it draws a crowd, we can stage it."}
+   desc:"Comedians, magicians, boxing matches, wrestling nights, and touring acts. If it draws a crowd, we can stage it."},
+  {key:"vip", title:"VIP Table Reservation",
+   desc:"Reserved couch sections front and center of the stage: $200 for four, $300 for six, $400 for eight to ten."}
 ];
 
 /* ---- icons ---- */
@@ -77,6 +80,7 @@ const NAV = [
   {h:'events.html', t:'Events'},
   {h:`${home}#venue`, t:'The Venue'},
   {h:`${home}#tickets`, t:'Tickets'},
+  {h:`${home}#vip`, t:'VIP Tables'},
   {h:'book.html', t:'Book a Tour'},
   {h:'book.html#faq', t:'FAQ'}
 ];
@@ -510,3 +514,215 @@ console.log('%cSTRATUS','font:800 22px Archivo,sans-serif;color:#fff');
 console.log('%cArizona\'s premier event center','color:#C9A24B');
 
 window.STRATUS = { CONFIG, EVENTS, EVENT_TYPES, fmtDate };
+
+/* ============================================================
+   EVENT QUIZ — adaptive intake popup
+   Config lives in quiz-config.json (versioned separately so a
+   future optimizer can rewrite questions without touching code).
+   Each answer decides the next question via its `next` pointer.
+   Submit = pre-filled email to the Stratus inbox, same delivery
+   mechanism as the booking modal. Only a dismissed/submitted
+   timestamp is stored locally — no answers persist in the browser.
+   ============================================================ */
+(function(){
+  const LSK='stratusQuizV1';
+  const store=()=>{try{return JSON.parse(localStorage.getItem(LSK)||'{}')}catch(e){return{}}};
+  const save=p=>{try{localStorage.setItem(LSK,JSON.stringify(Object.assign(store(),p)))}catch(e){}};
+  let CFG=null,cur=null,hist=[],answers=[],opened=false,autoFired=false;
+
+  fetch('quiz-config.json?t='+Date.now())
+    .then(r=>r.ok?r.json():null).catch(()=>null)
+    .then(j=>{ if(!j||!j.steps) return; CFG=j; build(); arm(); });
+
+  function build(){
+    const chip=document.createElement('button');
+    chip.className='qz-launch'; chip.id='qzLaunch'; chip.textContent='Plan Your Event';
+    const ov=document.createElement('div');
+    ov.className='qz-ov'; ov.id='qzOv'; ov.setAttribute('role','dialog'); ov.setAttribute('aria-modal','true');
+    ov.innerHTML=`<div class="qz">
+      <button class="qz-close" id="qzClose" aria-label="Close">✕</button>
+      <div class="qz-kick">${CFG.intro.kicker}</div>
+      <div id="qzBody"></div>
+      <div class="qz-foot"><button class="qz-back hide" id="qzBack">← Back</button><span class="qz-step" id="qzStep"></span></div>
+    </div>`;
+    document.body.append(chip,ov);
+    chip.addEventListener('click',()=>open());
+    document.getElementById('qzClose').addEventListener('click',close);
+    ov.addEventListener('click',e=>{ if(e.target===ov) close(); });
+    addEventListener('keydown',e=>{ if(e.key==='Escape'&&ov.classList.contains('open')) close(); });
+    document.getElementById('qzBack').addEventListener('click',back);
+    // theme cards + corporate links anywhere on the page
+    document.querySelectorAll('[data-quiz-theme]').forEach(el=>el.addEventListener('click',e=>{
+      e.preventDefault(); open({theme:el.getAttribute('data-quiz-theme')});
+    }));
+    document.querySelectorAll('[data-quiz]').forEach(el=>el.addEventListener('click',e=>{
+      e.preventDefault(); open({branch:el.getAttribute('data-quiz')});
+    }));
+  }
+
+  function arm(){
+    const s=store();
+    if(s.submittedAt) return; // they already sent one, stay quiet
+    const cd=(CFG.trigger.cooldownDays||7)*864e5;
+    if(s.dismissedAt && Date.now()-s.dismissedAt<cd) return;
+    const fire=()=>{ if(!autoFired&&!opened){ autoFired=true; open(); } };
+    setTimeout(fire,CFG.trigger.delayMs||8000);
+    addEventListener('scroll',function onS(){
+      const doc=document.documentElement;
+      const pct=100*scrollY/Math.max(1,doc.scrollHeight-innerHeight);
+      if(pct>=(CFG.trigger.scrollPct||35)){ removeEventListener('scroll',onS); fire(); }
+    },{passive:true});
+  }
+
+  function open(preset){
+    if(!CFG) return;
+    opened=true; hist=[]; answers=[]; cur=null;
+    const ov=document.getElementById('qzOv');
+    ov.classList.add('open'); document.body.style.overflow='hidden';
+    document.getElementById('qzLaunch').classList.add('hide');
+    if(preset&&preset.theme){
+      answers=[{q:'Who is this event for?',v:'Corporate'},{q:'Event style',v:preset.theme}];
+      show('q_c_size');
+    }else if(preset&&preset.branch==='corporate'){
+      answers=[{q:'Who is this event for?',v:'Corporate'}];
+      show('q_c_theme');
+    }else{
+      intro();
+    }
+  }
+  function close(){
+    const ov=document.getElementById('qzOv');
+    ov.classList.remove('open'); document.body.style.overflow='';
+    document.getElementById('qzLaunch').classList.remove('hide');
+    if(!store().submittedAt) save({dismissedAt:Date.now()});
+    opened=false;
+  }
+
+  function remaining(id){ // steps left from here, following first-option pointers
+    let n=0,s=id,guard=0;
+    while(s&&guard++<20){
+      n++;
+      const st=CFG.steps[s]; if(!st) break;
+      s=st.next||(st.options&&st.options[0]&&st.options[0].next)||null;
+    }
+    return n;
+  }
+  function stepMeta(){
+    const pos=answers.length+1,total=answers.length+remaining(cur);
+    document.getElementById('qzStep').textContent=cur?`Question ${pos} of ${total}`:'';
+    document.getElementById('qzBack').classList.toggle('hide',!cur||hist.length===0&&answers.length<=quizPresetDepth());
+  }
+  function quizPresetDepth(){ return 0; } // history only tracks in-quiz moves
+
+  function intro(){
+    cur=null;
+    body(`<div class="qz-title">${CFG.intro.title}</div>
+      <p class="qz-help">${CFG.intro.sub}</p>
+      <div class="qz-row">
+        <button class="pill pill-solid" id="qzStart">${CFG.intro.cta}</button>
+        <button class="qz-skip" id="qzNo">${CFG.intro.dismiss}</button>
+      </div>`);
+    document.getElementById('qzStep').textContent='';
+    document.getElementById('qzBack').classList.add('hide');
+    document.getElementById('qzStart').addEventListener('click',()=>show(CFG.start));
+    document.getElementById('qzNo').addEventListener('click',close);
+  }
+
+  function show(id){
+    const st=CFG.steps[id]; if(!st){ finish(); return; }
+    cur=id;
+    let html=`<div class="qz-q">${st.q}</div>`;
+    if(st.help) html+=`<p class="qz-help">${st.help}</p>`;
+    if(st.type==='options'){
+      html+=`<div class="qz-opts">${st.options.map((o,i)=>{
+        const parts=o.t.split('. ');
+        const head=parts.shift(), rest=parts.join('. ');
+        return `<button class="qz-opt" data-i="${i}"><b>${head}${rest?'.':''}</b>${rest?`<small>${rest}</small>`:''}</button>`;
+      }).join('')}</div>`;
+    }else if(st.type==='date'){
+      html+=`<div class="qz-row">
+        <input type="date" id="qzDate" min="${new Date().toISOString().slice(0,10)}">
+        <button class="pill pill-glass" id="qzFlex">${st.flexText}</button>
+      </div>
+      <div class="qz-row"><button class="pill pill-solid" id="qzNext">Continue</button></div>
+      <div class="qz-err" id="qzErr">Pick a date or tap "${st.flexText}".</div>`;
+    }else if(st.type==='text'){
+      html+=`<textarea id="qzText" placeholder="${st.placeholder||''}"></textarea>
+      <div class="qz-row">
+        <button class="pill pill-solid" id="qzNext">Continue</button>
+        ${st.optional?`<button class="qz-skip" id="qzSkip">Skip</button>`:''}
+      </div>`;
+    }else if(st.type==='contact'){
+      html+=`
+      <div class="field-row">
+        <div class="field"><label>Your Name</label><input type="text" id="qzName" required placeholder="First &amp; last"></div>
+        <div class="field"><label>Phone</label><input type="tel" id="qzPhone" placeholder="(602) 000-0000"></div>
+      </div>
+      <div class="field"><label>Email</label><input type="email" id="qzEmail" required placeholder="you@email.com"></div>
+      <div class="qz-row"><button class="pill pill-solid" style="width:100%" id="qzSend">Send My Request</button></div>
+      <div class="qz-err" id="qzErr">Add your name and a valid email so we can reply.</div>`;
+    }
+    body(html); stepMeta();
+    if(st.type==='options'){
+      document.querySelectorAll('.qz-opt').forEach(btn=>btn.addEventListener('click',()=>{
+        const o=st.options[+btn.dataset.i];
+        advance(st,o.v,o.next);
+      }));
+    }else if(st.type==='date'){
+      document.getElementById('qzFlex').addEventListener('click',()=>advance(st,'Flexible',st.next));
+      document.getElementById('qzNext').addEventListener('click',()=>{
+        const v=document.getElementById('qzDate').value;
+        if(!v){ document.getElementById('qzErr').classList.add('show'); return; }
+        advance(st,v,st.next);
+      });
+    }else if(st.type==='text'){
+      document.getElementById('qzNext').addEventListener('click',()=>{
+        const v=document.getElementById('qzText').value.trim();
+        advance(st,v||'None',st.next);
+      });
+      const sk=document.getElementById('qzSkip');
+      if(sk) sk.addEventListener('click',()=>advance(st,'None',st.next));
+    }else if(st.type==='contact'){
+      document.getElementById('qzSend').addEventListener('click',submit);
+    }
+    const panel=document.querySelector('.qz'); if(panel) panel.scrollTop=0;
+  }
+
+  function advance(st,val,next){
+    hist.push(cur);
+    answers.push({q:st.q,v:val});
+    if(next) show(next); else finish();
+  }
+  function back(){
+    if(!hist.length) return;
+    answers.pop();
+    show(hist.pop());
+  }
+
+  function submit(){
+    const name=document.getElementById('qzName').value.trim();
+    const email=document.getElementById('qzEmail').value.trim();
+    const phone=document.getElementById('qzPhone').value.trim();
+    if(!name||!/.+@.+\..+/.test(email)){ document.getElementById('qzErr').classList.add('show'); return; }
+    const who=(answers[0]&&answers[0].v)||'Event';
+    const subject=`Stratus Event Center: ${who} Event Inquiry from ${name}`;
+    const lines=answers.map(a=>`${a.q}\n  ${a.v}`).join('\n');
+    const bodyTxt=`${lines}\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone||'Not given'}\n\nSent from the Stratus Event Center website (event quiz)`;
+    location.href=`mailto:${CONFIG.emails.default}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyTxt)}`;
+    save({submittedAt:Date.now()});
+    finish(true);
+  }
+
+  function finish(sent){
+    cur=null;
+    body(`<div class="qz-title">${CFG.outro.title}</div>
+      <p class="qz-help">${CFG.outro.sub}</p>
+      <p class="qz-help">Nothing opened? Email <a href="mailto:${CONFIG.emails.default}" style="color:#fff">${CONFIG.emails.default}</a> or call or text <a href="tel:${CONFIG.phoneRaw}" style="color:#fff">${CONFIG.phone}</a>.</p>
+      <div class="qz-row"><button class="pill pill-glass" id="qzDone">Done</button></div>`);
+    document.getElementById('qzStep').textContent='';
+    document.getElementById('qzBack').classList.add('hide');
+    document.getElementById('qzDone').addEventListener('click',close);
+  }
+
+  function body(html){ document.getElementById('qzBody').innerHTML=html; }
+})();
