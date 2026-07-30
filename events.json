@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-24T09:56:25",
+  "updated": "2026-07-30T11:01:32",
   "source": "https://www.bandsintown.com/v/10168441-club-stratus",
   "events": [
     {
@@ -35,6 +35,18 @@
         "Los Príncipes"
       ],
       "ages": "All ages"
+    },
+    {
+      "date": "2026-10-20",
+      "time": "6:00 PM",
+      "title": "Carlos Rivas",
+      "tag": null,
+      "flyer": "assets/flyers/2026-10-20-d61e5697094c.jpg",
+      "url": "https://www.bandsintown.com/e/1039816686-carlos-rivas-at-club-stratus?came_from=209",
+      "desc": "Carlos Rivas live at Stratus Event Center in Phoenix.",
+      "lineup": [
+        "Carlos Rivas"
+      ]
     },
     {
       "date": "2026-12-04",
