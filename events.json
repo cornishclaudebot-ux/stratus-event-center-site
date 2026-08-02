@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-31T14:06:59",
+  "updated": "2026-08-02T12:15:07",
   "source": "https://www.bandsintown.com/v/10168441-club-stratus",
   "events": [
     {
@@ -22,6 +22,18 @@
     {
       "date": "2026-08-22",
       "time": "9:00 PM",
+      "title": "Alvaro Granobles",
+      "tag": null,
+      "flyer": null,
+      "url": "https://www.bandsintown.com/e/1039826161-alvaro-granobles-at-club-stratus?came_from=209",
+      "desc": "Alvaro Granobles live at Stratus Event Center in Phoenix.",
+      "lineup": [
+        "Alvaro Granobles"
+      ]
+    },
+    {
+      "date": "2026-08-22",
+      "time": "9:00 PM",
       "title": "Adolescent's Orquesta",
       "tag": null,
       "flyer": "assets/flyers/2026-08-22-20df3cd3de10.jpg",
@@ -32,15 +44,15 @@
       ]
     },
     {
-      "date": "2026-08-22",
-      "time": "9:00 PM",
-      "title": "Alvaro Granobles",
+      "date": "2026-08-28",
+      "time": "8:00 PM",
+      "title": "Voz de Mando",
       "tag": null,
-      "flyer": null,
-      "url": "https://www.bandsintown.com/e/1039826161-alvaro-granobles-at-club-stratus?came_from=209",
-      "desc": "Alvaro Granobles live at Stratus Event Center in Phoenix.",
+      "flyer": "assets/flyers/2026-08-28-5d350f810e9d.jpg",
+      "url": "https://www.bandsintown.com/e/1039842121-voz-de-mando-at-club-stratus?came_from=209",
+      "desc": "Voz de Mando live at Stratus Event Center in Phoenix.",
       "lineup": [
-        "Alvaro Granobles"
+        "Voz de Mando"
       ]
     },
     {
