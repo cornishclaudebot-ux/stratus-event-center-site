@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stratus Event Center | Phoenix Venue for Corporate Events &amp; Concerts</title>
-<meta name="description" content="Stratus Event Center is a large event venue in Phoenix, AZ with capacity for up to 2,250 guests, specializing in corporate events, live music, concerts and live entertainment. In-house sound, lighting, catering and bar. Tours 7 days a week.">
+<title>Stratus Event Center | Corporate Event Venue &amp; Concert Hall in Phoenix, AZ</title>
+<meta name="description" content="Stratus Event Center is a corporate event venue and 2,250-capacity concert hall in Phoenix, AZ, serving Glendale, Scottsdale and the Valley. Corporate productions, live music, full-service catering and bar, in-house sound and lighting. Tours 7 days a week.">
 <link rel="canonical" href="https://cornishclaudebot-ux.github.io/stratus-event-center-site/">
 <link rel="icon" href="assets/logo.png">
-<meta property="og:title" content="Stratus Event Center | Phoenix Event Venue">
-<meta property="og:description" content="A modern, fully-staffed venue specializing in corporate events, live music &amp; concerts in Phoenix, AZ.">
+<meta property="og:title" content="Stratus Event Center | Corporate Event Venue &amp; Concert Hall in Phoenix">
+<meta property="og:description" content="Corporate productions, concerts and live entertainment for up to 2,250 guests. Full catering and bar, in-house sound and lighting. Serving Phoenix, Glendale &amp; Scottsdale.">
 <meta property="og:url" content="https://cornishclaudebot-ux.github.io/stratus-event-center-site/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://cornishclaudebot-ux.github.io/stratus-event-center-site/assets/logo-square.jpg">
@@ -28,10 +28,10 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "EventVenue",
+  "@type": ["EventVenue", "MusicVenue"],
   "name": "Stratus Event Center",
   "alternateName": "Club Stratus",
-  "description": "Premier event venue in Phoenix, AZ specializing in corporate events, live music and concerts. Flexible main hall, built-in stage and dance floor, in-house sound and lighting, catering and licensed bar, on-site security and lit parking.",
+  "description": "Corporate event venue and concert hall in Phoenix, AZ specializing in corporate productions, live music and entertainment. Flexible main hall for up to 2,250 guests, built-in stage and dance floor, in-house sound and lighting, full-service catering and licensed bar, on-site security and lit parking.",
   "url": "https://cornishclaudebot-ux.github.io/stratus-event-center-site/",
   "image": "https://cornishclaudebot-ux.github.io/stratus-event-center-site/assets/logo-square.jpg",
   "telephone": "+16029087817",
@@ -46,7 +46,15 @@
   },
   "geo": { "@type": "GeoCoordinates", "latitude": 33.4949, "longitude": -112.1531 },
   "maximumAttendeeCapacity": 2250,
-  "areaServed": ["Phoenix", "Glendale", "Peoria", "Avondale", "Surprise", "Litchfield Park"],
+  "areaServed": ["Phoenix", "Glendale", "Scottsdale", "Peoria", "Avondale", "Surprise", "Litchfield Park"],
+  "amenityFeature": [
+    { "@type": "LocationFeatureSpecification", "name": "Full-service catering and licensed bar", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "In-house professional sound and programmable lighting", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Built-in stage and dance floor", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "On-site lit parking", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Professional on-site security", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "VIP couch sections at the stage", "value": true }
+  ],
   "sameAs": [
     "https://www.instagram.com/stratuseventcenteraz/",
     "https://www.facebook.com/StratusEventCenter/",
@@ -378,7 +386,7 @@
 </main>
 
 <div id="footer-mount"></div>
-<script src="app.js?v=8"></script>
+<script src="app.js?v=9"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 /* Zero-lag map: the map never animates internally. It initializes lazily,

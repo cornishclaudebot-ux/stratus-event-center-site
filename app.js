@@ -78,6 +78,8 @@ const home = isHome ? '' : 'index.html';
 const NAV = [
   {h:'index.html', t:'Home'},
   {h:'events.html', t:'Events'},
+  {h:'corporate-events.html', t:'Corporate Events'},
+  {h:'concert-hall.html', t:'Concert Hall'},
   {h:`${home}#venue`, t:'The Venue'},
   {h:`${home}#tickets`, t:'Tickets'},
   {h:`${home}#vip`, t:'VIP Tables'},
@@ -118,6 +120,8 @@ function buildFooter(){
       <img src="assets/logo.png" alt="Stratus Event Center">
       <div class="foot-links">
         <a href="events.html">Events</a>
+        <a href="corporate-events.html">Corporate Events</a>
+        <a href="concert-hall.html">Concert Hall</a>
         <a href="${home}#venue">The Venue</a>
         <a href="${home}#tickets">Tickets</a>
         <a href="book.html">Book a Tour</a>
@@ -128,11 +132,11 @@ function buildFooter(){
         <a href="${CONFIG.fb}" target="_blank" rel="noopener" aria-label="Facebook">${IC.fb}</a>
       </div>
       <div class="foot-legal">
-        Arizona's premier event venue for up to 2,250 guests, specializing in corporate events, live music, concerts and live entertainment.<br>
+        Arizona's premier corporate event venue and concert hall for up to 2,250 guests: corporate productions, live music and entertainment with full-service catering.<br>
         <a href="${CONFIG.mapGoogle}" target="_blank" rel="noopener">4344 W Indian School Rd, Ste 32, Phoenix, AZ 85031</a>
         · <a href="tel:${CONFIG.phoneRaw}">${CONFIG.phone}</a><br>
         © 2026 Stratus Event Center. All rights reserved.<br>
-        Proudly serving Phoenix &amp; the West Valley: Glendale, Peoria, Avondale, Surprise &amp; Litchfield Park.
+        Proudly serving the Valley: Phoenix, Glendale, Scottsdale, Peoria, Avondale, Surprise &amp; Litchfield Park.
       </div>
     </div>
   </footer>`;
