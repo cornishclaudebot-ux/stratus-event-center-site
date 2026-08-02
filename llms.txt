@@ -16,7 +16,10 @@
 - Live entertainment programming: comedy nights, magic shows, boxing matches, wrestling nights and touring acts
 - Built-in stage and dance floor
 - In-house professional sound and programmable lighting
-- Full-service catering and licensed bar; approved outside caterers welcome for cultural and specialty menus
+- Authentic Mexican catering done in-house, plus a licensed bar; the venue also works with any outside food vendor a client prefers
+- DJs, bandas and mariachi bands booked directly through the venue for corporate and private events
+- Busing and shuttle transportation for corporate groups, arranged through the venue
+- Experiences are customizable end to end (decor, entertainment, menus, transport), priced per quote and request
 - Professional on-site security at every event
 - On-site lit parking
 - VIP tables: reserved couch sections front and center of the stage ($200 table for 4, $300 table for 6, $400 VIP table for 8 to 10)
@@ -29,8 +32,8 @@
 - Typical programming: norteño, reggaetón, duranguense and other Latin concerts, plus private events
 
 ## Pages
-- Home: https://cornishclaudebot-ux.github.io/stratus-event-center-site/
-- Upcoming events: https://cornishclaudebot-ux.github.io/stratus-event-center-site/events.html
-- Corporate event venue (corporate productions, catering, themed company events): https://cornishclaudebot-ux.github.io/stratus-event-center-site/corporate-events.html
-- Concert hall and live music venue (capacity, tickets, VIP tables, show booking): https://cornishclaudebot-ux.github.io/stratus-event-center-site/concert-hall.html
-- Book a tour: https://cornishclaudebot-ux.github.io/stratus-event-center-site/book.html
+- Home: https://stratuseventcenteraz.com/
+- Upcoming events: https://stratuseventcenteraz.com/events.html
+- Corporate event venue (corporate productions, catering, themed company events): https://stratuseventcenteraz.com/corporate-events.html
+- Concert hall and live music venue (capacity, tickets, VIP tables, show booking): https://stratuseventcenteraz.com/concert-hall.html
+- Book a tour: https://stratuseventcenteraz.com/book.html

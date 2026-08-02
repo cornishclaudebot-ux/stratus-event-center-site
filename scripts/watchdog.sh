@@ -11,7 +11,7 @@
 # ============================================================
 set -uo pipefail
 export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
-SITE="https://cornishclaudebot-ux.github.io/stratus-event-center-site"
+SITE="https://stratuseventcenteraz.com"
 ALERT_TO="dartyforlife@gmail.com"
 ALERT_FROM="Stratus Site Watchdog <rentals@apexaz.ai>"
 KEY=$(grep '^RESEND_API_KEY=' /Users/aidencornish/apex-audit-engine/.env 2>/dev/null | cut -d= -f2)

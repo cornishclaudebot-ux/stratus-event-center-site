@@ -24,7 +24,7 @@ jobs:
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
         run: |
-          HB_URL="https://cornishclaudebot-ux.github.io/stratus-event-center-site/heartbeat.txt"
+          HB_URL="https://stratuseventcenteraz.com/heartbeat.txt"
           read_hb() { curl -s -m 20 "$HB_URL" || true; }
           check() { python3 -c "
           import sys, datetime

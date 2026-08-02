@@ -479,7 +479,7 @@ setInterval(fxTick,500); // safety net for in-app browsers that swallow scroll e
 function injectEventSchema(){
   document.getElementById('event-schema')?.remove();
   const evs=upcoming(); if(!evs.length) return;
-  const SITE='https://cornishclaudebot-ux.github.io/stratus-event-center-site/';
+  const SITE='https://stratuseventcenteraz.com/';
   function toISO(ev){
     const m=ev.time.match(/(\d+):(\d+)\s*(AM|PM)/i); if(!m) return ev.date;
     let h=(+m[1])%12; if(/pm/i.test(m[3])) h+=12;
