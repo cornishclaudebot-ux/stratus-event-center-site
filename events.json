@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-02T12:15:07",
+  "updated": "2026-08-03T10:12:49",
   "source": "https://www.bandsintown.com/v/10168441-club-stratus",
   "events": [
     {
@@ -22,18 +22,6 @@
     {
       "date": "2026-08-22",
       "time": "9:00 PM",
-      "title": "Alvaro Granobles",
-      "tag": null,
-      "flyer": null,
-      "url": "https://www.bandsintown.com/e/1039826161-alvaro-granobles-at-club-stratus?came_from=209",
-      "desc": "Alvaro Granobles live at Stratus Event Center in Phoenix.",
-      "lineup": [
-        "Alvaro Granobles"
-      ]
-    },
-    {
-      "date": "2026-08-22",
-      "time": "9:00 PM",
       "title": "Adolescent's Orquesta",
       "tag": null,
       "flyer": "assets/flyers/2026-08-22-20df3cd3de10.jpg",
@@ -41,6 +29,18 @@
       "desc": "Adolescent's Orquesta live at Stratus Event Center in Phoenix.",
       "lineup": [
         "Adolescent's Orquesta"
+      ]
+    },
+    {
+      "date": "2026-08-22",
+      "time": "9:00 PM",
+      "title": "Alvaro Granobles",
+      "tag": null,
+      "flyer": null,
+      "url": "https://www.bandsintown.com/e/1039826161-alvaro-granobles-at-club-stratus?came_from=209",
+      "desc": "Alvaro Granobles live at Stratus Event Center in Phoenix.",
+      "lineup": [
+        "Alvaro Granobles"
       ]
     },
     {
