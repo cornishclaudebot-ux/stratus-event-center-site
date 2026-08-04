@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-03T10:12:49",
+  "updated": "2026-08-03T23:44:49",
   "source": "https://www.bandsintown.com/v/10168441-club-stratus",
   "events": [
     {
@@ -18,6 +18,18 @@
         "Luiso"
       ],
       "ages": "Ages 18 & over"
+    },
+    {
+      "date": "2026-08-08",
+      "time": "8:00 PM",
+      "title": "La Fiera de ojinaga",
+      "tag": null,
+      "flyer": "assets/flyers/2026-08-08-8da95dc921de.jpg",
+      "url": "https://www.bandsintown.com/e/1039816512-la-fiera-de-ojinaga-at-club-stratus?came_from=209",
+      "desc": "La Fiera de ojinaga live at Stratus Event Center in Phoenix.",
+      "lineup": [
+        "La Fiera de ojinaga"
+      ]
     },
     {
       "date": "2026-08-22",
