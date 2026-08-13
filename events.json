@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-10T16:44:07",
+  "updated": "2026-08-12T19:21:41",
   "source": "https://www.bandsintown.com/v/10168441-club-stratus",
   "events": [
     {
@@ -53,6 +53,18 @@
       "desc": "Voz de Mando live at Stratus Event Center in Phoenix.",
       "lineup": [
         "Voz de Mando"
+      ]
+    },
+    {
+      "date": "2026-09-05",
+      "time": "7:00 PM",
+      "title": "Arden Jones",
+      "tag": null,
+      "flyer": "assets/flyers/2026-09-05-79e620f5b1f8.jpg",
+      "url": "https://www.bandsintown.com/e/1039943191-arden-jones-at-club-stratus?came_from=209",
+      "desc": "Arden Jones live at Stratus Event Center in Phoenix.",
+      "lineup": [
+        "Arden Jones"
       ]
     },
     {
