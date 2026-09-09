@@ -47,6 +47,26 @@ EXTRA_EVENTS = [
         "lineup": ["Trent", "Soto", "ZMG", "Aaron", "Luiso"],
         "ages": "Ages 18 & over",
     },
+    {
+        "date": "2026-10-29", "time": "7:00 PM",
+        "title": "Fear Forest", "tag": "Halloween",
+        "flyer": "https://images.posh.vip/originals/6aa0adfa649d861d22d1528c",
+        "url": "https://posh.vip/e/fear-forest",
+        "desc": "DartyForLife's four night Halloween run at Stratus, Thursday October 29 through Sunday November 1. Ages 18 & over.",
+        "lineup": ["DartyForLife"],
+        "ages": "Ages 18 & over",
+        "end": "2026-11-01",
+    },
+    {
+        "date": "2026-10-31", "time": "8:00 PM",
+        "title": "Ty Dolla $ign | Halloween 2026", "tag": "Hip-Hop",
+        "flyer": "https://images.posh.vip/originals/6aa07631be915031a594759b",
+        "url": "https://posh.vip/e/halloween-2026-2",
+        "desc": "Ty Dolla $ign live on Halloween night, Saturday October 31, presented by DartyForLife. Ages 18 & over. Presale waitlist open on Posh.",
+        "lineup": ["Ty Dolla $ign"],
+        "ages": "Ages 18 & over",
+        "info": "https://dartyforlife.com/halloween.html",
+    },
 ]
 
 OVERRIDES = {

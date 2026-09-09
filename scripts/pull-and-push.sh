@@ -100,6 +100,10 @@ git pull --rebase --autostash origin main >/dev/null 2>&1 || mark_failure "git p
 
 "$PYTHON" scripts/fetch_events.py --no-push || mark_failure "Bandsintown fetch failed (see log above)"
 
+# Bake MusicEvent JSON-LD + a crawlable list into events.html and index.html so
+# engines see the calendar without running JS. Idempotent, non-fatal.
+node scripts/render-seo.mjs || echo "[$(ts)] render-seo failed, pages keep their last bake"
+
 # Heartbeat: proof the whole pull->push->deploy chain works, committed at
 # most once a day even when no events changed.
 hb_age_ok() {
@@ -113,7 +117,7 @@ except Exception: sys.exit(1)"
 }
 
 # change detection must catch NEW files too (fresh flyers are untracked)
-changed=$(git status --porcelain events.json assets/flyers 2>/dev/null)
+changed=$(git status --porcelain events.json assets/flyers events.html index.html 2>/dev/null)
 
 if [ -z "$changed" ]; then
   if hb_age_ok; then
@@ -125,7 +129,7 @@ if [ -z "$changed" ]; then
 fi
 
 ts > heartbeat.txt
-git add events.json assets/flyers heartbeat.txt
+git add events.json assets/flyers heartbeat.txt events.html index.html
 git -c user.name="stratus-events-bot" -c user.email="actions@users.noreply.github.com" \
     commit -q -m "Auto-update events from Bandsintown ($(date -u +"%Y-%m-%d %H:%MZ"))"
 

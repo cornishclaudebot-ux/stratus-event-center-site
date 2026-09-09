@@ -1,76 +1,104 @@
 {
-  "updated": "2026-09-06T05:36:21",
-  "source": "https://www.bandsintown.com/v/10168441-club-stratus",
-  "events": [
-    {
-      "date": "2026-07-25",
-      "time": "8:00 PM",
-      "title": "Golden Teacher",
-      "tag": "DJ Night",
-      "flyer": "assets/flyers/2026-07-25-e187e4dc0efb.jpg",
-      "url": "https://posh.vip/e/golden-teacher",
-      "desc": "DARTYFORLIFE takes over Stratus: lasers, gold haze, and five DJs until 2 AM. Ages 18 & over.",
-      "lineup": [
-        "Trent",
-        "Soto",
-        "ZMG",
-        "Aaron",
-        "Luiso"
-      ],
-      "ages": "Ages 18 & over"
-    },
-    {
-      "date": "2026-09-26",
-      "time": "8:00 PM",
-      "title": "Durango Fest",
-      "tag": "Duranguense",
-      "flyer": "assets/flyers/2026-09-26-f903b1ab7e7c.jpg",
-      "url": "https://ticketon.com/en/events/durango-fest-en-phoenix-phoenix-az-2026-09-26-wbgo38az3d1z",
-      "desc": "Durango Fest marks 5 years with a stacked duranguense lineup, all ages, doors 8 PM.",
-      "lineup": [
-        "Alacranes Musical",
-        "Montez de Durango",
-        "Patrulla 81",
-        "Banda Lamento Show de Durango",
-        "Los Príncipes"
-      ],
-      "ages": "All ages"
-    },
-    {
-      "date": "2026-10-18",
-      "time": "12:00 PM",
-      "title": "DJ Kilo",
-      "tag": null,
-      "flyer": null,
-      "url": "https://www.bandsintown.com/e/1039970100-dj-kilo-at-club-stratus?came_from=209",
-      "desc": "DJ Kilo live at Stratus Event Center in Phoenix.",
-      "lineup": [
-        "DJ Kilo"
-      ]
-    },
-    {
-      "date": "2026-10-20",
-      "time": "6:00 PM",
-      "title": "Carlos Rivas",
-      "tag": null,
-      "flyer": "assets/flyers/2026-10-20-d61e5697094c.jpg",
-      "url": "https://www.bandsintown.com/e/1039816686-carlos-rivas-at-club-stratus?came_from=209",
-      "desc": "Carlos Rivas live at Stratus Event Center in Phoenix.",
-      "lineup": [
-        "Carlos Rivas"
-      ]
-    },
-    {
-      "date": "2026-12-04",
-      "time": "9:00 PM",
-      "title": "Ken-Y",
-      "tag": null,
-      "flyer": "assets/flyers/2026-12-04-634d42ac33f5.jpg",
-      "url": "https://www.bandsintown.com/e/1039570781-ken-y-at-club-stratus?came_from=209",
-      "desc": "Ken-Y live at Stratus Event Center in Phoenix.",
-      "lineup": [
-        "Ken-Y"
-      ]
-    }
-  ]
+ "updated": "2026-09-06T05:36:21",
+ "source": "https://www.bandsintown.com/v/10168441-club-stratus",
+ "events": [
+  {
+   "date": "2026-07-25",
+   "time": "8:00 PM",
+   "title": "Golden Teacher",
+   "tag": "DJ Night",
+   "flyer": "assets/flyers/2026-07-25-e187e4dc0efb.jpg",
+   "url": "https://posh.vip/e/golden-teacher",
+   "desc": "DARTYFORLIFE takes over Stratus: lasers, gold haze, and five DJs until 2 AM. Ages 18 & over.",
+   "lineup": [
+    "Trent",
+    "Soto",
+    "ZMG",
+    "Aaron",
+    "Luiso"
+   ],
+   "ages": "Ages 18 & over"
+  },
+  {
+   "date": "2026-09-26",
+   "time": "8:00 PM",
+   "title": "Durango Fest",
+   "tag": "Duranguense",
+   "flyer": "assets/flyers/2026-09-26-f903b1ab7e7c.jpg",
+   "url": "https://ticketon.com/en/events/durango-fest-en-phoenix-phoenix-az-2026-09-26-wbgo38az3d1z",
+   "desc": "Durango Fest marks 5 years with a stacked duranguense lineup, all ages, doors 8 PM.",
+   "lineup": [
+    "Alacranes Musical",
+    "Montez de Durango",
+    "Patrulla 81",
+    "Banda Lamento Show de Durango",
+    "Los Príncipes"
+   ],
+   "ages": "All ages"
+  },
+  {
+   "date": "2026-10-18",
+   "time": "12:00 PM",
+   "title": "DJ Kilo",
+   "tag": null,
+   "flyer": null,
+   "url": "https://www.bandsintown.com/e/1039970100-dj-kilo-at-club-stratus?came_from=209",
+   "desc": "DJ Kilo live at Stratus Event Center in Phoenix.",
+   "lineup": [
+    "DJ Kilo"
+   ]
+  },
+  {
+   "date": "2026-10-20",
+   "time": "6:00 PM",
+   "title": "Carlos Rivas",
+   "tag": null,
+   "flyer": "assets/flyers/2026-10-20-d61e5697094c.jpg",
+   "url": "https://www.bandsintown.com/e/1039816686-carlos-rivas-at-club-stratus?came_from=209",
+   "desc": "Carlos Rivas live at Stratus Event Center in Phoenix.",
+   "lineup": [
+    "Carlos Rivas"
+   ]
+  },
+  {
+   "date": "2026-10-29",
+   "time": "7:00 PM",
+   "title": "Fear Forest",
+   "tag": "Halloween",
+   "flyer": "https://images.posh.vip/originals/6aa0adfa649d861d22d1528c",
+   "url": "https://posh.vip/e/fear-forest",
+   "desc": "DartyForLife's four night Halloween run at Stratus, Thursday October 29 through Sunday November 1. Ages 18 & over.",
+   "lineup": [
+    "DartyForLife"
+   ],
+   "ages": "Ages 18 & over",
+   "end": "2026-11-01"
+  },
+  {
+   "date": "2026-10-31",
+   "time": "8:00 PM",
+   "title": "Ty Dolla $ign | Halloween 2026",
+   "tag": "Hip-Hop",
+   "flyer": "https://images.posh.vip/originals/6aa07631be915031a594759b",
+   "url": "https://posh.vip/e/halloween-2026-2",
+   "desc": "Ty Dolla $ign live on Halloween night, Saturday October 31, presented by DartyForLife. Ages 18 & over. Presale waitlist open on Posh.",
+   "lineup": [
+    "Ty Dolla $ign"
+   ],
+   "ages": "Ages 18 & over",
+   "info": "https://dartyforlife.com/halloween.html"
+  },
+  {
+   "date": "2026-12-04",
+   "time": "9:00 PM",
+   "title": "Ken-Y",
+   "tag": null,
+   "flyer": "assets/flyers/2026-12-04-634d42ac33f5.jpg",
+   "url": "https://www.bandsintown.com/e/1039570781-ken-y-at-club-stratus?came_from=209",
+   "desc": "Ken-Y live at Stratus Event Center in Phoenix.",
+   "lineup": [
+    "Ken-Y"
+   ]
+  }
+ ]
 }
