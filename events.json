@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-08T18:41:10",
+  "updated": "2026-09-25T05:13:14",
   "source": "https://www.bandsintown.com/v/10168441-club-stratus",
   "events": [
     {
@@ -58,6 +58,18 @@
       "desc": "Carlos Rivas live at Stratus Event Center in Phoenix.",
       "lineup": [
         "Carlos Rivas"
+      ]
+    },
+    {
+      "date": "2026-10-23",
+      "time": "8:00 PM",
+      "title": "Banda Toro",
+      "tag": null,
+      "flyer": "assets/flyers/2026-10-23-7b4ad07cddd2.jpg",
+      "url": "https://www.bandsintown.com/e/1040399949-banda-toro-at-club-stratus?came_from=209",
+      "desc": "Banda Toro live at Stratus Event Center in Phoenix.",
+      "lineup": [
+        "Banda Toro"
       ]
     },
     {
