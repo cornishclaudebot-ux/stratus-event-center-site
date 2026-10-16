@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-14T11:12:09",
+  "updated": "2026-10-16T07:18:40",
   "source": "https://www.bandsintown.com/v/10168441-club-stratus",
   "events": [
     {
@@ -82,6 +82,18 @@
       ],
       "ages": "Ages 18 & over",
       "info": "https://dartyforlife.com/halloween.html"
+    },
+    {
+      "date": "2026-11-14",
+      "time": "8:00 PM",
+      "title": "Los Alteños De La Sierra",
+      "tag": null,
+      "flyer": null,
+      "url": "https://www.bandsintown.com/e/1040626333-los-altenos-de-la-sierra-at-club-stratus?came_from=209",
+      "desc": "Los Alteños De La Sierra live at Stratus Event Center in Phoenix.",
+      "lineup": [
+        "Los Alteños De La Sierra"
+      ]
     },
     {
       "date": "2026-11-21",
