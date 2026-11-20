@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-15T03:40:43",
+  "updated": "2026-11-20T06:40:37",
   "source": "https://www.bandsintown.com/v/10168441-club-stratus",
   "events": [
     {
@@ -69,6 +69,18 @@
       "desc": "José Andrëa live at Stratus Event Center in Phoenix.",
       "lineup": [
         "José Andrëa"
+      ]
+    },
+    {
+      "date": "2027-04-17",
+      "time": "9:00 PM",
+      "title": "Ken-Y",
+      "tag": null,
+      "flyer": "assets/flyers/2027-04-17-8ceda587682d.jpg",
+      "url": "https://www.bandsintown.com/e/1040994479-ken-y-at-club-stratus?came_from=209",
+      "desc": "Ken-Y live at Stratus Event Center in Phoenix.",
+      "lineup": [
+        "Ken-Y"
       ]
     }
   ]
